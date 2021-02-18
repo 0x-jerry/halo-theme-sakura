@@ -1,14 +1,12 @@
 const debug = process.env.NODE_ENV !== 'production'
 
 export const devConfig = {
-  port: 9555,
   buildDir: '.nuxt-dev',
 }
 
 type Config = typeof devConfig
 
 export const prodConfig: Config = {
-  port: 9556,
   buildDir: '.nuxt',
 }
 

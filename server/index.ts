@@ -8,6 +8,8 @@ require('dotenv').config()
 
 const host = process.env.HALO_TARGET!
 
+const isDev = process.env.NODE_ENV !== 'production'
+
 const url = new URL(host)
 
 const proxyConf = {
@@ -25,8 +27,10 @@ async function main() {
 
   await nuxt.ready()
 
-  const builder = new Builder(nuxt)
-  await builder.build()
+  if (isDev) {
+    const builder = new Builder(nuxt)
+    await builder.build()
+  }
 
   app.use(async (ctx, next) => {
     if (ctx.request.path.startsWith('/api')) {
@@ -46,7 +50,7 @@ async function main() {
     })
   )
 
-  const port = 9555
+  const port = isDev ? 9555 : 9556
   app.listen(port, () => {
     console.log('http://localhost:' + port)
   })

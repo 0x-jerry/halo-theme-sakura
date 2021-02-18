@@ -1,6 +1,14 @@
 <template>
   <div class="halo-theme sakura">
     <main-bg :userInfo="userInfo" />
+    <div class="posts m-auto py-20">
+      <post
+        v-for="(o, idx) in posts.content"
+        :key="o.id"
+        :post="o"
+        :flip="idx % 2 !== 0"
+      />
+    </div>
   </div>
 </template>
 
@@ -33,4 +41,8 @@ export default Vue.extend({
 })
 </script>
 
-<style></style>
+<style scoped>
+.posts {
+  max-width: 880px;
+}
+</style>

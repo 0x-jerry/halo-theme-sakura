@@ -1,5 +1,6 @@
 <template>
   <div>
+    <scroll-progress />
     <Nuxt />
   </div>
 </template>
