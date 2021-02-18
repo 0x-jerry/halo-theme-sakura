@@ -39,3 +39,7 @@ if (process.client) {
 export const globalUtils = {
   observer,
 }
+
+export function sleep(ms = 1000) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}

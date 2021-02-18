@@ -4,7 +4,9 @@
       class="bg-fixed bg-cover bg-center flex items-center justify-center"
       :style="mainBgStyle"
     >
-      <div class="inline-block">
+      <random-image class="absolute z-0" random-id="main" />
+      <div class="absolute z-10 w-full h-full bg-gray-400 bg-opacity-25"></div>
+      <div class="inline-block relative z-20">
         <h1 class="text-center glitch" data-text="Hi, Friend">Hi, Friend</h1>
         <p
           class="desc bg-black bg-opacity-25 rounded-3xl text-white text-center py-5"
@@ -19,14 +21,12 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { globalConfigs } from '../configs'
 
 export default Vue.extend({
   props: ['userInfo'],
   computed: {
     mainBgStyle() {
       return {
-        'background-image': `url('${globalConfigs.mainBGUrl}')`,
         height: globalThis.innerHeight + 'px',
       }
     },

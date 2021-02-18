@@ -3,11 +3,11 @@
     ref="$root"
     class="random-image w-full h-full bg-cover bg-center bg-no-repeat"
     style="background-image: url('/svg/loading.svg')"
-    @can-visible="visible = true"
+    @can-visible="canVisible"
   >
     <img
       v-if="visible"
-      :src="imageSrc"
+      :src="imgUrl"
       class="img object-cover hidden w-full h-full object-center"
       :class="{ block: !loading }"
       @load="loaded"
@@ -16,7 +16,11 @@
 </template>
 
 <script>
+import axios from 'axios'
 import { globalUtils } from './utils'
+
+const randomImgMap = {}
+
 export default {
   props: {
     src: String,
@@ -33,32 +37,47 @@ export default {
     return {
       visible: false,
       loading: true,
+      imgUrl: '',
     }
-  },
-  computed: {
-    imageSrc() {
-      const url = new URL('https://api.lixingyong.com/api/images')
-      url.searchParams.set('postId', this.randomId)
-      url.searchParams.set('type', 'url')
-      url.searchParams.set('itype', 'image')
-
-      if (this.size) {
-        url.searchParams.set('th', this.size)
-      }
-
-      return this.src || url.toString()
-    },
   },
   mounted() {
     globalUtils.observer.observe(this.$refs.$root)
   },
   methods: {
-    test(e) {
-      console.log(e)
+    async imageApi() {
+      try {
+        const { data } = await axios.get('/capi/image/random', {
+          params: { id: this.randomId },
+        })
+
+        return data.imgurl
+      } catch (error) {
+        console.log('error', { error })
+      }
+    },
+    async getImageUrl() {
+      if (this.src) {
+        return this.src
+      }
+
+      if (randomImgMap[this.randomId]) {
+        return randomImgMap[this.randomId]
+      }
+
+      try {
+        const url = await this.imageApi()
+        randomImgMap[this.randomId] = url
+        return url
+      } catch (error) {
+        console.log('load image error', error)
+      }
+    },
+    async canVisible() {
+      this.visible = true
+      this.imgUrl = await this.getImageUrl()
     },
     loaded() {
       this.loading = false
-      console.log('loaded')
     },
   },
 }

@@ -5,6 +5,7 @@ import { Nuxt, Builder } from 'nuxt'
 // import proxy from 'koa-better-http-proxy'
 import nuxtConfig from '../nuxt.config'
 import { createHaloApi } from './halo-api'
+import { router } from './router'
 
 require('dotenv').config()
 
@@ -34,27 +35,32 @@ async function main() {
     await builder.build()
   }
 
-  app.use(async (ctx, next) => {
-    if (ctx.request.path.startsWith('/api')) {
-      await next()
-    } else {
-      ctx.res.statusCode = 200
-      ctx.respond = false
-
-      nuxt.render(ctx.req, ctx.res)
-    }
+  const haloProxy = createProxy({
+    target: proxyConf.target,
+    headers: proxyConf.headers,
   })
 
-  app.use(
-    createProxy({
-      target: proxyConf.target,
-      headers: proxyConf.headers,
-    })
-  )
+  const haloApi = createHaloApi()
 
-  app.use(createHaloApi())
+  app
+    .use(router.routes())
+    .use(router.allowedMethods())
+    .use(async (ctx, next) => {
+      const reqPath = ctx.request.path
+
+      if (reqPath.startsWith('/api')) {
+        await haloProxy(ctx, next)
+        await haloApi(ctx, next)
+      } else {
+        ctx.res.statusCode = 200
+        ctx.respond = false
+
+        nuxt.render(ctx.req, ctx.res)
+      }
+    })
 
   const port = isDev ? 9555 : 9556
+
   app.listen(port, () => {
     console.log('http://localhost:' + port)
   })
@@ -75,7 +81,7 @@ function createProxy(opt: {
     headers: opt.headers,
   })
 
-  return async (ctx, next) => {
+  return async (ctx) => {
     const req = ctx.request
     const res = await instance.request({
       method: req.method as any,
@@ -85,6 +91,5 @@ function createProxy(opt: {
     })
 
     ctx.body = res.data
-    await next()
   }
 }
