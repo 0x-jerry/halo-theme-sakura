@@ -3,6 +3,7 @@ import Koa from 'koa'
 import { Nuxt, Builder } from 'nuxt'
 import proxy from 'koa-better-http-proxy'
 import nuxtConfig from '../nuxt.config'
+import { createMarkdownRenderer } from './lib/markdown/markdown'
 
 require('dotenv').config()
 
@@ -19,6 +20,10 @@ const proxyConf = {
     'API-Authorization': process.env.HALO_ACCESS_KEY,
   },
 }
+
+const md = createMarkdownRenderer('/', {
+  lineNumbers: true,
+})
 
 async function main() {
   const app = new Koa()

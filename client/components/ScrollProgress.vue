@@ -13,8 +13,14 @@ export default {
   },
   computed: {
     style() {
+      let isLoading = false
+
+      try {
+        isLoading = this.$nuxt.$loading.percent > 0
+      } catch (error) {}
+
       return {
-        width: this.percentage * 100 + '%',
+        width: isLoading ? 0 : this.percentage * 100 + '%',
       }
     },
   },
