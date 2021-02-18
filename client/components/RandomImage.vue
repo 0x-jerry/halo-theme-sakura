@@ -66,7 +66,12 @@ export default {
 
       try {
         const url = await this.imageApi()
-        randomImgMap[this.randomId] = url
+
+        const isValidUrl = !/\/large\/\.jpg$/.test(url)
+
+        if (isValidUrl) {
+          randomImgMap[this.randomId] = url
+        }
         return url
       } catch (error) {
         console.log('load image error', error)

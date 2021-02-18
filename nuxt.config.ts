@@ -36,6 +36,12 @@ export default {
         integrity:
           'sha512-Oy18vBnbSJkXTndr2n6lDMO5NN31UljR8e/ICzVPrGpSud4Gkckb8yUpqhKuUNoE+o9gAb4O/rAxxw1ojyUVzg==',
       },
+      {
+        rel: 'stylesheet',
+        // iconfont
+        href: 'https://at.alicdn.com/t/font_2010950_uq2c7ykeiyk.css',
+        crossorigin: 'anonymous',
+      },
     ],
   },
 

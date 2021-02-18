@@ -26,9 +26,9 @@ router.get('/image/random', async (ctx) => {
     )
     ctx.body = data
 
-    const isInvalidImg = data.imgurl === 'https://tvax4.sinaimg.cn/large/.jpg'
+    const isValidUrl = !/\/large\/\.jpg$/.test(data.imgurl)
 
-    if (!isInvalidImg) {
+    if (isValidUrl) {
       imageCache.set(id, data)
     }
   }
