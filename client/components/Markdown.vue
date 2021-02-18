@@ -4,12 +4,7 @@
 
 <script>
 export default {
-  props: ['content'],
-  computed: {
-    html() {
-      return this.content
-    },
-  },
+  props: ['html'],
 }
 </script>
 

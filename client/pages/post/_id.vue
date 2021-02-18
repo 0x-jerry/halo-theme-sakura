@@ -7,7 +7,7 @@
       />
     </div>
     <div class="content pt-10">
-      <markdown :content="content" />
+      <markdown :html="content" />
     </div>
   </div>
 </template>

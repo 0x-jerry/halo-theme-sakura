@@ -7,7 +7,7 @@
     <article
       class="post-article flex reverse text-gray-500 hover:text-gray-600"
     >
-      <div class="content p-5">
+      <div class="content py-5 px-3">
         <div class="reverse flex">
           <v-icon class="mx-2" name="time" />
           {{ meta.createTime }}
