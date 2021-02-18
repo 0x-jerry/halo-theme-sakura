@@ -1,7 +1,8 @@
 <template>
   <div
     ref="$root"
-    class="random-image w-full h-full bg-blue-400"
+    class="random-image w-full h-full bg-cover bg-center bg-no-repeat"
+    style="background-image: url('/svg/loading.svg')"
     @can-visible="visible = true"
   >
     <img
@@ -36,12 +37,16 @@ export default {
   },
   computed: {
     imageSrc() {
-      const size = this.size ? `&th=${this.size}` : ''
-      const randomUrl = `https://api.lixingyong.com/api/images?postId=${this.randomId}&type=url&itype=image${size}`
+      const url = new URL('https://api.lixingyong.com/api/images')
+      url.searchParams.set('postId', this.randomId)
+      url.searchParams.set('type', 'url')
+      url.searchParams.set('itype', 'image')
 
-      // const r =
-      //   'https://cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.0/source/images/hd.jpg'
-      return this.src || randomUrl
+      if (this.size) {
+        url.searchParams.set('th', this.size)
+      }
+
+      return this.src || url.toString()
     },
   },
   mounted() {

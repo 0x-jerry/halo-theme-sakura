@@ -1,7 +1,10 @@
 <template>
   <div class="post-content">
     <div class="thumb overflow-hidden relative">
-      <random-image class="absolute top-0 left-0 object-cover w-full h-full" />
+      <random-image
+        class="absolute top-0 left-0 object-cover w-full h-full"
+        :random-id="post.id"
+      />
     </div>
     <div class="content pt-10">
       <markdown :content="content" />
