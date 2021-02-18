@@ -9,6 +9,7 @@
 - [x] Vue
 - [x] SSR
 - [ ] Docker
+- [x] Markdown-It
 
 ## Build Setup
 
