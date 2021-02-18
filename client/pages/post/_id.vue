@@ -18,14 +18,10 @@ import api from '../../api'
 export default {
   async asyncData(ctx) {
     const id = ctx.route.params.id
-    // const md = ctx.res?.md
 
     const post = await api.content.postsPostIdGet({
-      formatDisabled: false,
       postId: id,
     })
-
-    // const rendered = md.render(post.originalContent)
 
     return {
       post,
