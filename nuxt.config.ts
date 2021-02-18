@@ -19,7 +19,7 @@ export default {
   buildDir: getConfig('buildDir'),
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'halo-theme-tpl',
+    title: 'Halo Theme Sakura',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
