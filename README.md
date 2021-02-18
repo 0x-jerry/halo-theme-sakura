@@ -1,4 +1,13 @@
-# halo-theme-tpl
+# Halo-theme-sakura (WIP)
+
+用 Nuxt 框架完全重写 [Halo-theme-sakura](https://github.com/LIlGG/halo-theme-sakura)
+
+优势:
+
+- tailwind
+- typescript
+- vue
+- ssr
 
 ## Build Setup
 
