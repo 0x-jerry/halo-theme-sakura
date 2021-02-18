@@ -4,10 +4,11 @@
 
 优势:
 
-- tailwind
-- typescript
-- vue
-- ssr
+- [x] Tailwind
+- [x] Typescript
+- [x] Vue
+- [x] SSR
+- [ ] Docker
 
 ## Build Setup
 
