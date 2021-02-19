@@ -39,7 +39,7 @@
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/tailwindcss": "^3.4.2",
-    "@types/koa": "^2.11.8",
+    "@types/koa": "^2.13.0",
     "@types/koa__router": "^8.0.4",
     "@types/lru-cache": "^5.1.0",
     "@types/markdown-it": "^12.0.1",
