@@ -13,12 +13,11 @@
           {{ meta.createTime }}
         </div>
         <div class="flex reverse mt-3">
-          <h2
-            class="title clickable text-2xl font-bold mx-2 h-10 overflow-ellipsis"
+          <v-link
+            class="title text-2xl font-bold mx-2 h-10 overflow-ellipsis"
+            :content="post.title"
             @click="gotoPost"
-          >
-            {{ post.title }}
-          </h2>
+          />
         </div>
         <div class="flex reverse mt-3 items-center">
           <v-icon class="mx-2" name="attention" />
@@ -52,8 +51,10 @@
 <script>
 import dayjs from 'dayjs'
 import { globalUtils } from './utils'
+import VLink from './VLink.vue'
 
 export default {
+  components: { VLink },
   props: ['post', 'flip'],
   data() {
     return {

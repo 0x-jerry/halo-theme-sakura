@@ -6,7 +6,7 @@
     >
       <random-image class="absolute z-0" random-id="main" />
       <div class="absolute z-10 w-full h-full bg-gray-400 bg-opacity-25"></div>
-      <div class="inline-block relative z-20">
+      <div class="block relative z-20">
         <h1 class="text-center glitch" data-text="Hi, Friend">Hi, Friend</h1>
         <p
           class="desc bg-black bg-opacity-25 rounded-3xl text-white text-center py-5"
@@ -14,15 +14,23 @@
           {{ userInfo.description }}
         </p>
       </div>
-      <div class="icon"></div>
+      <div
+        class="arrow-animation transform absolute z-20 bottom-10 animate-bounce cursor-pointer w-full text-center"
+      >
+        <span @click="scrollOnePage">
+          <f-icon fas name="chevron-down" class="text-white text-6xl" />
+        </span>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import FIcon from './FIcon.vue'
 
 export default Vue.extend({
+  components: { FIcon },
   props: ['userInfo'],
   computed: {
     mainBgStyle() {
@@ -31,10 +39,19 @@ export default Vue.extend({
       }
     },
   },
+  methods: {
+    scrollOnePage() {
+      window.scrollTo(0, window.innerHeight)
+    },
+  },
 })
 </script>
 
 <style scoped>
+.arrow-animation {
+  animation-duration: 3s;
+}
+
 .glitch {
   margin: auto;
   font-family: Ubuntu, sans-serif;

@@ -1,14 +1,16 @@
 <template>
   <div class="halo-theme sakura">
     <main-bg :userInfo="userInfo" />
-    <div class="posts m-auto py-20">
-      <post
+    <div class="posts m-auto">
+      <post-article
         v-for="(o, idx) in posts.content"
         :key="o.id"
         :post="o"
         :flip="idx % 2 !== 0"
       />
     </div>
+
+    <site-footer class="mt-10" />
   </div>
 </template>
 

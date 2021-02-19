@@ -20,8 +20,10 @@ export default {}
 
 <style>
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Merriweather Sans', Helvetica, Tahoma, Arial, 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', sans-serif;
+
+  scroll-behavior: smooth;
   /* font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
