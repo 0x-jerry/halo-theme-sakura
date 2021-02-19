@@ -13,13 +13,13 @@
 </template>
 
 <script>
-import api from '../../api'
+import { postsPostIdGet } from '../../api/contentApi'
 
 export default {
   async asyncData(ctx) {
     const id = ctx.route.params.id
 
-    const post = await api.content.postsPostIdGet({
+    const post = await postsPostIdGet({
       postId: id,
     })
 

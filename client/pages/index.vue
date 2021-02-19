@@ -14,13 +14,13 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import api from '../api/index'
+import { postsGet, usersProfileGet } from '../api/contentApi'
 
 export default Vue.extend({
   async asyncData() {
     const [posts, userInfo] = await Promise.all([
-      api.content.postsGet({}),
-      api.content.usersProfileGet(),
+      postsGet({}),
+      usersProfileGet(),
     ])
 
     return {
