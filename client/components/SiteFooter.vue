@@ -30,15 +30,21 @@
             <v-link open href="https://github.com/cwxyz007" content="Gem Xli" />
           </span>
         </p>
-        <p class="mt-2">© 2021 十里琉璃</p>
+        <p class="mt-2">© {{ year }} {{ user.nickname }}</p>
       </div>
     </div>
   </footer>
 </template>
 
 <script>
+import dayjs from 'dayjs'
 export default {
   props: ['user'],
+  computed: {
+    year() {
+      return dayjs().year()
+    },
+  },
 }
 </script>
 

@@ -2,7 +2,7 @@
   <a
     :href="href"
     :target="open ? '_blank' : ''"
-    class="hover:text-blue-500 cursor-pointer"
+    class="hover:text-blue-500 cursor-pointer transition-colors"
     @click="(e) => $emit('click', e)"
   >
     <slot>{{ content }}</slot>

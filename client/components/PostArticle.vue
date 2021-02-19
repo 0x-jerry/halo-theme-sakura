@@ -42,7 +42,7 @@
         class="thumb overflow-hidden border-gray-200 cursor-pointer"
         @click="gotoPost"
       >
-        <random-image :random-id="post.id" class="img" />
+        <random-image :src="post.thumbnail" :random-id="post.id" class="img" />
       </div>
     </article>
   </div>

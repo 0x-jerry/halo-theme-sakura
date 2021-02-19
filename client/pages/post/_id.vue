@@ -6,27 +6,48 @@
         :random-id="post.id"
       />
     </div>
-    <div class="content pt-10">
-      <markdown :html="content" />
+    <div class="content">
+      <div class="title text-center text-3xl font-bold pt-10 pb-5">
+        {{ post.title }}
+      </div>
+      <div class="desc text-gray-400">{{ info.createTime }}</div>
+      <hr class="w-1/3 m-auto bg-gray-100 my-2" style="height: 1px" />
+      <markdown :html="content" class="py-5" />
+      <div class="tags py-20">
+        <v-tag v-for="tag in post.tags" :key="tag.id" :name="tag.name" />
+      </div>
     </div>
+    <site-footer class="mt-10" :user="user" />
   </div>
 </template>
 
 <script>
-import { postsPostIdGet } from '../../api/contentApi'
+import dayjs from 'dayjs'
+import { postsPostIdGet, usersProfileGet } from '../../api/contentApi'
 
 export default {
   async asyncData(ctx) {
     const id = ctx.route.params.id
 
-    const post = await postsPostIdGet({
-      postId: id,
-    })
+    const [user, post] = await Promise.all([
+      usersProfileGet(),
+      postsPostIdGet({
+        postId: id,
+      }),
+    ])
 
     return {
+      user,
       post,
       content: post.formatContent,
     }
+  },
+  computed: {
+    info() {
+      return {
+        createTime: dayjs(this.post.createTime).format('YYYY-MM-DD'),
+      }
+    },
   },
   mounted() {
     console.log(this)
@@ -35,6 +56,21 @@ export default {
 </script>
 
 <style scoped>
+.title:before,
+.title:after {
+  font-weight: 700;
+
+  @apply text-blue-500;
+}
+
+.title:before {
+  content: '{';
+}
+
+.title:after {
+  content: '}';
+}
+
 .thumb {
   height: 400px;
 }

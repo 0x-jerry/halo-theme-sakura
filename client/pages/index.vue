@@ -10,7 +10,7 @@
       />
     </div>
 
-    <site-footer class="mt-10" />
+    <site-footer class="mt-10" :user="userInfo" />
   </div>
 </template>
 
