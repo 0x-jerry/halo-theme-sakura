@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   halo-theme:
-    image: halo-theme-tpl
+    image: halo-theme-sakura
     ports:
       - 9556:9556
     env_file:

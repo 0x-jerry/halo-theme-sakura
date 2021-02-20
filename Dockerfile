@@ -7,8 +7,10 @@ COPY package.json ./
 COPY yarn.lock ./
 
 RUN yarn
+
 COPY .nuxt .nuxt
 COPY dist/ ./
+COPY client/static client/static
 
 EXPOSE 9556
 
