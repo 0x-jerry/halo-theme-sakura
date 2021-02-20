@@ -46,8 +46,15 @@ async function main() {
     .use(router.allowedMethods())
     .use(async (ctx, next) => {
       const reqPath = ctx.request.path
-      if (reqPath.startsWith('/admin') || reqPath.startsWith('/api/admin')) {
-        console.log('halo-proxy', reqPath)
+
+      const haloAdminPrefix = ['/admin', '/theme', '/api/admin', '/images']
+
+      if (/^\/admin(\/)?$/.test(reqPath)) {
+        ctx.redirect('/admin/index.html')
+        return
+      }
+
+      if (haloAdminPrefix.find((r) => reqPath.startsWith(r))) {
         return haloAdminProxy(ctx, next)
       }
 
