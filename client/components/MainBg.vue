@@ -1,8 +1,7 @@
 <template>
   <div class="main-bg">
     <div
-      class="bg-fixed bg-cover bg-center flex items-center justify-center"
-      :style="mainBgStyle"
+      class="bg-fixed bg-cover bg-center flex items-center justify-center h-screen"
     >
       <random-image class="absolute z-0" random-id="main" />
       <div class="absolute z-10 w-full h-full bg-gray-400 bg-opacity-25"></div>
@@ -32,13 +31,6 @@ import FIcon from './FIcon.vue'
 export default Vue.extend({
   components: { FIcon },
   props: ['userInfo'],
-  computed: {
-    mainBgStyle() {
-      return {
-        height: globalThis.innerHeight + 'px',
-      }
-    },
-  },
   methods: {
     scrollOnePage() {
       window.scrollTo(0, window.innerHeight)
