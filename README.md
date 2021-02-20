@@ -2,6 +2,8 @@
 
 用 Nuxt 框架完全重写 [Halo-theme-sakura](https://github.com/LIlGG/halo-theme-sakura)
 
+## [preview](https://blog.tiny-online.online/)
+
 优势:
 
 - [x] Tailwind
@@ -19,6 +21,9 @@
 - [ ] 标签页面
 - [ ] 关于页面
 - [ ] 文章详情页
+- [ ] 移动端适配
+- [x] 图片懒加载
+- [x] 随机图
 
 ## Build Setup
 
