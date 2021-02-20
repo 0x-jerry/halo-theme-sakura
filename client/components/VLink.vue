@@ -19,4 +19,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.active {
+  @apply text-blue-500;
+}
+</style>

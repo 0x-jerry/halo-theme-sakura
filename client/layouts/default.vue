@@ -5,19 +5,6 @@
   </div>
 </template>
 
-<script>
-import { globalConfigs } from '../configs'
-import { initConfig } from '../api/contentApi'
-
-initConfig({
-  target: globalConfigs.isDev
-    ? 'http://localhost:9555'
-    : 'http://localhost:9556',
-})
-
-export default {}
-</script>
-
 <style>
 html {
   font-family: 'Merriweather Sans', Helvetica, Tahoma, Arial, 'PingFang SC',
