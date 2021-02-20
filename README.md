@@ -8,8 +8,17 @@
 - [x] Typescript
 - [x] Vue
 - [x] SSR
-- [ ] Docker
+- [x] Docker
 - [x] Markdown-It
+
+功能:
+
+- [x] 首页
+- [x] 归档页
+- [ ] 所有标签页面
+- [ ] 标签页面
+- [ ] 关于页面
+- [ ] 文章详情页
 
 ## Build Setup
 
