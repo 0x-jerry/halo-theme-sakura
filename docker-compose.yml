@@ -1,0 +1,8 @@
+version: '3.9'
+services:
+  halo-theme:
+    image: halo-theme-tpl
+    ports:
+      - 9556:9556
+    env_file:
+      - .env
