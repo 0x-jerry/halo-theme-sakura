@@ -36,9 +36,10 @@ async function main() {
   const haloApi = createHaloApi()
 
   const haloUrl = new URL(haloTarget)
-  const haloAdminProxy = proxy(haloUrl.host, {
+  const haloAdminProxy = proxy(haloUrl.hostname, {
     https: haloUrl.protocol === 'https:',
     preserveReqSession: true,
+    port: +haloUrl.port || undefined,
   })
 
   app
