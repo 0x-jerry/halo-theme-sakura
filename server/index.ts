@@ -1,26 +1,19 @@
 import axios from 'axios'
 import Koa, { Middleware } from 'koa'
+import proxy from 'koa-better-http-proxy'
 // @ts-ignore
 import { Nuxt, Builder } from 'nuxt'
-// import proxy from 'koa-better-http-proxy'
 import nuxtConfig from '../nuxt.config'
+import { haloAccessKey, haloTarget, isDev } from './config'
 import { createHaloApi } from './halo-api'
 import { router } from './router'
-
-require('dotenv').config()
-
-const haloTarget = process.env.HALO_TARGET!
-
-const isDev = process.env.NODE_ENV !== 'production'
 
 const url = new URL(haloTarget)
 
 const proxyConf = {
   target: url.toString(),
   https: url.protocol === 'https:',
-  headers: {
-    'API-Authorization': process.env.HALO_ACCESS_KEY,
-  },
+  accessKey: haloAccessKey,
 }
 
 async function main() {
@@ -35,18 +28,28 @@ async function main() {
     await builder.build()
   }
 
-  const haloProxy = createProxy({
+  const haloProxy = createHaloProxy({
     target: proxyConf.target,
-    headers: proxyConf.headers,
+    accessKey: proxyConf.accessKey,
   })
 
   const haloApi = createHaloApi()
+
+  const haloUrl = new URL(haloTarget)
+  const haloAdminProxy = proxy(haloUrl.host, {
+    https: haloUrl.protocol === 'https:',
+    preserveReqSession: true,
+  })
 
   app
     .use(router.routes())
     .use(router.allowedMethods())
     .use(async (ctx, next) => {
       const reqPath = ctx.request.path
+      if (reqPath.startsWith('/admin') || reqPath.startsWith('/api/admin')) {
+        console.log('halo-proxy', reqPath)
+        return haloAdminProxy(ctx, next)
+      }
 
       if (reqPath.startsWith('/api')) {
         await haloProxy(ctx, next)
@@ -72,13 +75,22 @@ main().catch((e) => {
   console.log(e)
 })
 
-function createProxy(opt: {
+function createHaloProxy(opt: {
   target: string
-  headers: Record<string, any>
+  accessKey: string
 }): Middleware {
   const instance = axios.create({
     baseURL: opt.target,
-    headers: opt.headers,
+  })
+
+  instance.interceptors.request.use((conf) => {
+    if (conf.url?.match('/api/admin')) {
+      conf.headers['admin-authorization'] = opt.accessKey
+    } else {
+      conf.headers['api-authorization'] = opt.accessKey
+    }
+
+    return conf
   })
 
   return async (ctx) => {

@@ -1,8 +1,8 @@
-import LRU from 'lru-cache'
-import Router from '@koa/router'
 import axios from 'axios'
+import Router from '@koa/router'
+import LRU from 'lru-cache'
 
-export const router = new Router({
+export const apiRouter = new Router({
   prefix: '/capi',
 })
 
@@ -12,7 +12,7 @@ const imageCache = new LRU({
   max: 100,
 })
 
-router.get('/image/random', async (ctx) => {
+apiRouter.get('/image/random', async (ctx) => {
   const { id } = ctx.query
 
   const hit = imageCache.get(id)
