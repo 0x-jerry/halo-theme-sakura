@@ -4,7 +4,7 @@
       class="bg-fixed bg-cover bg-center flex items-center justify-center h-screen"
     >
       <random-image class="absolute z-0" random-id="main" />
-      <div class="absolute z-10 w-full h-full bg-gray-400 bg-opacity-25"></div>
+      <div class="bg-grid absolute z-10 w-full h-full"></div>
       <div class="block relative z-20">
         <h1 class="text-center glitch" data-text="Hi, Friend">Hi, Friend</h1>
         <p
@@ -40,6 +40,17 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.bg-grid {
+  background: linear-gradient(rgba(10, 10, 10, 0.1), rgba(0, 0, 0, 0.3)),
+    repeating-linear-gradient(
+      0,
+      transparent,
+      transparent 2px,
+      black 3px,
+      black 3px
+    );
+}
+
 .arrow-animation {
   animation-duration: 3s;
 }
