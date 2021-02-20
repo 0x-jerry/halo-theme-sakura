@@ -7,5 +7,7 @@ export * from './contentApi'
 initConfig({
   target: globalConfigs.isDev
     ? 'http://localhost:9555'
-    : 'http://localhost:9556',
+    : process.server
+    ? 'http://localhost:9556'
+    : '',
 })
