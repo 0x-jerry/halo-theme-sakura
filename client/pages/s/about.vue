@@ -1,12 +1,12 @@
 <template>
   <div class="halo-theme sakura">
-    <site-header :user="userInfo" :menus="menus" />
+    <site-header :user="user" :menus="menus" />
 
     <div style="height: 400px">
       <random-image :random-id="$route.path" />
     </div>
 
-    <site-footer class="mt-10" :user="userInfo" />
+    <site-footer class="mt-10" :user="user" />
   </div>
 </template>
 
@@ -16,7 +16,7 @@ import { mapState } from 'vuex'
 
 export default Vue.extend({
   computed: {
-    ...mapState(['site']),
+    ...mapState(['user', 'menus']),
   },
 })
 </script>

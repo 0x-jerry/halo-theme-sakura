@@ -1,12 +1,14 @@
 <template>
   <div class="post-content">
+    <site-header :user="user" :menus="menus" />
+
     <div class="thumb overflow-hidden relative">
       <random-image
         class="absolute top-0 left-0 object-cover w-full h-full"
         :random-id="post.id"
       />
     </div>
-    <div class="content">
+    <div class="w-content">
       <div class="title text-center text-3xl font-bold pt-10 pb-5">
         {{ post.title }}
       </div>
@@ -14,7 +16,12 @@
       <hr class="w-1/3 m-auto bg-gray-100 my-2" style="height: 1px" />
       <markdown :html="content" class="py-5" />
       <div class="tags py-20">
-        <v-tag v-for="tag in post.tags" :key="tag.id" :name="tag.name" />
+        <v-tag
+          v-for="tag in post.tags"
+          :key="tag.id"
+          :name="tag.name"
+          class="mr-2"
+        />
       </div>
     </div>
     <site-footer class="mt-10" :user="user" />
@@ -23,34 +30,31 @@
 
 <script>
 import dayjs from 'dayjs'
-import { postsPostIdGet, usersProfileGet } from '../../api/contentApi'
+import { mapState } from 'vuex'
+import { postsPostIdGet } from '../../api/contentApi'
 
 export default {
   async asyncData(ctx) {
     const id = ctx.route.params.id
 
-    const [user, post] = await Promise.all([
-      usersProfileGet(),
+    const [post] = await Promise.all([
       postsPostIdGet({
         postId: id,
       }),
     ])
 
     return {
-      user,
       post,
       content: post.formatContent,
     }
   },
   computed: {
+    ...mapState(['user', 'menus']),
     info() {
       return {
         createTime: dayjs(this.post.createTime).format('YYYY-MM-DD'),
       }
     },
-  },
-  mounted() {
-    console.log(this)
   },
 }
 </script>
@@ -73,10 +77,5 @@ export default {
 
 .thumb {
   height: 400px;
-}
-
-.content {
-  width: 800px;
-  margin: auto;
 }
 </style>

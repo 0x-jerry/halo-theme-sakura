@@ -3,7 +3,7 @@
     <site-header :user="user" :menus="menus" />
 
     <main-bg :userInfo="user" />
-    <div class="posts m-auto">
+    <div class="posts w-content">
       <post-article
         v-for="(o, idx) in posts.content"
         :key="o.id"
@@ -35,8 +35,4 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
-.posts {
-  max-width: 880px;
-}
-</style>
+<style scoped></style>

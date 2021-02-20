@@ -19,4 +19,9 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box; */
 }
+
+.w-content {
+  max-width: 800px;
+  margin: auto;
+}
 </style>

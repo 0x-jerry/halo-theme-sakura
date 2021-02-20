@@ -1,10 +1,10 @@
 <template>
-  <div class="tag text-gray-400">
+  <span class="tag text-gray-400" @click="(e) => $emit('click', e)">
     <v-link>
       <v-icon name="tags" />
       <span>{{ name }}</span>
     </v-link>
-  </div>
+  </span>
 </template>
 
 <script>
