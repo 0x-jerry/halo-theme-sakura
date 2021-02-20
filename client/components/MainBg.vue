@@ -10,7 +10,7 @@
         <p
           class="desc bg-black bg-opacity-25 rounded-3xl text-white text-center py-5"
         >
-          {{ userInfo.description }}
+          {{ user.description }}
         </p>
       </div>
       <div
@@ -30,7 +30,9 @@ import FIcon from './FIcon.vue'
 
 export default Vue.extend({
   components: { FIcon },
-  props: ['userInfo'],
+  props: {
+    user: Object,
+  },
   methods: {
     scrollOnePage() {
       window.scrollTo(0, window.innerHeight)
