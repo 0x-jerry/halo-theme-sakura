@@ -2,7 +2,7 @@
 
 用 Nuxt 框架完全重写 [Halo-theme-sakura](https://github.com/LIlGG/halo-theme-sakura)
 
-## [preview](https://blog.tiny-online.online/)
+## [预览](https://blog.tiny-online.online/)
 
 优势:
 
@@ -34,21 +34,19 @@ TODO
 
 - [ ] Docker 实现 release 时自动编译，发布
 
-## Build Setup
+## 开发
 
-```bash
-# install dependencies
-$ yarn install
+项目中添加 `.env` 文件
 
-# serve with hot reload at localhost:3000
-$ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
+```ini
+HALO_ACCESS_KEY='xxx' # 替换成自己的 access key
+HALO_TARGET='https://blog.tiny-online.online' # 替换成自己的域名
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+```sh
+# 安装依赖
+$ yan
+
+# 启动开发
+$ yarn dev
+```
