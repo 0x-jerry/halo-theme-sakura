@@ -5,6 +5,7 @@
     <div class="thumb overflow-hidden relative">
       <random-image
         class="absolute top-0 left-0 object-cover w-full h-full"
+        :src="post.thumbnail"
         :random-id="post.id"
       />
     </div>
