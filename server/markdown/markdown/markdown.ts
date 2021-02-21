@@ -11,6 +11,7 @@ import { hoistPlugin } from './plugins/hoist'
 import { preWrapperPlugin } from './plugins/preWrapper'
 import { linkPlugin } from './plugins/link'
 import { extractHeaderPlugin } from './plugins/header'
+import { lazyImagePlugin } from './plugins/lazyImage'
 
 export interface Header {
   level: number
@@ -65,6 +66,7 @@ export const createMarkdownRenderer = (
     .use(hoistPlugin)
     .use(containerPlugin)
     .use(extractHeaderPlugin)
+    .use(lazyImagePlugin)
     .use(linkPlugin, {
       target: '_blank',
       rel: 'noopener noreferrer',
