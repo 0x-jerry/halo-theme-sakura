@@ -20,12 +20,7 @@
       <markdown :html="content" class="py-5" />
 
       <div class="tags py-20">
-        <v-tag
-          v-for="tag in post.tags"
-          :key="tag.id"
-          :name="tag.name"
-          class="mr-2"
-        />
+        <v-tag v-for="tag in post.tags" :key="tag.id" :tag="tag" class="mr-2" />
       </div>
     </div>
 

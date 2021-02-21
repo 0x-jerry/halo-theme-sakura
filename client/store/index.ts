@@ -1,4 +1,6 @@
 import {
+  ArchiveMonthVO,
+  archivesMonthsGet,
   categoriesGet,
   CategoryDTO,
   MenuDTO,
@@ -15,6 +17,7 @@ interface ISiteState {
   menus?: MenuDTO[]
   tags?: TagDTO[]
   categories?: CategoryDTO[]
+  archives?: ArchiveMonthVO[]
 }
 
 export const state: () => ISiteState = () => ({
@@ -22,6 +25,7 @@ export const state: () => ISiteState = () => ({
   menus: [],
   tags: [],
   categories: [],
+  archives: undefined,
 })
 
 export const mutations: Mutation<ISiteState> = {
@@ -36,6 +40,9 @@ export const mutations: Mutation<ISiteState> = {
   },
   setCategories(state, categories) {
     state.categories = categories
+  },
+  setArchives(state, archives) {
+    state.archives = archives
   },
 }
 
@@ -54,5 +61,11 @@ export const actions: Actions<ISiteState> = {
     commit('setUser', user)
     commit('setTags', tags)
     commit('setCategories', categories)
+  },
+  async fetchArchives({ commit, state }, force = false) {
+    if (force || !state.archives) {
+      const archives = await archivesMonthsGet()
+      commit('setArchives', archives)
+    }
   },
 }

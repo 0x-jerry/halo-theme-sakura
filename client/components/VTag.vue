@@ -1,8 +1,8 @@
 <template>
-  <span class="tag text-gray-400" @click="(e) => $emit('click', e)">
+  <span class="tag text-gray-400" @click.stop="clickTag">
     <v-link>
       <v-icon name="tags" />
-      <span>{{ name }}</span>
+      <span>{{ tag.name }}</span>
     </v-link>
   </span>
 </template>
@@ -10,7 +10,12 @@
 <script>
 export default {
   props: {
-    name: String,
+    tag: Object,
+  },
+  methods: {
+    clickTag() {
+      this.$router.push(`/tags/${this.tag.slug}`)
+    },
   },
 }
 </script>

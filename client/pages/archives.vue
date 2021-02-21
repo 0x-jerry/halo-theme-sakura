@@ -8,8 +8,11 @@
 
     <v-timeline class="w-content" :nodes="timelineNodes">
       <template #default="{ node }">
-        <div class="p-3 cursor-pointer my-3" @click="goToPost(node)">
-          <archive-item :post="node" />
+        <div
+          class="cursor-pointer my-1"
+          @click="$router.push(`/post/${node.id}`)"
+        >
+          <archive-item :post="node" class="p-3" />
         </div>
       </template>
     </v-timeline>
@@ -21,18 +24,13 @@
 <script>
 import Vue from 'vue'
 import { mapState } from 'vuex'
-import { archivesMonthsGet } from '../api'
 
 export default Vue.extend({
-  async asyncData() {
-    const [archives] = await Promise.all([archivesMonthsGet()])
-
-    return {
-      archives,
-    }
+  async asyncData({ store }) {
+    await store.dispatch('fetchArchives')
   },
   computed: {
-    ...mapState(['user', 'menus']),
+    ...mapState(['user', 'menus', 'archives']),
     timelineNodes() {
       const nodes = this.archives.map((node) => {
         return {
@@ -42,11 +40,6 @@ export default Vue.extend({
       })
 
       return nodes
-    },
-  },
-  methods: {
-    goToPost(node) {
-      this.$router.push('/post/' + node.id)
     },
   },
 })
