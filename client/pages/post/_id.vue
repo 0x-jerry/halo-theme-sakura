@@ -9,13 +9,16 @@
         :random-id="post.id"
       />
     </div>
+
     <div class="w-content">
       <div class="title text-center text-3xl font-bold pt-10 pb-5">
         {{ post.title }}
       </div>
       <div class="desc text-gray-400">{{ info.createTime }}</div>
       <hr class="w-1/3 m-auto bg-gray-100 my-2" style="height: 1px" />
+
       <markdown :html="content" class="py-5" />
+
       <div class="tags py-20">
         <v-tag
           v-for="tag in post.tags"
@@ -25,6 +28,7 @@
         />
       </div>
     </div>
+
     <site-footer class="mt-10" :user="user" />
   </div>
 </template>
