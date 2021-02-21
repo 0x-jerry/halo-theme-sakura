@@ -20,8 +20,18 @@
       </div>
     </div>
     <div class="p-1"></div>
-    <div class="tags flex justify-end">
-      <v-tag v-for="tag in post.tags" :key="tag.id" :tag="tag" class="mr-2" />
+    <div class="tags flex">
+      <div class="flex">
+        <v-category
+          v-for="c in post.categories"
+          :key="c.id"
+          :category="c"
+          class="mr-2"
+        />
+      </div>
+      <div class="flex flex-1 justify-end">
+        <v-tag v-for="tag in post.tags" :key="tag.id" :tag="tag" class="mr-2" />
+      </div>
     </div>
   </div>
 </template>
