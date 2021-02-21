@@ -16,7 +16,7 @@ export function createHaloApi(): Middleware {
   return (ctx) => {
     const req = ctx.request
 
-    const postGetReg = /^\/api\/content\/posts\/[^/]+/
+    const postGetReg = /^\/api\/content\/(posts|sheets)\/[^/]+/
 
     if (postGetReg.test(req.path)) {
       try {

@@ -8,7 +8,7 @@
     </div>
     <div class="center flex-1 flex justify-center text-gray-500">
       <v-link
-        v-for="o in menus"
+        v-for="o in vMenus"
         :key="o.id"
         class="menu-item"
         :class="{ active: isActive(o) }"
@@ -37,6 +37,20 @@ export default {
       stickHeader: false,
     }
   },
+  computed: {
+    vMenus() {
+      return this.menus.map((menu) => {
+        const url = /^\/s\//.test(menu.url)
+          ? `/post?slug=${menu.url.slice('/s/'.length)}&type=sheet`
+          : menu.url
+
+        return {
+          ...menu,
+          url,
+        }
+      })
+    },
+  },
   mounted() {
     const stickHeight = 20
 
@@ -61,7 +75,7 @@ export default {
       }
     },
     isActive(o) {
-      return this.$route.path === o.url
+      return this.$route.fullPath === o.url
     },
   },
 }

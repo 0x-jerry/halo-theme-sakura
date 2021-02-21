@@ -31,17 +31,29 @@
 <script>
 import dayjs from 'dayjs'
 import { mapState } from 'vuex'
-import { postsPostIdGet } from '../../api/contentApi'
+import {
+  postsPostIdGet,
+  postsSlugGet,
+  sheetsSheetIdGet,
+  sheetsSlugGet,
+} from '../../api/contentApi'
 
 export default {
   async asyncData(ctx) {
-    const id = ctx.route.params.id
+    const { type, id, slug } = ctx.route.query
 
-    const [post] = await Promise.all([
-      postsPostIdGet({
-        postId: id,
-      }),
-    ])
+    let post = null
+    if (type === 'sheet') {
+      if (id) {
+        post = await sheetsSheetIdGet({ sheetId: id })
+      } else {
+        post = await sheetsSlugGet({ slug })
+      }
+    } else if (id) {
+      post = await postsPostIdGet({ postId: id })
+    } else {
+      post = await postsSlugGet({ slug })
+    }
 
     return {
       post,

@@ -10,7 +10,7 @@
       <template #default="{ node }">
         <div
           class="cursor-pointer my-1"
-          @click="$router.push(`/post/${node.id}`)"
+          @click="$router.push(`/post?id=${node.id}`)"
         >
           <archive-item :post="node" class="p-3" />
         </div>

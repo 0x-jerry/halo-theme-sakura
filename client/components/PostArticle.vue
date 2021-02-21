@@ -73,7 +73,9 @@ export default {
   },
   methods: {
     gotoPost() {
-      this.$router.push('/post/' + this.post.id)
+      const id = this.post.id
+
+      this.$router.push(`/post?id=${id}`)
     },
   },
 }
