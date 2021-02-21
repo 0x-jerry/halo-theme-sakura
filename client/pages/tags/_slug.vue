@@ -16,23 +16,7 @@
     </div>
 
     <div class="my-16 text-center">
-      <div v-if="posts.hasNext" class="next">
-        <span
-          class="bg-white border border-solid border-gray-200 shadow-md rounded-full inline-block cursor-pointer"
-          @click="getNextPostList"
-        >
-          <span v-if="isLoadingPost">
-            <f-icon
-              name="circle-notch"
-              class="text-2xl px-6 py-2 animate-spin"
-            />
-          </span>
-          <v-link v-else>
-            <f-icon fas name="ellipsis-h" class="text-2xl px-6 py-2" />
-          </v-link>
-        </span>
-      </div>
-      <div v-else class="empty text-gray-400">没有更多文章了</div>
+      <v-more-btn :has-more="posts.hasNext" :more-action="getNextPostList" />
     </div>
 
     <site-footer class="mt-10" :user="user" />

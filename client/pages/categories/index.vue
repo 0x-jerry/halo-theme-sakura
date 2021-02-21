@@ -23,18 +23,10 @@
 <script>
 import Vue from 'vue'
 import { mapState } from 'vuex'
-import { categoriesGet } from '../../api'
 
 export default Vue.extend({
-  async asyncData() {
-    const [categories] = await Promise.all([categoriesGet({})])
-
-    return {
-      categories,
-    }
-  },
   computed: {
-    ...mapState(['user', 'menus']),
+    ...mapState(['user', 'menus', 'categories']),
   },
   methods: {
     gotoCategory(category) {

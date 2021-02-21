@@ -23,18 +23,10 @@
 <script>
 import Vue from 'vue'
 import { mapState } from 'vuex'
-import { tagsGet } from '../../api'
 
 export default Vue.extend({
-  async asyncData() {
-    const [tags] = await Promise.all([tagsGet({})])
-
-    return {
-      tags,
-    }
-  },
   computed: {
-    ...mapState(['user', 'menus']),
+    ...mapState(['user', 'menus', 'tags']),
   },
   methods: {
     gotoTag(tag) {
