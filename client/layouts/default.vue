@@ -2,6 +2,7 @@
   <div>
     <scroll-progress />
     <Nuxt />
+    <scroll-to-top />
   </div>
 </template>
 
