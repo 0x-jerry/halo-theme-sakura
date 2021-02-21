@@ -48,7 +48,13 @@ async function main() {
     .use(async (ctx, next) => {
       const reqPath = ctx.request.path
 
-      const haloAdminPrefix = ['/admin', '/theme', '/api/admin', '/images']
+      const haloAdminPrefix = [
+        '/admin',
+        '/theme',
+        '/api/admin',
+        '/images',
+        '/upload',
+      ]
 
       if (/^\/admin(\/)?$/.test(reqPath)) {
         ctx.redirect('/admin/index.html')
