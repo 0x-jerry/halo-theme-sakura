@@ -41,7 +41,8 @@
     "markdown-it-emoji": "^2.0.0",
     "markdown-it-table-of-contents": "^0.5.2",
     "nuxt": "^2.14.12",
-    "prismjs": "^1.23.0"
+    "prismjs": "^1.23.0",
+    "randomcolor": "^0.6.2"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.12",
@@ -55,6 +56,7 @@
     "@types/koa__router": "^8.0.4",
     "@types/lru-cache": "^5.1.0",
     "@types/markdown-it": "^12.0.1",
+    "@types/randomcolor": "^0.5.5",
     "@vue/test-utils": "^1.1.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
