@@ -54,6 +54,8 @@ async function main() {
         '/api/admin',
         '/images',
         '/upload',
+        '/rss.xml',
+        '/sitemap.html',
       ]
 
       if (/^\/admin(\/)?$/.test(reqPath)) {
