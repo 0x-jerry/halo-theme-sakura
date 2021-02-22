@@ -51,8 +51,8 @@ export const actions: Actions<ISiteState> = {
     const [menus, user, tags, categories] = await Promise.all([
       menusGet({}),
       usersProfileGet(),
-      tagsGet({}),
-      categoriesGet({}),
+      tagsGet({ more: true }),
+      categoriesGet({ more: true }),
     ])
 
     menus.sort((a, b) => a.priority - b.priority)
