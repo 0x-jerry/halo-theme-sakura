@@ -1366,10 +1366,10 @@
     rc9 "^1.2.0"
     std-env "^2.2.1"
 
-"@nuxt/types@^2.14.12":
-  version "2.15.0"
-  resolved "https://registry.npm.taobao.org/@nuxt/types/download/@nuxt/types-2.15.0.tgz#991a9259eccf2782598830c247b3984b020d4718"
-  integrity sha1-mRqSWezPJ4JZiDDCR7OYSwINRxg=
+"@nuxt/types@^2.15.1":
+  version "2.15.1"
+  resolved "https://registry.yarnpkg.com/@nuxt/types/-/types-2.15.1.tgz#5034fd5c7bd5164961ba51872d6ac79586e68563"
+  integrity sha512-zS6OuGHoMDJ0+xDLxJVQ+0UY/obTapYS8eBKaf/Qkv0QWseBq2kd18gXPF7hRbx1agtjEyEnPcY8WAr94j+sLg==
   dependencies:
     "@types/autoprefixer" "^9.7.2"
     "@types/babel__core" "^7.1.12"
@@ -1379,7 +1379,7 @@
     "@types/file-loader" "^4.2.0"
     "@types/html-minifier" "^4.0.0"
     "@types/less" "^3.0.2"
-    "@types/node" "^12.20.1"
+    "@types/node" "^12.20.3"
     "@types/optimize-css-assets-webpack-plugin" "^5.0.2"
     "@types/pug" "^2.0.4"
     "@types/sass" "^1.16.0"
@@ -1898,10 +1898,10 @@
   resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-14.14.28.tgz#cade4b64f8438f588951a6b35843ce536853f25b"
   integrity sha1-yt5LZPhDj1iJUaazWEPOU2hT8ls=
 
-"@types/node@^12.20.1":
-  version "12.20.1"
-  resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-12.20.1.tgz#63d36c10e162666f0107f247cdca76542c3c7472"
-  integrity sha1-Y9NsEOFiZm8BB/JHzcp2VCw8dHI=
+"@types/node@^12.20.3":
+  version "12.20.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.20.4.tgz#73687043dd00fcb6962c60fbf499553a24d6bdf2"
+  integrity sha512-xRCgeE0Q4pT5UZ189TJ3SpYuX/QGl6QIAOAIeDSbAVAd2gX1NxSZup4jNVK7cxIeP8KDSbJgcckun495isP1jQ==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
