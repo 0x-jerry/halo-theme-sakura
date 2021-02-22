@@ -17,7 +17,7 @@
       <div class="desc text-gray-400">{{ info.createTime }}</div>
       <hr class="w-1/3 m-auto bg-gray-100 my-2" style="height: 1px" />
 
-      <markdown :html="content" class="py-5" />
+      <markdown :html="post.formatContent" class="py-5" />
 
       <div class="tags py-20">
         <v-tag v-for="tag in post.tags" :key="tag.id" :tag="tag" class="mr-2" />
@@ -30,43 +30,29 @@
 
 <script>
 import dayjs from 'dayjs'
-import { mapState } from 'vuex'
-import {
-  postsPostIdGet,
-  postsSlugGet,
-  sheetsSheetIdGet,
-  sheetsSlugGet,
-} from '../../api/contentApi'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   async asyncData(ctx) {
-    const { type, id, slug } = ctx.route.query
-
-    let post = null
-    if (type === 'sheet') {
-      if (id) {
-        post = await sheetsSheetIdGet({ sheetId: id })
-      } else {
-        post = await sheetsSlugGet({ slug })
-      }
-    } else if (id) {
-      post = await postsPostIdGet({ postId: id })
-    } else {
-      post = await postsSlugGet({ slug })
-    }
-
-    return {
-      post,
-      content: post.formatContent,
-    }
+    // const { type, id, slug } = ctx.route.query
+    await ctx.store.dispatch('fetchPost', ctx.route.query)
   },
   computed: {
-    ...mapState(['user', 'menus']),
+    ...mapState(['user', 'menus', 'postsMap']),
+    post() {
+      const { id, slug } = this.$route.query
+
+      return this.postsMap[slug || id]
+    },
     info() {
       return {
         createTime: dayjs(this.post.createTime).format('YYYY-MM-DD'),
       }
     },
+  },
+  watchQuery: ['id', 'type', 'slug'],
+  methods: {
+    ...mapActions(['fetchPost']),
   },
 }
 </script>

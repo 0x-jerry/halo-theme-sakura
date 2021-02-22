@@ -40,6 +40,11 @@ export default {
       imgUrl: '',
     }
   },
+  watch: {
+    async randomId() {
+      this.imgUrl = await this.getImageUrl()
+    },
+  },
   mounted() {
     globalUtils.observer.observe(this.$refs.$root)
   },

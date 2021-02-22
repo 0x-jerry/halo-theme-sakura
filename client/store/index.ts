@@ -5,6 +5,11 @@ import {
   CategoryDTO,
   MenuDTO,
   menusGet,
+  PostDetailVO,
+  postsPostIdGet,
+  postsSlugGet,
+  sheetsSheetIdGet,
+  sheetsSlugGet,
   TagDTO,
   tagsGet,
   UserDTO,
@@ -14,10 +19,11 @@ import { Actions, Mutation } from '../type'
 
 interface ISiteState {
   user?: UserDTO
-  menus?: MenuDTO[]
-  tags?: TagDTO[]
-  categories?: CategoryDTO[]
+  menus: MenuDTO[]
+  tags: TagDTO[]
+  categories: CategoryDTO[]
   archives?: ArchiveMonthVO[]
+  postsMap: Record<string, PostDetailVO>
 }
 
 export const state: () => ISiteState = () => ({
@@ -26,6 +32,7 @@ export const state: () => ISiteState = () => ({
   tags: [],
   categories: [],
   archives: undefined,
+  postsMap: {},
 })
 
 export const mutations: Mutation<ISiteState> = {
@@ -43,6 +50,10 @@ export const mutations: Mutation<ISiteState> = {
   },
   setArchives(state, archives) {
     state.archives = archives
+  },
+  setPost(state, post: PostDetailVO) {
+    state.postsMap[post.id] = post
+    state.postsMap[post.slug] = post
   },
 }
 
@@ -67,5 +78,31 @@ export const actions: Actions<ISiteState> = {
       const archives = await archivesMonthsGet()
       commit('setArchives', archives)
     }
+  },
+  async fetchPost(
+    { commit, state },
+    opt: { id: number; slug: string; type: string }
+  ) {
+    const { id, slug, type } = opt
+    let post = null
+    const exist = state.postsMap[id] || state.postsMap[slug]
+
+    if (exist) {
+      return
+    }
+
+    if (type === 'sheet') {
+      if (id) {
+        post = await sheetsSheetIdGet({ sheetId: id })
+      } else {
+        post = await sheetsSlugGet({ slug })
+      }
+    } else if (id) {
+      post = await postsPostIdGet({ postId: id })
+    } else {
+      post = await postsSlugGet({ slug })
+    }
+
+    commit('setPost', post)
   },
 }
