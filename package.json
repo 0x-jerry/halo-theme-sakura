@@ -40,7 +40,7 @@
     "markdown-it-container": "^3.0.0",
     "markdown-it-emoji": "^2.0.0",
     "markdown-it-table-of-contents": "^0.5.2",
-    "nuxt": "^2.14.12",
+    "nuxt": "^2.15.1",
     "prismjs": "^1.23.0",
     "randomcolor": "^0.6.2"
   },
