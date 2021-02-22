@@ -55,6 +55,7 @@ async function main() {
         '/images',
         '/upload',
         '/rss.xml',
+        '/sitemap.xml',
         '/sitemap.html',
       ]
 
