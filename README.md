@@ -32,7 +32,7 @@
 
 TODO
 
-- [ ] Docker 实现 release 时自动编译，发布
+- [x] Docker 实现 release 时自动编译，发布
 
 ## 开发
 
