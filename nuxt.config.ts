@@ -27,6 +27,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'alternate', type: 'application/rss+xml', href: '/rss.xml' },
       {
         rel: 'stylesheet',
         href:
@@ -74,6 +75,8 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    // https://i18n.nuxtjs.org
+    'nuxt-i18n',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -82,8 +85,24 @@ export default {
     '@nuxtjs/pwa',
   ],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  // https://i18n.nuxtjs.org/options-reference
+  i18n: {
+    locales: [
+      {
+        code: 'zh',
+        file: 'zh-CN.json',
+      },
+      {
+        code: 'en',
+        file: 'en.json',
+      },
+    ],
+    vueI18nLoader: true,
+    strategy: 'no_prefix',
+    lazy: true,
+    langDir: 'locales/',
+    defaultLocale: 'zh',
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
