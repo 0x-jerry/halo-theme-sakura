@@ -29,7 +29,7 @@ html {
 
 #animate {
   .fade(@name, @from, @to) {
-    animation: @name 0.8s linear 1 forwards;
+    animation: @name 0.6s linear 1 forwards;
     opacity: 0;
 
     @keyframes @name {
