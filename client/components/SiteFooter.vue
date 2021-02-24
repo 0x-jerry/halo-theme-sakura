@@ -1,5 +1,5 @@
 <template>
-  <footer class="site-footer pb-10" role="contentinfo">
+  <footer class="site-footer pb-10 a-fadeIn-top" role="contentinfo">
     <div class="site-info">
       <div class="flex justify-center">
         <p

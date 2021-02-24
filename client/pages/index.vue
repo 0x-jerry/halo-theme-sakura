@@ -3,7 +3,7 @@
     <site-header :user="user" :menus="menus" />
 
     <main-bg :user="user" />
-    <div class="posts w-content">
+    <div class="posts w-content a-fadeIn-top">
       <post-article
         v-for="(o, idx) in posts.content"
         :key="o.id"

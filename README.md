@@ -33,6 +33,7 @@
 TODO
 
 - [x] Docker 实现 release 时自动编译，发布
+- [ ] 迁移至 Vite + SSR
 
 ## 开发
 

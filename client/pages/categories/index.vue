@@ -2,11 +2,11 @@
   <div class="halo-theme sakura">
     <site-header :user="user" :menus="menus" />
 
-    <div style="height: 400px">
+    <div class="a-fadeIn-bottom" style="height: 400px">
       <random-image :random-id="$route.path" />
     </div>
 
-    <div class="w-content text-center" style="min-height: 400px">
+    <div class="w-content text-center a-fadeIn-top" style="min-height: 400px">
       <div class="title text-center my-10 text-3xl">
         <v-icon name="file" class="text-3xl" />
         分类

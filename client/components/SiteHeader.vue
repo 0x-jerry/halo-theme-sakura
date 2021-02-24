@@ -1,12 +1,12 @@
 <template>
   <header
-    class="site-header flex items-center px-3"
+    class="site-header flex items-center px-3 a-fadeIn"
     :class="{ active: stickHeader }"
   >
     <div class="left w-60">
       <span class="site-logo"> </span>
     </div>
-    <div class="center flex-1 flex justify-center text-gray-500">
+    <div class="center flex-1 flex justify-center text-gray-500 a-fadeIn-left">
       <v-link
         v-for="o in vMenus"
         :key="o.id"

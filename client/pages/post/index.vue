@@ -2,7 +2,7 @@
   <div class="post-content">
     <site-header :user="user" :menus="menus" />
 
-    <div class="thumb overflow-hidden relative">
+    <div class="thumb overflow-hidden relative a-fadeIn-bottom">
       <random-image
         class="absolute top-0 left-0 object-cover w-full h-full"
         :src="post.thumbnail"
@@ -10,7 +10,7 @@
       />
     </div>
 
-    <div class="w-content">
+    <div class="w-content a-fadeIn-top">
       <div class="title text-center text-3xl font-bold pt-10 pb-5">
         {{ post.title }}
       </div>

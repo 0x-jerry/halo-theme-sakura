@@ -1,5 +1,5 @@
 <template>
-  <div class="main-bg">
+  <div class="main-bg a-fadeIn-bottom">
     <div
       class="bg-fixed bg-cover bg-center flex items-center justify-center h-screen"
     >

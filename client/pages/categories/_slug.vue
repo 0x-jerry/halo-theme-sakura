@@ -2,11 +2,11 @@
   <div class="halo-theme sakura">
     <site-header :user="user" :menus="menus" />
 
-    <div style="height: 400px">
+    <div class="a-fadeIn-bottom" style="height: 400px">
       <random-image :random-id="$route.path" />
     </div>
 
-    <div class="posts w-content">
+    <div class="posts w-content a-fadeIn-top">
       <post-article
         v-for="(o, idx) in posts.content"
         :key="o.id"
