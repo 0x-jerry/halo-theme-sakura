@@ -82,7 +82,7 @@
     "prettier": "^2.2.1",
     "tailwindcss": "^2.0.1-compat",
     "tailwindcss-theme-swapper": "^0.3.0",
-    "ts-jest": "^26.4.4",
+    "ts-jest": "^26.5.2",
     "ts-node": "^9.1.1",
     "vue-jest": "^3.0.4",
     "vuex": "^3.6.2"
