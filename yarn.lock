@@ -78,7 +78,7 @@
     eslint-visitor-keys "^1.3.0"
     semver "^6.3.0"
 
-"@babel/generator@^7.12.13", "@babel/generator@^7.12.15":
+"@babel/generator@^7.12.15":
   version "7.12.15"
   resolved "https://registry.npm.taobao.org/@babel/generator/download/@babel/generator-7.12.15.tgz#4617b5d0b25cc572474cc1aafee1edeaf9b5368f"
   integrity sha1-Rhe10LJcxXJHTMGq/uHt6vm1No8=
@@ -360,12 +360,7 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@babel/parser@^7.1.0", "@babel/parser@^7.12.13", "@babel/parser@^7.12.16", "@babel/parser@^7.7.0":
-  version "7.12.16"
-  resolved "https://registry.npm.taobao.org/@babel/parser/download/@babel/parser-7.12.16.tgz#cc31257419d2c3189d394081635703f549fc1ed4"
-  integrity sha1-zDEldBnSwxidOUCBY1cD9Un8HtQ=
-
-"@babel/parser@^7.13.0", "@babel/parser@^7.5.5", "@babel/parser@^7.9.6":
+"@babel/parser@^7.1.0", "@babel/parser@^7.12.13", "@babel/parser@^7.12.16", "@babel/parser@^7.13.0", "@babel/parser@^7.5.5", "@babel/parser@^7.7.0", "@babel/parser@^7.9.6":
   version "7.13.4"
   resolved "https://registry.npm.taobao.org/@babel/parser/download/@babel/parser-7.13.4.tgz#340211b0da94a351a6f10e63671fa727333d13ab"
   integrity sha1-NAIRsNqUo1Gm8Q5jZx+nJzM9E6s=
@@ -980,22 +975,7 @@
     "@babel/parser" "^7.12.13"
     "@babel/types" "^7.12.13"
 
-"@babel/traverse@^7.1.0", "@babel/traverse@^7.12.13", "@babel/traverse@^7.7.0":
-  version "7.12.13"
-  resolved "https://registry.npm.taobao.org/@babel/traverse/download/@babel/traverse-7.12.13.tgz?cache=0&sync_timestamp=1612315696590&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Ftraverse%2Fdownload%2F%40babel%2Ftraverse-7.12.13.tgz#689f0e4b4c08587ad26622832632735fb8c4e0c0"
-  integrity sha1-aJ8OS0wIWHrSZiKDJjJzX7jE4MA=
-  dependencies:
-    "@babel/code-frame" "^7.12.13"
-    "@babel/generator" "^7.12.13"
-    "@babel/helper-function-name" "^7.12.13"
-    "@babel/helper-split-export-declaration" "^7.12.13"
-    "@babel/parser" "^7.12.13"
-    "@babel/types" "^7.12.13"
-    debug "^4.1.0"
-    globals "^11.1.0"
-    lodash "^4.17.19"
-
-"@babel/traverse@^7.13.0", "@babel/traverse@^7.5.5":
+"@babel/traverse@^7.1.0", "@babel/traverse@^7.12.13", "@babel/traverse@^7.13.0", "@babel/traverse@^7.5.5", "@babel/traverse@^7.7.0":
   version "7.13.0"
   resolved "https://registry.npm.taobao.org/@babel/traverse/download/@babel/traverse-7.13.0.tgz#6d95752475f86ee7ded06536de309a65fc8966cc"
   integrity sha1-bZV1JHX4bufe0GU23jCaZfyJZsw=
@@ -8965,10 +8945,10 @@ num2fraction@^1.2.2:
   resolved "https://registry.npm.taobao.org/num2fraction/download/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 
-nuxt-i18n@^6.20.2:
-  version "6.20.2"
-  resolved "https://registry.npm.taobao.org/nuxt-i18n/download/nuxt-i18n-6.20.2.tgz#d5323c9a4f55ee21cc0daad9917414888d8d5f5f"
-  integrity sha1-1TI8mk9V7iHMDarZkXQUiI2NX18=
+nuxt-i18n@^6.20.3:
+  version "6.20.3"
+  resolved "https://registry.yarnpkg.com/nuxt-i18n/-/nuxt-i18n-6.20.3.tgz#40a902033b8508884c2e1ee87ce8855a68dcc04a"
+  integrity sha512-c+JQzJH5vp5fLwz6BcYFXB6dHxtlmZL10gPZLHo9Z13CU5NB2/U5ewbUfWuxK86Mi+41JW4aGPPaNL4U5LXOfQ==
   dependencies:
     "@babel/parser" "^7.5.5"
     "@babel/traverse" "^7.5.5"
