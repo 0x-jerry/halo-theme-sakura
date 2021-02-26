@@ -48,7 +48,7 @@
     "randomcolor": "^0.6.2"
   },
   "devDependencies": {
-    "@exyz/glib": "^0.3.7",
+    "@exyz/glib": "^0.4.1",
     "@nuxt/types": "^2.15.1",
     "@nuxt/typescript-build": "^2.0.5",
     "@nuxt/typescript-runtime": "^2.0.1",

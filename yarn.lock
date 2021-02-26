@@ -1062,10 +1062,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@exyz/glib@^0.3.7":
-  version "0.3.7"
-  resolved "https://registry.npm.taobao.org/@exyz/glib/download/@exyz/glib-0.3.7.tgz#4c32c4238f5cd68b33473a9579aef101585b9649"
-  integrity sha1-TDLEI49c1oszRzqVea7xAVhblkk=
+"@exyz/glib@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@exyz/glib/-/glib-0.4.1.tgz#ee651a49dfdf55b5c2197e88ec0b40a5a261e2ca"
+  integrity sha512-09Yn9XysUHvZ/MM88Uu7p53phoOvTadfx5i3BE0GLil7a/i4IFZfzrZ4V3g9RuY8O+Pdp08gg5i2Qb8IPf2qJQ==
   dependencies:
     chalk "^4.1.0"
     commander "^6.2.1"
