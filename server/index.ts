@@ -1,9 +1,7 @@
 import axios from 'axios'
+import cors from '@koa/cors'
 import Koa, { Middleware } from 'koa'
 import proxy from 'koa-better-http-proxy'
-// @ts-ignore
-import { Nuxt, Builder } from 'nuxt'
-import nuxtConfig from '../nuxt.config'
 import { haloAccessKey, haloTarget, isDev } from './config'
 import { createHaloApi } from './halo-api'
 import { router } from './router'
@@ -16,17 +14,8 @@ const proxyConf = {
   accessKey: haloAccessKey,
 }
 
-async function main() {
+function main() {
   const app = new Koa()
-
-  const nuxt = new Nuxt(nuxtConfig)
-
-  await nuxt.ready()
-
-  if (isDev) {
-    const builder = new Builder(nuxt)
-    await builder.build()
-  }
 
   const haloProxy = createHaloProxy({
     target: proxyConf.target,
@@ -43,6 +32,11 @@ async function main() {
   })
 
   app
+    .use(
+      cors({
+        origin: '*',
+      })
+    )
     .use(router.routes())
     .use(router.allowedMethods())
     .use(async (ctx, next) => {
@@ -71,11 +65,6 @@ async function main() {
       if (reqPath.startsWith('/api')) {
         await haloProxy(ctx, next)
         await haloApi(ctx, next)
-      } else {
-        ctx.res.statusCode = 200
-        ctx.respond = false
-
-        nuxt.render(ctx.req, ctx.res)
       }
     })
 
@@ -88,9 +77,7 @@ async function main() {
   return app
 }
 
-main().catch((e) => {
-  console.log(e)
-})
+main()
 
 function createHaloProxy(opt: {
   target: string
