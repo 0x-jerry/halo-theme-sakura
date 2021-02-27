@@ -7,11 +7,22 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue'
+import { useStore } from './store'
+
+export default defineComponent({
   async serverPrefetch() {
-    await this.$store.dispatch('serverInit')
+    await this.init()
   },
-}
+  setup() {
+    const store = useStore()
+
+    return {
+      init: () => store.dispatch('serverInit'),
+      store: store.state,
+    }
+  },
+})
 </script>
 
 <style lang="less">

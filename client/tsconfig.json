@@ -9,6 +9,7 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "allowJs": true,
     "lib": ["esnext", "dom"],
     "types": ["vite/client", "@intlify/vite-plugin-vue-i18n/client"]
   },

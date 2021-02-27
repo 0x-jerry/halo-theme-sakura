@@ -1,5 +1,5 @@
 {
-  "name": "vue-ssr",
+  "name": "halo-theme-client",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite-ssr dev",
@@ -10,9 +10,7 @@
     "axios": "^0.21.1",
     "dayjs": "^1.10.4",
     "randomcolor": "^0.6.2",
-    "vite-plugin-i18n-resources": "^1.0.3",
     "vite-ssr": "^0.4.1",
-    "vitedge": "^0.7.0",
     "vue": "^3.0.5",
     "vue-i18n": "^9.0.0",
     "vue-router": "^4.0.4",
@@ -23,6 +21,7 @@
     "@vitejs/plugin-vue": "^1.1.5",
     "@vue/compiler-sfc": "^3.0.6",
     "chokidar": "^3.5.1",
+    "less": "^4.1.1",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3",
     "vite": "^2.0.4",

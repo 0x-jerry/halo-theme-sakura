@@ -1,6 +1,6 @@
 {
-  "i18n-ally.localesPaths": ["client/locales"],
+  "i18n-ally.localesPaths": ["client/src/locales"],
   "less.validate": false,
   "css.validate": false,
-  "vetur.validation.style": false
+  "volar.tsPlugin": true
 }
