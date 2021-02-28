@@ -26,10 +26,10 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, PropType, ref } from 'vue'
+import { computed, defineComponent, PropType, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { MenuDTO, UserDTO } from '../api'
-import { useScrollEvent } from '../hooks/useScrollEvent'
+import { useScrollEvent } from '../hooks'
 
 export default defineComponent({
   props: {

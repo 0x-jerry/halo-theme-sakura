@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, ref } from 'vue'
-import { useScrollEvent } from '../hooks/useScrollEvent'
+import { computed, defineComponent, ref } from 'vue'
+import { useScrollEvent } from '../hooks'
 
 export default defineComponent({
   setup() {

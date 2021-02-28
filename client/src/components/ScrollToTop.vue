@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { useScrollEvent } from '../hooks/useScrollEvent'
+import { useScrollEvent } from '../hooks'
 
 export default defineComponent({
   setup() {

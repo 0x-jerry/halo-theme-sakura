@@ -7,14 +7,17 @@ import { useI18n } from 'vue-i18n'
 import { createStore } from './store'
 import { isSSR } from './utils'
 import App from './App.vue' // Vue or React main app
+import { Router } from 'vue-router'
 
-export default viteSSR(App, { routes }, ({ app, initialState }) => {
+export default viteSSR(App, { routes }, ({ app, initialState, router }) => {
   const store = createStore()
 
+  const r: Router = router
   if (isSSR) {
     initialState.storeState = store.state
   } else {
     store.replaceState(initialState.storeState)
+    r.currentRoute.value.meta.state = initialState.state
   }
 
   app.use(i18n)

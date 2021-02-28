@@ -53,7 +53,7 @@ import dayjs from 'dayjs'
 import { computed, defineComponent, PropType, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { PostDetailVO } from '../api'
-import { useObserve } from '../hooks/useObserve'
+import { useObserve } from '../hooks'
 import VLink from './VLink.vue'
 
 export default defineComponent({

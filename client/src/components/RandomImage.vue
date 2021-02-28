@@ -17,7 +17,7 @@
 <script lang="ts">
 import axios from 'axios'
 import { defineComponent, reactive, ref, watchEffect } from 'vue'
-import { useObserve } from '../hooks/useObserve'
+import { useObserve } from '../hooks'
 
 const randomImgMap: Record<string, string> = {}
 
