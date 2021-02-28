@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite-ssr dev",
-    "build": "vite build",
-    "serve": "vite preview"
+    "build": "vite-ssr build"
   },
   "dependencies": {
     "axios": "^0.21.1",

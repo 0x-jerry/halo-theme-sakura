@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
+    "outDir": "dist",
     "target": "ES2018",
     "module": "commonjs",
     "moduleResolution": "Node",
     "esModuleInterop": true,
     "allowJs": true,
-    "strict": true,
-    "noEmit": true
+    "strict": true
   },
+  "include": ["src"],
   "exclude": ["node_modules"]
 }

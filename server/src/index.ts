@@ -5,6 +5,8 @@ import proxy from 'koa-better-http-proxy'
 import { haloAccessKey, haloTarget, isDev } from './config'
 import { createHaloApi } from './halo-api'
 import { router } from './router'
+import path from 'path'
+import serve from 'koa-static'
 
 const url = new URL(haloTarget)
 
@@ -65,8 +67,12 @@ function main() {
       if (reqPath.startsWith('/api')) {
         await haloProxy(ctx, next)
         await haloApi(ctx, next)
+      } else {
+        await next()
       }
     })
+    .use(serve(path.join(__dirname, 'client')))
+    .use(serveViteBuild(path.join(__dirname, 'client')))
 
   const port = isDev ? 9555 : 9556
 
@@ -78,6 +84,27 @@ function main() {
 }
 
 main()
+
+function serveViteBuild(dist: string): Middleware {
+  // The manifest is required for preloading assets
+  const manifest = require(`${dist}/client/ssr-manifest.json`)
+
+  // This is the server renderer we just built
+  const { default: renderPage } = require(`${dist}/server/main.js`)
+
+  return async (ctx, next) => {
+    const { request, res } = ctx
+
+    const url = request.url
+
+    const { html } = await renderPage(url, {
+      manifest,
+      preload: true,
+    })
+
+    res.end(html)
+  }
+}
 
 function createHaloProxy(opt: {
   target: string

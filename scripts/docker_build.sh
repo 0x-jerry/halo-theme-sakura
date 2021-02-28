@@ -1,9 +1,7 @@
-# rm -rf dist
+yarn build
 
-# yarn build
-
-# cp -r .nuxt dist/.nuxt
+cp -r client/dist server/dist/client
 # mkdir dist/client
 # cp -r client/static dist/client/static
 
-docker build --pull --rm -f "Dockerfile" -t halo-theme-sakura:latest "."
+# docker build --pull --rm -f "Dockerfile" -t halo-theme-sakura:latest "."
