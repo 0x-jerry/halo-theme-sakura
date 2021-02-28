@@ -8,6 +8,7 @@ import { createStore } from './store'
 import { isSSR, sharedData } from './utils'
 import App from './App.vue' // Vue or React main app
 import { Router } from 'vue-router'
+import { NProgressPlugin } from './plugins'
 
 export default viteSSR(App, { routes }, ({ app, initialState, router }) => {
   const store = createStore()
@@ -19,6 +20,8 @@ export default viteSSR(App, { routes }, ({ app, initialState, router }) => {
     store.replaceState(initialState.storeState)
     r.currentRoute.value.meta.state = initialState.state
   }
+
+  NProgressPlugin(router)
 
   app.use(i18n)
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <scroll-progress />
+    <!-- <scroll-progress /> -->
     <router-view />
     <scroll-to-top />
   </div>
