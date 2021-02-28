@@ -27,12 +27,22 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    nodes: Array,
-  },
+<script lang="ts">
+import { defineComponent, PropType } from 'vue'
+
+export interface IPropNode<T extends { title: string } = { title: string }> {
+  title: string
+  nodes: T[]
 }
+
+export default defineComponent({
+  props: {
+    nodes: {
+      type: Array as PropType<IPropNode[]>,
+      default: () => [],
+    },
+  },
+})
 </script>
 
 <style scoped>

@@ -7,17 +7,28 @@
   </span>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from 'vue'
+import { useRouter } from 'vue-router'
+import { TagDTO } from '../api'
+
+export default defineComponent({
   props: {
-    tag: Object,
-  },
-  methods: {
-    clickTag() {
-      this.$router.push(`/tags/${this.tag.slug}`)
+    tag: {
+      required: true,
+      type: Object as PropType<TagDTO>,
     },
   },
-}
+  setup(props) {
+    const router = useRouter()
+
+    return {
+      clickTag() {
+        router.push(`/tags/${props.tag.slug}`)
+      },
+    }
+  },
+})
 </script>
 
 <style></style>

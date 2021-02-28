@@ -1,108 +1,101 @@
 <template>
   <div
-    ref="$root"
+    ref="root"
     class="random-image w-full h-full bg-cover bg-center bg-no-repeat"
     style="background-image: url('/svg/loading.svg')"
   >
     <img
-      v-if="visible"
-      :src="imgUrl"
+      v-if="data.visible"
+      :src="data.imgUrl"
       class="img object-cover hidden w-full h-full object-center"
-      :class="{ block: !loading }"
+      :class="{ block: !data.loading, visible: data.visible }"
       @load="loaded"
     />
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import axios from 'axios'
-import { isSSR } from '../utils'
-import { globalUtils } from './utils'
+import { defineComponent, reactive, ref, watchEffect } from 'vue'
+import { useObserve } from '../hooks/useObserve'
 
-const randomImgMap = {}
+const randomImgMap: Record<string, string> = {}
 
-export default {
+async function getImageUrl(id: string, src?: string) {
+  if (src) {
+    return src
+  }
+
+  if (randomImgMap[id]) {
+    return randomImgMap[id]
+  }
+
+  try {
+    const url = await imageApi(id)
+
+    const isValidUrl = !/\/large\/\.jpg$/.test(url)
+
+    if (isValidUrl) {
+      randomImgMap[id] = url
+    }
+    return url
+  } catch (error) {
+    console.error('load image error', error)
+  }
+}
+
+async function imageApi(id: string) {
+  try {
+    const { data } = await axios.get(
+      'http://localhost:9555/capi/image/random',
+      {
+        params: { id },
+      }
+    )
+
+    return data.imgurl
+  } catch (error) {
+    console.error('error', { error })
+  }
+}
+
+export default defineComponent({
   props: {
     src: String,
     randomId: {
-      type: [String, Number],
-      default() {
+      type: [Number, String],
+      default: () => {
         return ~~(Math.random() * 10)
       },
     },
     // 640 960 1280 1440
     size: String,
   },
-  data() {
-    return {
+  setup(props) {
+    const data = reactive({
       visible: false,
-      loading: true,
       imgUrl: '',
+      loading: true,
+    })
+
+    const root = ref<any>(null)
+
+    watchEffect(async () => {
+      data.imgUrl = await getImageUrl(String(props.randomId), props.src)
+    })
+
+    useObserve(root, async () => {
+      data.visible = true
+      data.imgUrl = await getImageUrl(String(props.randomId), props.src)
+    })
+
+    return {
+      data,
+      root,
+      loaded: () => (data.loading = false),
     }
   },
-  watch: {
-    async randomId() {
-      this.imgUrl = await this.getImageUrl()
-    },
-  },
-  mounted() {
-    this.canVisible = this.canVisible.bind(this)
-    if (!isSSR) {
-      this.$refs.$root.addEventListener('can-visible', this.canVisible)
-      globalUtils.observer.observe(this.$refs.$root)
-    }
-  },
-  unmounted() {
-    if (!isSSR) {
-      this.$refs.$root?.removeEventListener('can-visible', this.canVisible)
-    }
-  },
-  methods: {
-    async imageApi() {
-      try {
-        const { data } = await axios.get(
-          'http://localhost:9555/capi/image/random',
-          {
-            params: { id: this.randomId },
-          }
-        )
-
-        return data.imgurl
-      } catch (error) {
-        console.log('error', { error })
-      }
-    },
-    async getImageUrl() {
-      if (this.src) {
-        return this.src
-      }
-
-      if (randomImgMap[this.randomId]) {
-        return randomImgMap[this.randomId]
-      }
-
-      try {
-        const url = await this.imageApi()
-
-        const isValidUrl = !/\/large\/\.jpg$/.test(url)
-
-        if (isValidUrl) {
-          randomImgMap[this.randomId] = url
-        }
-        return url
-      } catch (error) {
-        console.log('load image error', error)
-      }
-    },
-    async canVisible() {
-      this.visible = true
-      this.imgUrl = await this.getImageUrl()
-    },
-    loaded() {
-      this.loading = false
-    },
-  },
-}
+})
 </script>
 
 <style scoped>

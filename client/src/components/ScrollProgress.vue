@@ -4,35 +4,30 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      percentage: 0,
-    }
-  },
-  computed: {
-    style() {
-      const isLoading = false
+<script lang="ts">
+import { computed, defineComponent, onMounted, ref } from 'vue'
+import { useScrollEvent } from '../hooks/useScrollEvent'
 
-      try {
-        // isLoading = this.$nuxt.$loading.percent > 0
-      } catch (error) {}
+export default defineComponent({
+  setup() {
+    const percentage = ref(0)
 
-      return {
-        width: isLoading ? 0 : this.percentage * 100 + '%',
-      }
-    },
-  },
-  mounted() {
-    window.addEventListener('scroll', () => {
+    useScrollEvent(() => {
       const height = document.body.scrollHeight - window.innerHeight
       const current = window.scrollY
 
-      this.percentage = current / height
+      percentage.value = current / height
     })
+
+    return {
+      style: computed(() => {
+        return {
+          width: percentage.value * 100 + '%',
+        }
+      }),
+    }
   },
-}
+})
 </script>
 
 <style scoped>

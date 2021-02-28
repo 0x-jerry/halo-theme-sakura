@@ -25,21 +25,26 @@
   </header>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { computed, defineComponent, onMounted, PropType, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { MenuDTO, UserDTO } from '../api'
+import { useScrollEvent } from '../hooks/useScrollEvent'
+
+export default defineComponent({
   props: {
-    user: Object,
-    site: Object,
-    menus: Array,
+    user: {
+      type: Object as PropType<UserDTO>,
+      required: true,
+    },
+    menus: {
+      type: Array as PropType<Array<MenuDTO>>,
+      default: () => [],
+    },
   },
-  data() {
-    return {
-      stickHeader: false,
-    }
-  },
-  computed: {
-    vMenus() {
-      return this.menus.map((menu) => {
+  setup(props) {
+    const vMenus = computed(() =>
+      props.menus.map((menu) => {
         const url = /^\/s\//.test(menu.url)
           ? `/post?slug=${menu.url.slice('/s/'.length)}&type=sheet`
           : menu.url
@@ -49,36 +54,41 @@ export default {
           url,
         }
       })
-    },
-  },
-  mounted() {
+    )
+
+    const stickHeader = ref(false)
+
     const stickHeight = 20
 
-    this.stickHeader = window.scrollY > stickHeight
-
-    window.addEventListener('scroll', () => {
-      this.stickHeader = window.scrollY > stickHeight
+    useScrollEvent(() => {
+      stickHeader.value = window.scrollY > stickHeight
     })
-  },
-  methods: {
-    goToUrl(o) {
-      if (o.target === '_blank') {
-        window.open(o.url)
-      } else {
-        const routePath = this.$route.path
 
-        if (o.url === routePath) {
-          window.scrollTo(0, 0)
+    const route = useRoute()
+    const router = useRouter()
+
+    return {
+      stickHeader,
+      vMenus,
+      goToUrl(o: MenuDTO) {
+        if (o.target === '_blank') {
+          window.open(o.url)
         } else {
-          this.$router.push(o.url)
+          const routePath = route.path
+
+          if (o.url === routePath) {
+            window.scrollTo(0, 0)
+          } else {
+            router.push(o.url)
+          }
         }
-      }
-    },
-    isActive(o) {
-      return this.$route.fullPath === o.url
-    },
+      },
+      isActive(o: MenuDTO) {
+        return route.fullPath === o.url
+      },
+    }
   },
-}
+})
 </script>
 
 <style scoped>

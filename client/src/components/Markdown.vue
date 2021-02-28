@@ -2,9 +2,11 @@
   <div class="markdown-content markdown-body" v-html="html"></div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
-  props: ['html'],
+  props: {
+    html: String,
+  },
 }
 </script>
 

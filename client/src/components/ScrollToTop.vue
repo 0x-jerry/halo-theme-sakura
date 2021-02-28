@@ -6,26 +6,26 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      active: false,
-    }
-  },
-  mounted() {
-    window.addEventListener('scroll', () => {
-      this.active = window.scrollY > 30
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+import { useScrollEvent } from '../hooks/useScrollEvent'
+
+export default defineComponent({
+  setup() {
+    const active = ref(false)
+
+    useScrollEvent(() => {
+      active.value = window.scrollY > 30
     })
 
-    this.active = window.scrollY > 30
+    return {
+      active,
+      gotoTop() {
+        window.scrollTo(0, 0)
+      },
+    }
   },
-  methods: {
-    gotoTop() {
-      window.scrollTo(0, 0)
-    },
-  },
-}
+})
 </script>
 
 <style>

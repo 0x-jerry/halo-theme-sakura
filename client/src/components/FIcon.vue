@@ -1,20 +1,22 @@
 <template>
-  <i :class="[classes, `fa-${name}`]"></i>
+  <i :class="[klass, `fa-${name}`]"></i>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { computed, defineComponent } from 'vue'
+
+export default defineComponent({
   props: ['name', 'fas', 'fad', 'far', 'fab', 'fa'],
-  computed: {
-    classes() {
-      return (
-        ['fas', 'fad', 'far', 'fab']
-          .filter((c) => this[c] !== undefined)
-          .join(' ') || 'fa'
-      )
-    },
+  setup(props) {
+    return {
+      klass: computed(() => {
+        const keys = ['fas', 'fad', 'far', 'fab'] as const
+
+        return keys.filter((c) => props[c] !== undefined).join(' ') || 'fa'
+      }),
+    }
   },
-}
+})
 </script>
 
 <style></style>

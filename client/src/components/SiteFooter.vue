@@ -36,16 +36,24 @@
   </footer>
 </template>
 
-<script>
+<script lang="ts">
 import dayjs from 'dayjs'
-export default {
-  props: ['user'],
-  computed: {
-    year() {
-      return dayjs().year()
+import { defineComponent, PropType } from 'vue'
+import { UserDTO } from '../api'
+
+export default defineComponent({
+  props: {
+    user: {
+      required: true,
+      type: Object as PropType<UserDTO>,
     },
   },
-}
+  setup() {
+    return {
+      year: dayjs().year(),
+    }
+  },
+})
 </script>
 
 <style scoped>

@@ -38,16 +38,22 @@
 
 <script lang="ts">
 import dayjs from 'dayjs'
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
+import { PostDetailVO } from '../api'
 
 export default defineComponent({
   props: {
-    post: Object,
-  },
-  methods: {
-    dateToString(date: number, format = 'MM-DD') {
-      return dayjs(date).format(format)
+    post: {
+      type: Object as PropType<PostDetailVO>,
+      required: true,
     },
+  },
+  setup() {
+    return {
+      dateToString(date: number | string, format = 'MM-DD') {
+        return dayjs(date).format(format)
+      },
+    }
   },
 })
 </script>

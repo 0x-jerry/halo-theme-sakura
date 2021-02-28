@@ -7,17 +7,28 @@
   </span>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from 'vue'
+import { useRouter } from 'vue-router'
+import { CategoryDTO } from '../api'
+
+export default defineComponent({
   props: {
-    category: Object,
-  },
-  methods: {
-    clickTag() {
-      this.$router.push(`/categories/${this.category.slug}`)
+    category: {
+      required: true,
+      type: Object as PropType<CategoryDTO>,
     },
   },
-}
+  setup(props) {
+    const router = useRouter()
+
+    return {
+      clickTag() {
+        router.push(`/categories/${props.category.slug}`)
+      },
+    }
+  },
+})
 </script>
 
 <style></style>

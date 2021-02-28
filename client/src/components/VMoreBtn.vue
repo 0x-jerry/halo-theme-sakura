@@ -21,8 +21,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+
+export default defineComponent({
   props: {
     hasMore: {
       type: Boolean,
@@ -34,23 +36,23 @@ export default {
     },
     moreAction: Function,
   },
-  data() {
+  setup(props) {
+    const isLoading = ref(false)
+
     return {
-      isLoading: false,
+      isLoading,
+      async getMore() {
+        if (isLoading.value) {
+          return
+        }
+
+        isLoading.value = true
+        await props.moreAction?.()
+        isLoading.value = false
+      },
     }
   },
-  methods: {
-    async getMore() {
-      if (this.isLoading) {
-        return
-      }
-
-      this.isLoading = true
-      await this.moreAction?.()
-      this.isLoading = false
-    },
-  },
-}
+})
 </script>
 
 <style></style>

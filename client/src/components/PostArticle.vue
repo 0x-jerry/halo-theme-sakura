@@ -1,8 +1,8 @@
 <template>
   <div
-    ref="$root"
+    ref="root"
     class="post mt-16 shadow-xl rounded-2xl overflow-hidden border border-gray-200 flex"
-    :class="{ flip }"
+    :class="{ flip, visible }"
   >
     <article
       class="post-article flex reverse text-gray-500 hover:text-gray-600"
@@ -48,37 +48,51 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import dayjs from 'dayjs'
-import { globalUtils } from './utils'
+import { computed, defineComponent, PropType, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { PostDetailVO } from '../api'
+import { useObserve } from '../hooks/useObserve'
 import VLink from './VLink.vue'
 
-export default {
+export default defineComponent({
   components: { VLink },
-  props: ['post', 'flip'],
-  data() {
+  props: {
+    post: {
+      type: Object as PropType<PostDetailVO>,
+      required: true,
+    },
+    flip: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  setup(prop, ctx) {
+    const root = ref<any>(null)
+    const visible = ref(false)
+
+    useObserve(root, () => (visible.value = true))
+
+    const router = useRouter()
+
     return {
+      root,
+      visible,
       dayjs,
+      meta: computed(() => {
+        return {
+          createTime: dayjs(prop.post.createTime).format('YYYY-MM-DD'),
+        }
+      }),
+      gotoPost() {
+        const id = prop.post.id
+
+        router.push(`/post?id=${id}`)
+      },
     }
   },
-  computed: {
-    meta() {
-      return {
-        createTime: dayjs(this.post.createTime).format('YYYY-MM-DD HH:mm'),
-      }
-    },
-  },
-  mounted() {
-    globalUtils.observer.observe(this.$refs.$root)
-  },
-  methods: {
-    gotoPost() {
-      const id = this.post.id
-
-      this.$router.push(`/post?id=${id}`)
-    },
-  },
-}
+})
 </script>
 
 <style scoped>

@@ -25,18 +25,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
+import { UserDTO } from '../api'
 import FIcon from './FIcon.vue'
 
 export default defineComponent({
   components: { FIcon },
   props: {
-    user: Object,
-  },
-  methods: {
-    scrollOnePage() {
-      window.scrollTo(0, window.innerHeight)
+    user: {
+      type: Object as PropType<UserDTO>,
+      required: true,
     },
+  },
+  setup() {
+    return {
+      scrollOnePage() {
+        window.scrollTo(0, window.innerHeight)
+      },
+    }
   },
 })
 </script>
