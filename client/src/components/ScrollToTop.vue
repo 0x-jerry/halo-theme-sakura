@@ -76,7 +76,6 @@ export default defineComponent({
 .scroll-icon {
   z-index: 10;
   position: relative;
-  mix-blend-mode: difference;
 }
 
 .scroll-to-top.active {

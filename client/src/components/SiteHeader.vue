@@ -62,7 +62,7 @@ export default defineComponent({
 
     useScrollEvent(() => {
       stickHeader.value = window.scrollY > stickHeight
-    })
+    }, true)
 
     const route = useRoute()
     const router = useRouter()
