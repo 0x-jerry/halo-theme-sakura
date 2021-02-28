@@ -1,21 +1,35 @@
 <template>
-  <div class="scroll-to-top" :class="{ active }">
+  <div class="scroll-to-top overflow-hidden" :class="{ active }">
     <v-link class="text-gray-500" @click="gotoTop">
-      <f-icon name="angle-up" />
+      <f-icon name="angle-up" class="scroll-icon" />
     </v-link>
+    <div class="fragment" :style="style"></div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 import { useScrollEvent } from '../hooks'
 
 export default defineComponent({
   setup() {
     const active = ref(false)
 
+    const percent = ref(0)
+
     useScrollEvent(() => {
       active.value = window.scrollY > 30
+
+      const height = document.body.scrollHeight - window.innerHeight
+      const current = window.scrollY
+
+      percent.value = current / height
+    })
+
+    const style = computed(() => {
+      return {
+        height: percent.value * 100 + '%',
+      }
     })
 
     return {
@@ -23,6 +37,7 @@ export default defineComponent({
       gotoTop() {
         window.scrollTo(0, 0)
       },
+      style,
     }
   },
 })
@@ -37,7 +52,21 @@ export default defineComponent({
   @apply text-2xl;
 }
 
+.scroll-icon {
+  z-index: 10;
+  position: relative;
+  mix-blend-mode: difference;
+}
+
 .scroll-to-top.active {
   @apply right-5 opacity-100;
+}
+
+.fragment {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+  @apply bg-blue-400;
 }
 </style>
