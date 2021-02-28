@@ -13,6 +13,7 @@
     "build": "run-p build:*",
     "build:client": "cd client && yarn build",
     "build:server": "cd server && yarn build",
+    "start": "export NODE_ENV=production && cd server && node ./dist/index.js",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "yarn lint:js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
@@ -27,8 +28,5 @@
     "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1"
-  },
-  "dependencies": {
-    "vuex-router-sync": "^5.0.0"
   }
 }

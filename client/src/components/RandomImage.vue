@@ -15,8 +15,8 @@
 </template>
 
 <script lang="ts">
-import axios from 'axios'
 import { defineComponent, reactive, ref, watchEffect } from 'vue'
+import { axiosInstance } from '~/api'
 import { useObserve } from '../hooks'
 
 const randomImgMap: Record<string, string> = {}
@@ -46,12 +46,9 @@ async function getImageUrl(id: string, src?: string) {
 
 async function imageApi(id: string) {
   try {
-    const { data } = await axios.get(
-      'http://localhost:9555/capi/image/random',
-      {
-        params: { id },
-      }
-    )
+    const { data } = await axiosInstance.get('/capi/image/random', {
+      params: { id },
+    })
 
     return data.imgurl
   } catch (error) {

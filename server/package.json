@@ -10,8 +10,11 @@
     "@koa/cors": "^3.1.0",
     "@koa/router": "^10.0.0",
     "axios": "^0.21.1",
+    "chalk": "^4.1.0",
+    "dayjs": "^1.10.4",
     "diacritics": "^1.3.0",
     "dotenv": "^8.2.0",
+    "escape-html": "^1.0.3",
     "koa": "^2.13.1",
     "koa-better-http-proxy": "^0.2.8",
     "koa-static": "^5.0.0",
@@ -21,8 +24,14 @@
     "markdown-it-container": "^3.0.0",
     "markdown-it-emoji": "^2.0.0",
     "markdown-it-table-of-contents": "^0.5.2",
+    "nprogress": "^0.2.0",
     "prismjs": "^1.23.0",
-    "randomcolor": "^0.6.2"
+    "randomcolor": "^0.6.2",
+    "vite-ssr": "^0.4.1",
+    "vue": "^3.0.5",
+    "vue-i18n": "^9.0.0",
+    "vue-router": "^4.0.4",
+    "vuex": "^4.0.0"
   },
   "devDependencies": {
     "@types/koa": "^2.13.0",

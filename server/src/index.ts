@@ -71,8 +71,10 @@ function main() {
         await next()
       }
     })
-    .use(serve(path.join(__dirname, 'client')))
-    .use(serveViteBuild(path.join(__dirname, 'client')))
+
+  if (!isDev) {
+    app.use(serveViteBuild(path.join(__dirname, 'client')))
+  }
 
   const port = isDev ? 9555 : 9556
 
@@ -86,14 +88,27 @@ function main() {
 main()
 
 function serveViteBuild(dist: string): Middleware {
+  // This contains a list of static routes (assets)
+  const { ssr } = require(`${dist}/server/package.json`)
+
   // The manifest is required for preloading assets
   const manifest = require(`${dist}/client/ssr-manifest.json`)
 
   // This is the server renderer we just built
   const { default: renderPage } = require(`${dist}/server/main.js`)
 
+  const serveStatic = serve(path.join(dist, 'client'))
+
   return async (ctx, next) => {
     const { request, res } = ctx
+
+    // Serve every static asset route
+    for (const asset of ssr.assets || []) {
+      if (request.path.startsWith('/' + asset)) {
+        await serveStatic(ctx, next)
+        return
+      }
+    }
 
     const url = request.url
 

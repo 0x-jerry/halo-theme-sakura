@@ -1,18 +1,30 @@
-FROM node:alpine as builder
+FROM node:alpine as builder-client
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY client/package.json client/yarn.lock ./
 
-RUN yarn
+RUN yarn --frozen-lockfile
 
-COPY . .
+COPY client .
 
-RUN yarn build && \
-  cp -r .nuxt dist/.nuxt && \
-  mkdir dist/client && \
-  cp -r client/static dist/client/static
+RUN yarn build
 
+# -----------------
+
+FROM node:alpine as builder-server
+
+WORKDIR /app
+
+COPY server/package.json server/yarn.lock ./
+
+RUN yarn --frozen-lockfile
+
+COPY server .
+
+RUN yarn build
+
+# --------------
 
 FROM node:alpine
 
@@ -20,12 +32,13 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-COPY package.json yarn.lock ./
+COPY server/package.json server/yarn.lock ./
 
-RUN yarn
+RUN yarn --frozen-lockfile
 
-COPY --from=builder /app/dist ./
+COPY --from=builder-server /app/dist ./dist
+COPY --from=builder-client /app/dist ./dist/client
 
 EXPOSE 9556
 
-CMD [ "node", "server/index.js" ]
+CMD [ "node", "dist/index.js" ]

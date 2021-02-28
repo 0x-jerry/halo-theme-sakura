@@ -10,14 +10,10 @@ import { defineComponent } from 'vue'
 import { useStore } from './store'
 
 export default defineComponent({
-  async serverPrefetch() {
-    await this.init()
-  },
   setup() {
     const store = useStore()
 
     return {
-      init: () => store.dispatch('serverInit'),
       store: store.state,
     }
   },

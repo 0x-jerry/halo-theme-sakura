@@ -10,39 +10,45 @@ import App from './App.vue' // Vue or React main app
 import { Router } from 'vue-router'
 import { NProgressPlugin } from './plugins'
 
-export default viteSSR(App, { routes }, ({ app, initialState, router }) => {
-  const store = createStore()
+export default viteSSR(
+  App,
+  { routes },
+  async ({ app, initialState, router }) => {
+    const store = createStore()
 
-  const r: Router = router
-  if (isSSR) {
-    initialState.storeState = store.state
-  } else {
-    console.log(routes)
-    store.replaceState(initialState.storeState)
-    r.currentRoute.value.meta.state = initialState.state
+    const r: Router = router
+
+    if (isSSR) {
+      await store.dispatch('serverInit')
+      initialState.storeState = store.state
+    } else {
+      // console.log('routes', routes)
+      store.replaceState(initialState.storeState)
+      r.currentRoute.value.meta.state = initialState.state
+    }
+
+    NProgressPlugin(router)
+
+    app.use(i18n)
+
+    Object.defineProperty(app.config.globalProperties, 't', {
+      get: () => {
+        const { t } = useI18n()
+        return t
+      },
+    })
+
+    Object.defineProperty(app.config.globalProperties, 'locale', {
+      get: () => {
+        const { locale } = useI18n()
+        return locale
+      },
+    })
+
+    app.use(store)
+
+    sharedData.$store = store
+    sharedData.$app = app
+    sharedData.$router = router
   }
-
-  NProgressPlugin(router)
-
-  app.use(i18n)
-
-  Object.defineProperty(app.config.globalProperties, 't', {
-    get: () => {
-      const { t } = useI18n()
-      return t
-    },
-  })
-
-  Object.defineProperty(app.config.globalProperties, 'locale', {
-    get: () => {
-      const { locale } = useI18n()
-      return locale
-    },
-  })
-
-  app.use(store)
-
-  sharedData.$store = store
-  sharedData.$app = app
-  sharedData.$router = router
-})
+)
