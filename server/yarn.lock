@@ -333,7 +333,7 @@
     "@vue/shared" "3.0.6"
     csstype "^2.6.8"
 
-"@vue/server-renderer@^3.0.5":
+"@vue/server-renderer@^3.0.0":
   version "3.0.6"
   resolved "https://registry.npm.taobao.org/@vue/server-renderer/download/@vue/server-renderer-3.0.6.tgz#346b8225e3111be88a7a6ed8f96ecd30852a5ac5"
   integrity sha1-NGuCJeMRG+iKem7Y+W7NMIUqWsU=
@@ -1103,13 +1103,13 @@ vary@^1.1.2:
   resolved "https://registry.npm.taobao.org/vary/download/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-vite-ssr@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.npm.taobao.org/vite-ssr/download/vite-ssr-0.4.1.tgz#453fe3f1b80598c3f2c3ad828d7da7c0888a37a9"
-  integrity sha1-RT/j8bgFmMPyw62CjX2nwIiKN6k=
+vite-ssr@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.npm.taobao.org/vite-ssr/download/vite-ssr-0.5.0.tgz#a0f45c349a2d3a8df7ae22179f8d11cfbdf58dd0"
+  integrity sha1-oPRcNJotOo33riIXn40Rz731jdA=
   dependencies:
     "@rollup/plugin-replace" "^2.3.3"
-    "@vue/server-renderer" "^3.0.5"
+    "@vue/server-renderer" "^3.0.0"
     connect "^3.7.0"
     node-fetch "^2.6.1"
 

@@ -231,7 +231,7 @@
     "@vue/shared" "3.0.6"
     csstype "^2.6.8"
 
-"@vue/server-renderer@^3.0.5":
+"@vue/server-renderer@^3.0.0":
   version "3.0.6"
   resolved "https://registry.npm.taobao.org/@vue/server-renderer/download/@vue/server-renderer-3.0.6.tgz#346b8225e3111be88a7a6ed8f96ecd30852a5ac5"
   integrity sha1-NGuCJeMRG+iKem7Y+W7NMIUqWsU=
@@ -244,10 +244,10 @@
   resolved "https://registry.npm.taobao.org/@vue/shared/download/@vue/shared-3.0.6.tgz#d65576430fc4ad383dc7c829118798e5169178d4"
   integrity sha1-1lV2Qw/ErTg9x8gpEYeY5RaReNQ=
 
-"@windicss/plugin-utils@0.5.4":
-  version "0.5.4"
-  resolved "https://registry.npm.taobao.org/@windicss/plugin-utils/download/@windicss/plugin-utils-0.5.4.tgz#69476a9d1fee92046695766bf7fbfe48e48809a7"
-  integrity sha1-aUdqnR/ukgRmlXZr9/v+SOSICac=
+"@windicss/plugin-utils@0.6.2":
+  version "0.6.2"
+  resolved "https://registry.npm.taobao.org/@windicss/plugin-utils/download/@windicss/plugin-utils-0.6.2.tgz#8fc76d9f2a1e3de123ffd54fdd9d1583801bb087"
+  integrity sha1-j8dtnyoePeEj/9VP3Z0Vg4AbsIc=
   dependencies:
     esbuild "^0.8.52"
     esbuild-register "^2.0.0"
@@ -1243,21 +1243,21 @@ vite-plugin-voie@^0.7.3:
     glob-to-regexp "^0.4.1"
     voie-pages "^0.4.0"
 
-vite-plugin-windicss@^0.5.4:
-  version "0.5.4"
-  resolved "https://registry.npm.taobao.org/vite-plugin-windicss/download/vite-plugin-windicss-0.5.4.tgz#35764e91536d596ac2c9266c3e16c546915d8b3e"
-  integrity sha1-NXZOkVNtWWrCySZsPhbFRpFdiz4=
+vite-plugin-windicss@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.npm.taobao.org/vite-plugin-windicss/download/vite-plugin-windicss-0.6.2.tgz#2b406c65768ce7df22451dc7b47c0026abd4bb24"
+  integrity sha1-K0BsZXaM598iRR3HtHwAJqvUuyQ=
   dependencies:
-    "@windicss/plugin-utils" "0.5.4"
+    "@windicss/plugin-utils" "0.6.2"
     windicss "^2.2.0"
 
-vite-ssr@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.npm.taobao.org/vite-ssr/download/vite-ssr-0.4.1.tgz#453fe3f1b80598c3f2c3ad828d7da7c0888a37a9"
-  integrity sha1-RT/j8bgFmMPyw62CjX2nwIiKN6k=
+vite-ssr@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.npm.taobao.org/vite-ssr/download/vite-ssr-0.5.0.tgz#a0f45c349a2d3a8df7ae22179f8d11cfbdf58dd0"
+  integrity sha1-oPRcNJotOo33riIXn40Rz731jdA=
   dependencies:
     "@rollup/plugin-replace" "^2.3.3"
-    "@vue/server-renderer" "^3.0.5"
+    "@vue/server-renderer" "^3.0.0"
     connect "^3.7.0"
     node-fetch "^2.6.1"
 
