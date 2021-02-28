@@ -9,6 +9,11 @@ import { I18nPlugin } from './vite/i18n.plugin'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: {
+      '~/': `${path.resolve(__dirname, 'src')}/`,
+    },
+  },
   plugins: [
     Vue(),
     ViteSSR(),
@@ -16,6 +21,6 @@ export default defineConfig({
     ViteComponents(),
     WindiCSS(),
     voie(),
-    I18nPlugin(path.join(__dirname, 'src/locales'))
-  ]
+    I18nPlugin(path.join(__dirname, 'src/locales')),
+  ],
 })

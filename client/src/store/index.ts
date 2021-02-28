@@ -8,7 +8,7 @@ import {
   ArchiveMonthVO,
   archivesMonthsGet,
   categoriesGet,
-  CategoryDTO,
+  CategoryDTOMore,
   MenuDTO,
   menusGet,
   PostDetailVO,
@@ -16,7 +16,7 @@ import {
   postsSlugGet,
   sheetsSheetIdGet,
   sheetsSlugGet,
-  TagDTO,
+  TagDTOMore,
   tagsGet,
   UserDTO,
   usersProfileGet,
@@ -25,8 +25,8 @@ import {
 export interface ISiteState {
   user?: UserDTO
   menus: MenuDTO[]
-  tags: TagDTO[]
-  categories: CategoryDTO[]
+  tags: TagDTOMore[]
+  categories: CategoryDTOMore[]
   archives?: ArchiveMonthVO[]
   postsMap: Record<string, PostDetailVO>
 }

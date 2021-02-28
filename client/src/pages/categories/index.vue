@@ -29,32 +29,46 @@
   </div>
 </template>
 
-<script>
-import { mapState } from 'vuex'
+<script lang="ts">
+import { computed, defineComponent } from 'vue'
+import { useRouter } from 'vue-router'
+import { CategoryDTOMore } from '~/api'
+import { useStore } from '~/store'
 
-export default {
-  computed: {
-    ...mapState(['user', 'menus', 'categories']),
-    categoriesSize() {
-      const maxCount = this.categories.reduce(
+export default defineComponent({
+  setup() {
+    const store = useStore()
+    const user = computed(() => store.state.user)
+    const menus = computed(() => store.state.menus)
+    const categories = store.state.categories
+
+    const categoriesSize = computed(() => {
+      const maxCount = categories.reduce(
         (max, cur) => Math.max(max, cur.postCount),
         -1
       )
 
       const range = 0.3
 
-      return this.categories.map((category) => ({
+      return categories.map((category) => ({
         category,
         percent: (category.postCount / maxCount) * range + (1 - range),
       }))
-    },
+    })
+
+    const router = useRouter()
+
+    return {
+      user,
+      menus,
+      categoriesSize,
+      gotoCategory(category: CategoryDTOMore) {
+        router.push(`/categories/${category.slug}`)
+      },
+    }
   },
-  methods: {
-    gotoCategory(category) {
-      this.$router.push(`/categories/${category.slug}`)
-    },
-  },
-}
+  methods: {},
+})
 </script>
 
 <style scoped>

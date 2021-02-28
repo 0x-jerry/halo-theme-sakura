@@ -17,17 +17,20 @@
   </div>
 </template>
 
-<script>
-import { mapState } from 'vuex'
+<script lang="ts">
+import { computed, defineComponent } from 'vue'
+import { useStore } from '../store'
 
-export default {
-  async asyncData() {
-    //
+export default defineComponent({
+  setup() {
+    const store = useStore()
+
+    return {
+      user: computed(() => store.state.user),
+      menus: computed(() => store.state.menus),
+    }
   },
-  computed: {
-    ...mapState(['user', 'menus']),
-  },
-}
+})
 </script>
 
 <style scoped>

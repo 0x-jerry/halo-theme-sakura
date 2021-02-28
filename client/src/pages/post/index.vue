@@ -28,42 +28,56 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import dayjs from 'dayjs'
-import { mapActions, mapState } from 'vuex'
+import { computed, defineComponent } from 'vue'
+import { useRoute } from 'vue-router'
+import { useUniversalFetch } from '../../hooks'
+import { useStore } from '../../store'
+import { useSharedStore } from '../../utils'
 
-export default {
-  computed: {
-    ...mapState(['user', 'menus', 'postsMap']),
-    post() {
-      const { id, slug } = this.$route.query
+export default defineComponent({
+  async beforeRouteEnter(to, _from, next) {
+    await useUniversalFetch(to, async () => {
+      const store = useSharedStore()
+      await store.dispatch('fetchPost', to.query)
+    })
 
-      return this.postsMap[slug || id]
-    },
-    info() {
-      return {
-        createTime: dayjs(this.post.createTime).format('YYYY-MM-DD'),
-      }
-    },
-  },
-  async serverPrefetch() {
-    await this.$store.dispatch('fetchPost', this.$route.query)
+    next()
   },
   async beforeRouteUpdate(to, _from, next) {
-    await this.$store.dispatch('fetchPost', to.query)
+    const store = useSharedStore()
+    await store.dispatch('fetchPost', to.query)
     next()
   },
-  beforeRouteEnter(to, _from, next) {
-    console.log(to, this)
-    next()
+  setup() {
+    const store = useStore()
+    const user = computed(() => store.state.user)
+    const menus = computed(() => store.state.menus)
+    const postsMap = store.state.postsMap
+
+    const route = useRoute()
+    const post = computed(() => {
+      const { id, slug } = route.query
+      const iid = (slug || id) as string
+
+      return postsMap[iid]
+    })
+
+    const info = computed(() => {
+      return {
+        createTime: dayjs(post.value.createTime).format('YYYY-MM-DD'),
+      }
+    })
+
+    return {
+      user,
+      menus,
+      post,
+      info,
+    }
   },
-  async created() {
-    await this.$store.dispatch('fetchPost', this.$route.query)
-  },
-  methods: {
-    ...mapActions(['fetchPost']),
-  },
-}
+})
 </script>
 
 <style scoped>

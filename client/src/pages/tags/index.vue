@@ -23,7 +23,7 @@
       <div class="flex flex-wrap justify-center">
         <span
           v-for="o in tagsSize"
-          :key="o.id"
+          :key="o.tag.id"
           class="tag-item"
           :style="`opacity: ${o.percent}; font-size: ${o.percent}em`"
           @click="gotoTag(o.tag)"
@@ -37,32 +37,45 @@
   </div>
 </template>
 
-<script>
-import { mapState } from 'vuex'
+<script lang="ts">
+import { computed, defineComponent } from 'vue'
+import { useRouter } from 'vue-router'
+import { TagDTO } from '../../api'
+import { useStore } from '../../store'
 
-export default {
-  computed: {
-    ...mapState(['user', 'menus', 'tags']),
-    tagsSize() {
-      const maxCount = this.tags.reduce(
+export default defineComponent({
+  setup() {
+    const store = useStore()
+    const user = computed(() => store.state.user)
+    const menus = computed(() => store.state.menus)
+    const tags = store.state.tags
+
+    const tagsSize = computed(() => {
+      const maxCount = tags.reduce(
         (max, cur) => Math.max(max, cur.postCount),
         -1
       )
 
       const range = 0.3
 
-      return this.tags.map((tag) => ({
+      return tags.map((tag) => ({
         tag,
         percent: (tag.postCount / maxCount) * range + (1 - range),
       }))
-    },
+    })
+
+    const router = useRouter()
+
+    return {
+      user,
+      menus,
+      tagsSize,
+      gotoTag(tag: TagDTO) {
+        router.push(`/tags/${tag.slug}`)
+      },
+    }
   },
-  methods: {
-    gotoTag(tag) {
-      this.$router.push(`/tags/${tag.slug}`)
-    },
-  },
-}
+})
 </script>
 
 <style scoped>
