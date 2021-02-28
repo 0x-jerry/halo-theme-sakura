@@ -17,6 +17,7 @@ export default viteSSR(App, { routes }, ({ app, initialState, router }) => {
   if (isSSR) {
     initialState.storeState = store.state
   } else {
+    console.log(routes)
     store.replaceState(initialState.storeState)
     r.currentRoute.value.meta.state = initialState.state
   }
