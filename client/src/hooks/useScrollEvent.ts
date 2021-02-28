@@ -1,7 +1,7 @@
 import { onMounted, onUnmounted } from 'vue'
 import { isSSR } from '../utils'
 
-export function useScrollEvent(func: (e: Event) => void) {
+export function useScrollEvent(func: () => void, immediately = false) {
   if (isSSR) {
     return
   }
@@ -13,4 +13,8 @@ export function useScrollEvent(func: (e: Event) => void) {
   onUnmounted(() => {
     window.removeEventListener('scroll', func)
   })
+
+  if (immediately) {
+    func()
+  }
 }

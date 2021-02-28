@@ -1,9 +1,15 @@
 <template>
-  <div class="scroll-to-top overflow-hidden" :class="{ active }">
+  <div
+    class="scroll-to-top overflow-hidden"
+    :class="{ active }"
+    :style="{ width: style.cx * 2 + 'px', height: style.cy * 2 + 'px' }"
+  >
     <v-link class="text-gray-500" @click="gotoTop">
       <f-icon name="angle-up" class="scroll-icon" />
     </v-link>
-    <div class="fragment" :style="style"></div>
+    <svg class="bg-ring" :width="style.cx * 2" :height="style.cy * 2">
+      <circle class="bg-ring__circle" :style="style" />
+    </svg>
   </div>
 </template>
 
@@ -17,18 +23,33 @@ export default defineComponent({
 
     const percent = ref(0)
 
-    useScrollEvent(() => {
+    const updateScrollStatus = () => {
       active.value = window.scrollY > 30
 
       const height = document.body.scrollHeight - window.innerHeight
       const current = window.scrollY
 
       percent.value = current / height
-    })
+    }
+
+    useScrollEvent(updateScrollStatus, true)
+
+    const r = 20
+    const strokeWidth = 4
+
+    const circumference = r * 2 * Math.PI
 
     const style = computed(() => {
+      const offset = circumference - percent.value * circumference
+
       return {
-        height: percent.value * 100 + '%',
+        strokeWidth,
+        fill: 'transparent',
+        strokeDashoffset: offset,
+        strokeDasharray: `${circumference} ${circumference}`,
+        r: r,
+        cx: r,
+        cy: r,
       }
     })
 
@@ -47,7 +68,7 @@ export default defineComponent({
 .scroll-to-top {
   @apply fixed z-50 bottom-10 -right-10 opacity-0;
   @apply transition-all duration-1000;
-  @apply w-10 h-10 rounded-full bg-white shadow bg-opacity-90;
+  @apply rounded-full bg-white shadow bg-opacity-90;
   @apply flex justify-center items-center;
   @apply text-2xl;
 }
@@ -62,11 +83,16 @@ export default defineComponent({
   @apply right-5 opacity-100;
 }
 
-.fragment {
+.bg-ring {
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 50%;
-  @apply bg-blue-400;
+  top: 0;
+  left: 0;
+}
+
+.bg-ring__circle {
+  stroke: #03a9f4;
+  transition: 0.35s stroke-dashoffset;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
 }
 </style>
