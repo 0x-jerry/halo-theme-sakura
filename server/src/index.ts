@@ -33,12 +33,15 @@ function main() {
     port: +haloUrl.port || undefined,
   })
 
-  app
-    .use(
+  if (isDev) {
+    app.use(
       cors({
         origin: '*',
       })
     )
+  }
+
+  app
     .use(async (ctx, next) => {
       const { request } = ctx
       console.log('[server] start', request.path)
