@@ -39,6 +39,12 @@ function main() {
         origin: '*',
       })
     )
+    .use(async (ctx, next) => {
+      const { request } = ctx
+      console.log('[server] start', request.path)
+      await next()
+      console.log('[server] end', request.path)
+    })
     .use(router.routes())
     .use(router.allowedMethods())
     .use(async (ctx, next) => {
