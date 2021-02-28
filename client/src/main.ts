@@ -5,7 +5,7 @@ import routes from 'voie-pages'
 import { i18n } from 'vite-i18n-plugin'
 import { useI18n } from 'vue-i18n'
 import { createStore } from './store'
-import { isSSR } from './utils'
+import { isSSR, sharedData } from './utils'
 import App from './App.vue' // Vue or React main app
 import { Router } from 'vue-router'
 
@@ -37,4 +37,8 @@ export default viteSSR(App, { routes }, ({ app, initialState, router }) => {
   })
 
   app.use(store)
+
+  sharedData.$store = store
+  sharedData.$app = app
+  sharedData.$router = router
 })

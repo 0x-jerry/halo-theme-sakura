@@ -21,27 +21,42 @@
   </div>
 </template>
 
-<script>
-import { mapState } from 'vuex'
+<script lang="ts">
+import { computed, defineComponent } from 'vue'
+import { useUniversalFetch } from '../hooks'
+import { useStore } from '../store'
+import { useSharedStore } from '../utils'
 
-export default {
-  async asyncData({ store }) {
-    await store.dispatch('fetchArchives')
-  },
-  computed: {
-    ...mapState(['user', 'menus', 'archives']),
-    timelineNodes() {
-      const nodes = this.archives.map((node) => {
-        return {
-          title: `${node.year}-${node.month}`,
-          nodes: node.posts,
-        }
-      })
+export default defineComponent({
+  async beforeRouteEnter(to, _, next) {
+    const store = useSharedStore()
 
-      return nodes
-    },
+    await useUniversalFetch(to, () => store.dispatch('fetchArchives'))
+
+    next()
   },
-}
+  setup() {
+    const { state } = useStore()
+
+    const archives = computed(() => state.archives)
+
+    return {
+      archives,
+      user: computed(() => state.user),
+      menus: computed(() => state.menus),
+      timelineNodes: computed(() => {
+        const nodes = (archives.value || []).map((node) => {
+          return {
+            title: `${node.year}-${node.month}`,
+            nodes: node.posts,
+          }
+        })
+
+        return nodes
+      }),
+    }
+  },
+})
 </script>
 
 <style scoped></style>
