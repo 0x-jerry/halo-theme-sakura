@@ -1,6 +1,6 @@
 # Halo-theme-sakura (WIP)
 
-用 Nuxt 框架完全重写 [Halo-theme-sakura](https://github.com/LIlGG/halo-theme-sakura)
+用 Vite + SSR + Vue3 完全重写 [Halo-theme-sakura](https://github.com/LIlGG/halo-theme-sakura)
 
 ## [预览](https://blog.tiny-online.online/)
 
@@ -8,10 +8,11 @@
 
 - [x] Tailwind
 - [x] Typescript
-- [x] Vue
+- [x] Vue3
 - [x] SSR
 - [x] Docker
 - [x] Markdown-It
+- [x] Vite
 
 功能:
 
@@ -33,11 +34,11 @@
 TODO
 
 - [x] Docker 实现 release 时自动编译，发布
-- [ ] 迁移至 Vite + SSR
+- [x] 迁移至 Vite + SSR
 
 ## 开发
 
-项目中添加 `.env` 文件
+项目中 `server` 文件夹添加 `.env` 文件
 
 ```ini
 HALO_ACCESS_KEY='xxx' # 替换成自己的 access key
