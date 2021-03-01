@@ -1,3 +1,7 @@
 {
-  "recommendations": ["lokalise.i18n-ally", "johnsoncodehk.volar"]
+  "recommendations": [
+    "lokalise.i18n-ally",
+    "johnsoncodehk.volar",
+    "voorjaar.windicss-intellisense"
+  ]
 }
