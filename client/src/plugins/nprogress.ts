@@ -11,11 +11,16 @@ export function NProgressPlugin(router: Router) {
     showSpinner: false,
   })
 
-  router.beforeEach(() => {
+  router.beforeEach((to, from, next) => {
     NProgress.start()
+    next()
   })
 
-  router.afterEach(() => {
+  router.afterEach((to, from) => {
+    if (from === router.currentRoute.value) {
+      return
+    }
+
     NProgress.done()
   })
 }
