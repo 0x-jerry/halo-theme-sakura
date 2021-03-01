@@ -2,6 +2,8 @@
 
 用 Vite + SSR + Vue3 完全重写 [Halo-theme-sakura](https://github.com/LIlGG/halo-theme-sakura)
 
+Docker: https://hub.docker.com/r/cwxyz/halo-theme-sakura
+
 ## [预览](https://blog.tiny-online.online/)
 
 优势:
