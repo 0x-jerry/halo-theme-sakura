@@ -1,21 +1,11 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
-    "target": "esnext",
-    "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
-    "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "allowJs": true,
-    "baseUrl": "./",
-    "lib": ["esnext", "dom"],
-    "types": ["vite/client"],
-    "paths": {
-      "~/*": ["client/*"]
-    }
+    "allowJs": true
   },
-  "include": ["client/**/*.ts", "client/**/*.d.ts", "client/**/*.vue", "vite"]
+  "include": ["client", "server"]
 }

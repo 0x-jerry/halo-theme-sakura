@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "preserve",
+    "baseUrl": "./",
+    "lib": ["esnext", "dom"],
+    "types": ["vite/client"],
+    "paths": {
+      "~/*": ["./*"]
+    }
+  },
+  "include": ["."]
+}
