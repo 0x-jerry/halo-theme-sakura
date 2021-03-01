@@ -1,10 +1,11 @@
 <template>
   <div
-    class="scroll-to-top overflow-hidden"
+    class="scroll-to-top overflow-hidden cursor-pointer"
     :class="{ active }"
     :style="{ width: style.cx * 2 + 'px', height: style.cy * 2 + 'px' }"
+    @click="gotoTop"
   >
-    <v-link class="text-gray-500" @click="gotoTop">
+    <v-link class="text-gray-500">
       <f-icon name="angle-up" class="scroll-icon" />
     </v-link>
     <svg class="bg-ring" :width="style.cx * 2" :height="style.cy * 2">
@@ -64,13 +65,19 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style lang="less">
 .scroll-to-top {
   @apply fixed z-50 bottom-10 -right-10 opacity-0;
   @apply transition-all duration-1000;
   @apply rounded-full bg-white shadow bg-opacity-90;
   @apply flex justify-center items-center;
   @apply text-2xl;
+
+  &:hover {
+    .scroll-icon {
+      @apply text-blue-500;
+    }
+  }
 }
 
 .scroll-icon {
