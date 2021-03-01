@@ -10,12 +10,12 @@
       class="img object-cover hidden w-full h-full object-center"
       :class="{ block: !data.loading, visible: data.visible }"
       @load="loaded"
-    >
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, watchEffect } from 'vue'
+import { defineComponent, reactive, ref, watch } from 'vue'
 import { axiosInstance } from '~/api'
 import { useObserve } from '../hooks'
 
@@ -77,9 +77,12 @@ export default defineComponent({
 
     const root = ref<any>(null)
 
-    watchEffect(async () => {
-      data.imgUrl = await getImageUrl(String(props.randomId), props.src)
-    })
+    watch(
+      () => props.randomId,
+      async () => {
+        data.imgUrl = await getImageUrl(String(props.randomId), props.src)
+      }
+    )
 
     useObserve(root, async () => {
       data.visible = true

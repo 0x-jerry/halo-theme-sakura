@@ -20,7 +20,7 @@
     "release": "glib release"
   },
   "lint-staged": {
-    "*.{js,vue}": "eslint"
+    "*.{ts,js,vue}": "eslint"
   },
   "husky": {
     "hooks": {
