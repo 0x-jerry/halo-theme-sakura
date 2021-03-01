@@ -4,6 +4,11 @@
 
 ## [预览](https://blog.tiny-online.online/)
 
+
+Known Issue
+
+- [ ] store is missing when render html at server side.
+
 优势:
 
 - [x] Tailwind
