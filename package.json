@@ -20,11 +20,11 @@
     "release": "glib release"
   },
   "lint-staged": {
-    "*.{ts,js,vue}": "eslint"
+    "*.{ts,js,vue}": "yarn lint:fix"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint:fix"
+      "pre-commit": "lint-staged"
     }
   },
   "dependencies": {
