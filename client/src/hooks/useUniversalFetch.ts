@@ -1,4 +1,7 @@
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router'
+import { Store } from 'vuex'
+import { ISiteState } from '~/store'
+import { isSSR } from '~/utils'
 
 interface IUniversalFetchData {
   data?: any
@@ -7,19 +10,26 @@ interface IUniversalFetchData {
 
 export async function useUniversalFetch(
   to: RouteLocationNormalizedLoaded,
-  fetch: () => any | Promise<any>
+  fetch: (store: Store<ISiteState>) => any | Promise<any>
 ) {
-  const state: IUniversalFetchData | null = to.meta.state as any
+  const meta = to.meta as any
+  const state: IUniversalFetchData | null = meta.state
 
-  if (state?.data && !state?.__used) {
-    state.__used = true
-    return state.data
+  const isFetchedInServerSide = !!(state?.data && !state?.__used)
+
+  if (isFetchedInServerSide) {
+    state!.__used = true
+    return state!.data
   }
 
-  const data = await fetch()
+  // todo: test
+  const store = meta.store
+
+  const data = await fetch(store)
+
   to.meta.state = {
     data,
-    __used: false,
+    __used: !isSSR,
   }
 
   return data

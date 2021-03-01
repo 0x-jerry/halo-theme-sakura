@@ -25,13 +25,10 @@
 import { computed, defineComponent } from 'vue'
 import { useUniversalFetch } from '../hooks'
 import { useStore } from '../store'
-import { useSharedStore } from '../utils'
 
 export default defineComponent({
   async beforeRouteEnter(to, _, next) {
-    const store = useSharedStore()
-
-    await useUniversalFetch(to, () => store.dispatch('fetchArchives'))
+    await useUniversalFetch(to, (store) => store.dispatch('fetchArchives'))
 
     next()
   },

@@ -34,19 +34,17 @@ import { computed, defineComponent } from 'vue'
 import { useRoute } from 'vue-router'
 import { useUniversalFetch } from '../../hooks'
 import { useStore } from '../../store'
-import { useSharedStore } from '../../utils'
 
 export default defineComponent({
   async beforeRouteEnter(to, _from, next) {
-    await useUniversalFetch(to, async () => {
-      const store = useSharedStore()
+    await useUniversalFetch(to, async (store) => {
       await store.dispatch('fetchPost', to.query)
     })
 
     next()
   },
   async beforeRouteUpdate(to, _from, next) {
-    const store = useSharedStore()
+    const store = useStore()
     await store.dispatch('fetchPost', to.query)
     next()
   },
