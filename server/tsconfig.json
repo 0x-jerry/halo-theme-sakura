@@ -8,6 +8,6 @@
     "allowJs": true,
     "strict": true
   },
-  "include": ["src"],
+  "include": ["."],
   "exclude": ["node_modules"]
 }

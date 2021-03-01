@@ -1,5 +1,5 @@
 {
-  "i18n-ally.localesPaths": ["client/src/locales"],
+  "i18n-ally.localesPaths": ["client/locales"],
   "less.validate": false,
   "css.validate": false,
   "volar.tsPlugin": true
