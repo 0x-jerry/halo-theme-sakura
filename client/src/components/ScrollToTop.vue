@@ -97,7 +97,7 @@ export default defineComponent({
 
 .bg-ring__circle {
   stroke: #03a9f4;
-  transition: 0.35s stroke-dashoffset;
+  transition: 0.25s stroke-dashoffset;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
 }
