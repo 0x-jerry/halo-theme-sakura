@@ -1,6 +1,6 @@
 import path from 'path'
 import { defineConfig } from 'vite'
-import ViteSSR from 'vite-ssr/plugin.js'
+import ViteSSR from 'vite-ssr/plugin'
 import ViteComponents from 'vite-plugin-components'
 import Vue from '@vitejs/plugin-vue'
 import voie from 'vite-plugin-voie'
