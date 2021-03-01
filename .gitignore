@@ -90,3 +90,5 @@ sw.*
 *.swp
 
 .nuxt-dev
+
+dist*

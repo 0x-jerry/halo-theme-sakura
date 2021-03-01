@@ -12,7 +12,7 @@
     "dev:server": "ts-node server/index.ts",
     "build": "run-p build:*",
     "build:client": "vite-ssr build",
-    "build:server": "tsc -p server",
+    "build:server": "rm -rf dist-server && tsc -p server",
     "start": "export NODE_ENV=production && cd server && node ./dist/index.js",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "yarn lint:js",

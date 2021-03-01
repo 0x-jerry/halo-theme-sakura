@@ -1,28 +1,13 @@
-FROM node:alpine as builder-client
-
+FROM node:alpine as builder
 WORKDIR /app
 
-COPY client/package.json client/yarn.lock ./
+COPY package.json yarn.lock ./
 
 RUN yarn --frozen-lockfile
 
-COPY client .
+COPY . .
 
-RUN yarn build
-
-# -----------------
-
-FROM node:alpine as builder-server
-
-WORKDIR /app
-
-COPY server/package.json server/yarn.lock ./
-
-RUN yarn --frozen-lockfile
-
-COPY server .
-
-RUN yarn build
+RUN sh ./scripts/build.sh
 
 # --------------
 
@@ -32,12 +17,11 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-COPY server/package.json server/yarn.lock ./
+COPY package.json yarn.lock ./
 
 RUN yarn --frozen-lockfile
 
-COPY --from=builder-server /app/dist ./dist
-COPY --from=builder-client /app/dist ./dist/client
+COPY --from=builder /app/dist-server ./dist
 
 EXPOSE 9556
 
