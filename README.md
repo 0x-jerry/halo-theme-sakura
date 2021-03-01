@@ -4,11 +4,6 @@
 
 ## [预览](https://blog.tiny-online.online/)
 
-
-Known Issue
-
-- [ ] store is missing when render html at server side.
-
 优势:
 
 - [x] Tailwind
@@ -40,6 +35,7 @@ TODO
 
 - [x] Docker 实现 release 时自动编译，发布
 - [x] 迁移至 Vite + SSR
+- [ ] 文档
 
 ## 开发
 
