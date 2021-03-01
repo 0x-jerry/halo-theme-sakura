@@ -1,25 +1,23 @@
 <!-- Auto generate by `./scripts/release.js` -->
-# [0.3.0](https://github.com/cwxyz007/halo-theme-sakura/compare/v0.2.0...v0.3.0) (2021-02-28)
+## [0.3.1](https://github.com/cwxyz007/halo-theme-sakura/compare/v0.3.0...v0.3.1) (2021-03-01)
 
 
 ### Bug Fixes
 
-* **deps:** bump actions/setup-node from v2.1.4 to v2.1.5 ([4fa1d89](https://github.com/cwxyz007/halo-theme-sakura/commit/4fa1d8922add2ea15ceed1985655a61552683796))
-* **deps:** bump nuxt from 2.15.0 to 2.15.2 ([c476878](https://github.com/cwxyz007/halo-theme-sakura/commit/c476878e804eb8cb2ca16112bee85df18412e9c8))
+* client entry point ([96e54b6](https://github.com/cwxyz007/halo-theme-sakura/commit/96e54b6e0145bf240693d6395b46edaf2c062a77))
+* missing store when render at server side ([0e679c8](https://github.com/cwxyz007/halo-theme-sakura/commit/0e679c80a6b93456acc1b68af3b3bd0127a678b1))
+* nprogress end at incorrect moment ([17fd6f5](https://github.com/cwxyz007/halo-theme-sakura/commit/17fd6f588dcb319ecffb6134bdf34b7c5c8ce898))
 
 
 ### Features
 
-* add 404 page ([a5ef345](https://github.com/cwxyz007/halo-theme-sakura/commit/a5ef3451f0d2e9d999546eabd832ccf4cb43117d))
-* add nprogress ([f3ed49a](https://github.com/cwxyz007/halo-theme-sakura/commit/f3ed49aa6f39de36691991de049e7a8b6a542d11))
-* add progress bar when scroll page ([74bd73f](https://github.com/cwxyz007/halo-theme-sakura/commit/74bd73fb5fd7b573dddc44e2cb928cdb7f4436c2))
-* add useUniversalFetch hook ([2eab71f](https://github.com/cwxyz007/halo-theme-sakura/commit/2eab71ff93718450773ddf1f5cc7471b46d165d1))
-* update API ([1bbffc0](https://github.com/cwxyz007/halo-theme-sakura/commit/1bbffc01e8788377db87d5b99b1373293373a491))
-* use global store object in beforeRouteEnter ([3ffd458](https://github.com/cwxyz007/halo-theme-sakura/commit/3ffd4582cba0707f9749bae9b9dc3279bbc520f3))
-* 增加 日志/友链/图集 页面 ([f7df1e3](https://github.com/cwxyz007/halo-theme-sakura/commit/f7df1e31ff3358fe850b052e1fcd8d6a73c6461f))
-* 添加简单的动画效果 ([823ce89](https://github.com/cwxyz007/halo-theme-sakura/commit/823ce89b32f91eb5bf249b9471a619dd03c48155))
+* add i18n plugin ([ab9fdcb](https://github.com/cwxyz007/halo-theme-sakura/commit/ab9fdcbbac3bc902fc40e591e78c1ee926558b1f))
+* update scroll progress bar ([9349f9b](https://github.com/cwxyz007/halo-theme-sakura/commit/9349f9b2a641bf90ee2e84af3ba30ed615a519c3))
 
 
 ### Performance Improvements
 
-* translate all page to vue3 ([1c4cbfa](https://github.com/cwxyz007/halo-theme-sakura/commit/1c4cbfaa89fd4f1ceefb308d2658e04631122e03))
+* only use cors in dev mode ([298d491](https://github.com/cwxyz007/halo-theme-sakura/commit/298d49107cd4a804ab945239e2b1e45b62bd0eef))
+* udpate nprogress config ([75a37df](https://github.com/cwxyz007/halo-theme-sakura/commit/75a37df818ccc79e15bd63ef2f2665633293041c))
+* update style ([89633ac](https://github.com/cwxyz007/halo-theme-sakura/commit/89633acd73414441a2a06d2704d7b63e91c2d6f5))
+* update style ([34a69a2](https://github.com/cwxyz007/halo-theme-sakura/commit/34a69a2c9e7726cc5083022af6a620a81f1fb804))
