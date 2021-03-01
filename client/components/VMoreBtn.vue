@@ -1,19 +1,32 @@
 <template>
   <div class="v-more-btn inline-block">
-    <div v-if="hasMore" class="inline-block">
+    <div
+      v-if="hasMore"
+      class="inline-block"
+    >
       <span
         class="bg-white border border-solid border-gray-200 shadow-md rounded-full inline-block cursor-pointer"
         @click="getMore"
       >
         <span v-if="isLoading">
-          <f-icon name="circle-notch" class="text-2xl px-6 py-2 animate-spin" />
+          <f-icon
+            name="circle-notch"
+            class="text-2xl px-6 py-2 animate-spin"
+          />
         </span>
         <v-link v-else>
-          <f-icon fas name="ellipsis-h" class="text-2xl px-6 py-2" />
+          <f-icon
+            fas
+            name="ellipsis-h"
+            class="text-2xl px-6 py-2"
+          />
         </v-link>
       </span>
     </div>
-    <div v-else class="empty text-gray-400">
+    <div
+      v-else
+      class="empty text-gray-400"
+    >
       <slot name="empty">
         {{ emptyText }}
       </slot>
@@ -28,13 +41,13 @@ export default defineComponent({
   props: {
     hasMore: {
       type: Boolean,
-      default: false,
+      default: false
     },
     emptyText: {
       type: String,
-      default: '没有更多了',
+      default: '没有更多了'
     },
-    moreAction: Function,
+    moreAction: Function
   },
   setup(props) {
     const isLoading = ref(false)
@@ -49,9 +62,9 @@ export default defineComponent({
         isLoading.value = true
         await props.moreAction?.()
         isLoading.value = false
-      },
+      }
     }
-  },
+  }
 })
 </script>
 

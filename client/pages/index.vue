@@ -1,6 +1,9 @@
 <template>
   <div class="halo-theme sakura">
-    <site-header :user="user" :menus="menus" />
+    <site-header
+      :user="user"
+      :menus="menus"
+    />
 
     <main-bg :user="user" />
     <div class="posts w-content a-fadeIn-top">
@@ -19,7 +22,10 @@
       />
     </div>
 
-    <site-footer class="mt-10" :user="user" />
+    <site-footer
+      class="mt-10"
+      :user="user"
+    />
   </div>
 </template>
 
@@ -35,7 +41,7 @@ export default defineComponent({
     await useUniversalFetch(to, async () => {
       const posts = await postsGet()
       return {
-        posts,
+        posts
       }
     })
 
@@ -44,7 +50,7 @@ export default defineComponent({
   setup() {
     const data = reactive({
       posts: {} as CustomizedPageOfPostListVO,
-      isLoadingPost: false,
+      isLoadingPost: false
     })
 
     const store = useStore()
@@ -58,7 +64,7 @@ export default defineComponent({
       async getNextPostList() {
         data.isLoadingPost = true
         const postData = await postsGet({
-          page: data.posts.page + 1,
+          page: data.posts.page + 1
         })
 
         data.isLoadingPost = false
@@ -68,9 +74,9 @@ export default defineComponent({
         postData.content = content
 
         data.posts = postData
-      },
+      }
     }
-  },
+  }
 })
 </script>
 

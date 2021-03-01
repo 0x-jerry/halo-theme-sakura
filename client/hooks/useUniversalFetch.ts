@@ -29,7 +29,7 @@ export async function useUniversalFetch(
 
   to.meta.state = {
     data,
-    __used: !isSSR,
+    __used: !isSSR
   }
 
   return data

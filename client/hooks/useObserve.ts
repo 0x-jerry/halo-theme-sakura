@@ -4,7 +4,7 @@ import { isSSR } from '../utils'
 let observer: IntersectionObserver | null = null
 
 export const globalUtils = {
-  observer,
+  observer
 }
 
 const elMap = new WeakMap<any, Function>()
@@ -63,7 +63,7 @@ function initObserver() {
     {
       root: null,
       rootMargin: '0px',
-      threshold: buildThresholdList(),
+      threshold: buildThresholdList()
     }
   )
 }

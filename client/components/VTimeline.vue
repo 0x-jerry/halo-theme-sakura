@@ -1,8 +1,15 @@
 <template>
   <div class="timeline p-5">
-    <ul v-for="(node, i) in nodes" :key="i" class="big-node pl-2">
+    <ul
+      v-for="(node, i) in nodes"
+      :key="i"
+      class="big-node pl-2"
+    >
       <div class="relative flex items-center node-title">
-        <f-icon name="archive" class="big-node-icon node-icon" />
+        <f-icon
+          name="archive"
+          class="big-node-icon node-icon"
+        />
         <span class="node-text text-xl">
           {{ node.title }}
         </span>
@@ -14,7 +21,10 @@
           class="sub-node node-icon my-4"
         >
           <div class="relative flex items-center node-title">
-            <f-icon name="dot-circle" class="sub-node-icon" />
+            <f-icon
+              name="dot-circle"
+              class="sub-node-icon"
+            />
             <div class="node-text w-full">
               <slot :node="o">
                 {{ o.title }}
@@ -39,9 +49,9 @@ export default defineComponent({
   props: {
     nodes: {
       type: Array as PropType<IPropNode[]>,
-      default: () => [],
-    },
-  },
+      default: () => []
+    }
+  }
 })
 </script>
 

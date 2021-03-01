@@ -3,10 +3,18 @@
     <div
       class="bg-fixed bg-cover bg-center flex items-center justify-center h-screen"
     >
-      <random-image class="absolute z-0" random-id="main" />
-      <div class="bg-grid absolute z-10 w-full h-full"></div>
+      <random-image
+        class="absolute z-0"
+        random-id="main"
+      />
+      <div class="bg-grid absolute z-10 w-full h-full" />
       <div class="block relative z-20">
-        <h1 class="text-center glitch" data-text="Hi, Friend">Hi, Friend</h1>
+        <h1
+          class="text-center glitch"
+          data-text="Hi, Friend"
+        >
+          Hi, Friend
+        </h1>
         <p
           class="desc bg-black bg-opacity-25 rounded-3xl text-white text-center py-5"
         >
@@ -17,7 +25,11 @@
         class="arrow-animation transform absolute z-20 bottom-10 animate-bounce cursor-pointer w-full text-center"
       >
         <span @click="scrollOnePage">
-          <f-icon fas name="chevron-down" class="text-white text-6xl" />
+          <f-icon
+            fas
+            name="chevron-down"
+            class="text-white text-6xl"
+          />
         </span>
       </div>
     </div>
@@ -34,16 +46,16 @@ export default defineComponent({
   props: {
     user: {
       type: Object as PropType<UserDTO>,
-      required: true,
-    },
+      required: true
+    }
   },
   setup() {
     return {
       scrollOnePage() {
         window.scrollTo(0, window.innerHeight)
-      },
+      }
     }
-  },
+  }
 })
 </script>
 

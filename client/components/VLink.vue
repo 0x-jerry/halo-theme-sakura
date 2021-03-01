@@ -16,8 +16,8 @@ export default defineComponent({
   props: {
     href: String,
     open: Boolean,
-    content: String,
-  },
+    content: String
+  }
 })
 </script>
 

@@ -1,8 +1,14 @@
 <template>
   <div class="halo-theme sakura">
-    <site-header :user="user" :menus="menus" />
+    <site-header
+      :user="user"
+      :menus="menus"
+    />
 
-    <div class="a-fadeIn-bottom" style="height: 400px">
+    <div
+      class="a-fadeIn-bottom"
+      style="height: 400px"
+    >
       <random-image :random-id="$route.path" />
     </div>
 
@@ -22,7 +28,10 @@
       />
     </div>
 
-    <site-footer class="mt-10" :user="user" />
+    <site-footer
+      class="mt-10"
+      :user="user"
+    />
   </div>
 </template>
 
@@ -50,7 +59,7 @@ export default defineComponent({
     const menus = computed(() => store.state.menus)
 
     const data = reactive({
-      posts: (useUniversalFetchData() || {}) as CustomizedPageOfPostListVO,
+      posts: (useUniversalFetchData() || {}) as CustomizedPageOfPostListVO
     })
 
     const isLoadingPost = ref(false)
@@ -66,7 +75,7 @@ export default defineComponent({
         isLoadingPost.value = true
         const postData = await categoriesSlugPostsGet({
           slug: route.params.slug as string,
-          page: data.posts.page + 1,
+          page: data.posts.page + 1
         })
         isLoadingPost.value = false
 
@@ -75,9 +84,9 @@ export default defineComponent({
         postData.content = content
 
         data.posts = postData
-      },
+      }
     }
-  },
+  }
 })
 </script>
 

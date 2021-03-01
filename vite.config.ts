@@ -11,24 +11,24 @@ import { I18nPlugin } from './vite/i18n.plugin'
 export default defineConfig({
   resolve: {
     alias: {
-      '~/': `${path.resolve(__dirname, 'client')}/`,
-    },
+      '~/': `${path.resolve(__dirname, 'client')}/`
+    }
   },
   plugins: [
     Vue(),
     ViteSSR(),
     // https://github.com/antfu/vite-plugin-components#configuration
     ViteComponents({
-      dirs: 'client/components',
+      dirs: 'client/components'
     }),
     WindiCSS({
       scan: {
-        dirs: ['client'],
-      },
+        dirs: ['client']
+      }
     }),
     voie({
-      pagesDir: 'client/pages',
+      pagesDir: 'client/pages'
     }),
-    I18nPlugin(path.join(__dirname, 'client/locales')),
-  ],
+    I18nPlugin(path.join(__dirname, 'client/locales'))
+  ]
 })

@@ -1,12 +1,15 @@
 <template>
-  <div class="markdown-content markdown-body" v-html="html"></div>
+  <div
+    class="markdown-content markdown-body"
+    v-html="html"
+  />
 </template>
 
 <script lang="ts">
 export default {
   props: {
-    html: String,
-  },
+    html: String
+  }
 }
 </script>
 

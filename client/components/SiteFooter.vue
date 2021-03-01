@@ -1,5 +1,8 @@
 <template>
-  <footer class="site-footer pb-10 a-fadeIn-top" role="contentinfo">
+  <footer
+    class="site-footer pb-10 a-fadeIn-top"
+    role="contentinfo"
+  >
     <div class="site-info">
       <div class="flex justify-center">
         <p
@@ -7,13 +10,20 @@
           :style="{
             backgroundImage: `url('https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/sakura.svg')`,
           }"
-        ></p>
+        />
       </div>
       <div class="text-center text-gray-400 text-sm">
-        <p class="mt-2" style="font-family: 'Ubuntu', sans-serif">
+        <p
+          class="mt-2"
+          style="font-family: 'Ubuntu', sans-serif"
+        >
           <span>
             Powered
-            <f-icon fab name="vimeo-v" class="text-red-500" />
+            <f-icon
+              fab
+              name="vimeo-v"
+              class="text-red-500"
+            />
             by
             <v-link
               open
@@ -25,12 +35,21 @@
           •
           <span>
             Crafted with
-            <f-icon name="heart" class="text-red-500" />
+            <f-icon
+              name="heart"
+              class="text-red-500"
+            />
             by
-            <v-link open href="https://github.com/cwxyz007" content="Gem Xli" />
+            <v-link
+              open
+              href="https://github.com/cwxyz007"
+              content="Gem Xli"
+            />
           </span>
         </p>
-        <p class="mt-2">© {{ year }} {{ user.nickname }}</p>
+        <p class="mt-2">
+          © {{ year }} {{ user.nickname }}
+        </p>
       </div>
     </div>
   </footer>
@@ -45,14 +64,14 @@ export default defineComponent({
   props: {
     user: {
       required: true,
-      type: Object as PropType<UserDTO>,
-    },
+      type: Object as PropType<UserDTO>
+    }
   },
   setup() {
     return {
-      year: dayjs().year(),
+      year: dayjs().year()
     }
-  },
+  }
 })
 </script>
 

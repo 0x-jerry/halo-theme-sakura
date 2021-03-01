@@ -3,13 +3,13 @@ import Router from '@koa/router'
 import LRU from 'lru-cache'
 
 export const apiRouter = new Router({
-  prefix: '/capi',
+  prefix: '/capi'
 })
 
 const imageCache = new LRU({
   // 1 h
   maxAge: 1000 * 60 * 60,
-  max: 100,
+  max: 100
 })
 
 apiRouter.get('/image/random', async (ctx) => {

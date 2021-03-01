@@ -4,7 +4,7 @@
     :class="{ active: stickHeader }"
   >
     <div class="left w-60">
-      <span class="site-logo"> </span>
+      <span class="site-logo" />
     </div>
     <div class="center flex-1 flex justify-center text-gray-500 a-fadeIn-left">
       <v-link
@@ -19,7 +19,11 @@
     </div>
     <div class="right flex justify-end w-60">
       <span class="site-avatar">
-        <img class="w-full h-full" :src="user.avatar" alt="" />
+        <img
+          class="w-full h-full"
+          :src="user.avatar"
+          alt=""
+        >
       </span>
     </div>
   </header>
@@ -35,12 +39,12 @@ export default defineComponent({
   props: {
     user: {
       type: Object as PropType<UserDTO>,
-      required: true,
+      required: true
     },
     menus: {
       type: Array as PropType<Array<MenuDTO>>,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
   setup(props) {
     const vMenus = computed(() =>
@@ -51,7 +55,7 @@ export default defineComponent({
 
         return {
           ...menu,
-          url,
+          url
         }
       })
     )
@@ -85,9 +89,9 @@ export default defineComponent({
       },
       isActive(o: MenuDTO) {
         return route.fullPath === o.url
-      },
+      }
     }
-  },
+  }
 })
 </script>
 

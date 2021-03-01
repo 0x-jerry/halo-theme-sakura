@@ -9,7 +9,10 @@
     >
       <div class="content py-5 px-3">
         <div class="reverse flex">
-          <v-icon class="mx-2" name="time" />
+          <v-icon
+            class="mx-2"
+            name="time"
+          />
           {{ meta.createTime }}
         </div>
         <div class="flex reverse mt-3">
@@ -20,11 +23,17 @@
           />
         </div>
         <div class="flex reverse mt-3 items-center">
-          <v-icon class="mx-2" name="attention" />
+          <v-icon
+            class="mx-2"
+            name="attention"
+          />
           <span class="mx-2">
             {{ post.visits }}
           </span>
-          <v-icon class="mx-2" name="mark" />
+          <v-icon
+            class="mx-2"
+            name="mark"
+          />
           <span class="mx-2">
             {{ post.commentCount }}
           </span>
@@ -34,7 +43,10 @@
         </p>
         <div class="flex reverse mt-3">
           <div @click="gotoPost">
-            <v-icon name="caidan" class="mx-2 text-3xl clickable" />
+            <v-icon
+              name="caidan"
+              class="mx-2 text-3xl clickable"
+            />
           </div>
         </div>
       </div>
@@ -42,7 +54,11 @@
         class="thumb overflow-hidden border-gray-200 cursor-pointer"
         @click="gotoPost"
       >
-        <random-image :src="post.thumbnail" :random-id="post.id" class="img" />
+        <random-image
+          :src="post.thumbnail"
+          :random-id="post.id"
+          class="img"
+        />
       </div>
     </article>
   </div>
@@ -61,12 +77,12 @@ export default defineComponent({
   props: {
     post: {
       type: Object as PropType<PostDetailVO>,
-      required: true,
+      required: true
     },
     flip: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   setup(prop, ctx) {
     const root = ref<any>(null)
@@ -82,16 +98,16 @@ export default defineComponent({
       dayjs,
       meta: computed(() => {
         return {
-          createTime: dayjs(prop.post.createTime).format('YYYY-MM-DD'),
+          createTime: dayjs(prop.post.createTime).format('YYYY-MM-DD')
         }
       }),
       gotoPost() {
         const id = prop.post.id
 
         router.push(`/post?id=${id}`)
-      },
+      }
     }
-  },
+  }
 })
 </script>
 

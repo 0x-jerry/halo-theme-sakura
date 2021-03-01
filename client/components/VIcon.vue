@@ -1,5 +1,8 @@
 <template>
-  <i class="iconfont" :class="`icon-${name}`"></i>
+  <i
+    class="iconfont"
+    :class="`icon-${name}`"
+  />
 </template>
 
 <script lang="ts">
@@ -9,9 +12,9 @@ export default defineComponent({
   props: {
     name: {
       type: String,
-      required: true,
-    },
-  },
+      required: true
+    }
+  }
 })
 </script>
 

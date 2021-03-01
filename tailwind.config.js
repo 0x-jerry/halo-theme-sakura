@@ -6,9 +6,9 @@ module.exports = defineConfig({
     extend: {
       colors: {
         teal: {
-          100: '#096',
-        },
-      },
-    },
-  },
+          100: '#096'
+        }
+      }
+    }
+  }
 })

@@ -1,6 +1,9 @@
 <template>
   <div class="post-content">
-    <site-header :user="user" :menus="menus" />
+    <site-header
+      :user="user"
+      :menus="menus"
+    />
 
     <div class="thumb overflow-hidden relative a-fadeIn-bottom">
       <random-image
@@ -10,10 +13,13 @@
     </div>
 
     <div class="w-content a-fadeIn-top">
-      <p class="test"></p>
+      <p class="test" />
     </div>
 
-    <site-footer class="mt-10" :user="user" />
+    <site-footer
+      class="mt-10"
+      :user="user"
+    />
   </div>
 </template>
 
@@ -27,9 +33,9 @@ export default defineComponent({
 
     return {
       user: computed(() => store.state.user),
-      menus: computed(() => store.state.menus),
+      menus: computed(() => store.state.menus)
     }
-  },
+  }
 })
 </script>
 

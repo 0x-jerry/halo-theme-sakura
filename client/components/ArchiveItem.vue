@@ -5,21 +5,31 @@
         {{ post.title }}
       </span>
       <div class="flex flex-1 justify-end items-center">
-        <f-icon far class="mx-2" name="clock" />
+        <f-icon
+          far
+          class="mx-2"
+          name="clock"
+        />
         <span class="mx-2">
           {{ dateToString(post.createTime) }}
         </span>
-        <v-icon class="mx-2" name="attention" />
+        <v-icon
+          class="mx-2"
+          name="attention"
+        />
         <span class="mx-2">
           {{ post.visits }}
         </span>
-        <v-icon class="mx-2" name="mark" />
+        <v-icon
+          class="mx-2"
+          name="mark"
+        />
         <span class="mx-2">
           {{ post.commentCount }}
         </span>
       </div>
     </div>
-    <div class="p-1"></div>
+    <div class="p-1" />
     <div class="tags flex">
       <div class="flex">
         <v-category
@@ -30,7 +40,12 @@
         />
       </div>
       <div class="flex flex-1 justify-end">
-        <v-tag v-for="tag in post.tags" :key="tag.id" :tag="tag" class="mr-2" />
+        <v-tag
+          v-for="tag in post.tags"
+          :key="tag.id"
+          :tag="tag"
+          class="mr-2"
+        />
       </div>
     </div>
   </div>
@@ -45,16 +60,16 @@ export default defineComponent({
   props: {
     post: {
       type: Object as PropType<PostDetailVO>,
-      required: true,
-    },
+      required: true
+    }
   },
   setup() {
     return {
       dateToString(date: number | string, format = 'MM-DD') {
         return dayjs(date).format(format)
-      },
+      }
     }
-  },
+  }
 })
 </script>
 

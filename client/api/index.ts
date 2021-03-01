@@ -10,15 +10,15 @@ export * from './contentApi'
 export const target = globalConfigs.isDev
   ? 'http://localhost:9555'
   : isSSR
-  ? 'http://localhost:9556'
-  : ''
+    ? 'http://localhost:9556'
+    : ''
 
 export const axiosInstance = axios.create({
-  baseURL: target,
+  baseURL: target
 })
 
 initConfig({
-  target,
+  target
 })
 
 // fix typedef

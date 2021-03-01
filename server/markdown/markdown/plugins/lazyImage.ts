@@ -12,7 +12,7 @@ export const lazyImagePlugin = (md: MarkdownIt) => {
 
 function parseTokens(tokens: Token[]) {
   tokens.forEach((token, idx, arr) => {
-    if (token.tag == 'img') {
+    if (token.tag === 'img') {
       token.attrSet('loading', 'lazy')
     }
 

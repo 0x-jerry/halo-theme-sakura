@@ -9,7 +9,7 @@ export function NProgressPlugin(router: Router) {
 
   NProgress.configure({
     showSpinner: false,
-    trickleSpeed: 50,
+    trickleSpeed: 50
   })
 
   router.beforeEach((to, from, next) => {

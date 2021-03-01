@@ -13,7 +13,7 @@ const url = new URL(haloTarget)
 const proxyConf = {
   target: url.toString(),
   https: url.protocol === 'https:',
-  accessKey: haloAccessKey,
+  accessKey: haloAccessKey
 }
 
 function main() {
@@ -21,7 +21,7 @@ function main() {
 
   const haloProxy = createHaloProxy({
     target: proxyConf.target,
-    accessKey: proxyConf.accessKey,
+    accessKey: proxyConf.accessKey
   })
 
   const haloApi = createHaloApi()
@@ -30,13 +30,13 @@ function main() {
   const haloAdminProxy = proxy(haloUrl.hostname, {
     https: haloUrl.protocol === 'https:',
     preserveReqSession: true,
-    port: +haloUrl.port || undefined,
+    port: +haloUrl.port || undefined
   })
 
   if (isDev) {
     app.use(
       cors({
-        origin: '*',
+        origin: '*'
       })
     )
   }
@@ -61,7 +61,7 @@ function main() {
         '/upload',
         '/rss.xml',
         '/sitemap.xml',
-        '/sitemap.html',
+        '/sitemap.html'
       ]
 
       if (/^\/admin(\/)?$/.test(reqPath)) {
@@ -123,7 +123,7 @@ function serveViteBuild(dist: string): Middleware {
 
     const { html } = await renderPage(url, {
       manifest,
-      preload: true,
+      preload: true
     })
 
     res.end(html)
@@ -135,7 +135,7 @@ function createHaloProxy(opt: {
   accessKey: string
 }): Middleware {
   const instance = axios.create({
-    baseURL: opt.target,
+    baseURL: opt.target
   })
 
   instance.interceptors.request.use((conf) => {
@@ -154,7 +154,7 @@ function createHaloProxy(opt: {
       method: req.method as any,
       url: ctx.path,
       params: ctx.query,
-      data: ctx.body,
+      data: ctx.body
     })
 
     ctx.body = res.data

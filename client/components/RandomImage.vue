@@ -10,7 +10,7 @@
       class="img object-cover hidden w-full h-full object-center"
       :class="{ block: !data.loading, visible: data.visible }"
       @load="loaded"
-    />
+    >
   </div>
 </template>
 
@@ -47,7 +47,7 @@ async function getImageUrl(id: string, src?: string) {
 async function imageApi(id: string) {
   try {
     const { data } = await axiosInstance.get('/capi/image/random', {
-      params: { id },
+      params: { id }
     })
 
     return data.imgurl
@@ -63,16 +63,16 @@ export default defineComponent({
       type: [Number, String],
       default: () => {
         return ~~(Math.random() * 10)
-      },
+      }
     },
     // 640 960 1280 1440
-    size: String,
+    size: String
   },
   setup(props) {
     const data = reactive({
       visible: false,
       imgUrl: '',
-      loading: true,
+      loading: true
     })
 
     const root = ref<any>(null)
@@ -89,9 +89,9 @@ export default defineComponent({
     return {
       data,
       root,
-      loaded: () => (data.loading = false),
+      loaded: () => (data.loading = false)
     }
-  },
+  }
 })
 </script>
 

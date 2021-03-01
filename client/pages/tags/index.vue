@@ -1,14 +1,26 @@
 <template>
   <div class="halo-theme sakura">
-    <site-header :user="user" :menus="menus" />
+    <site-header
+      :user="user"
+      :menus="menus"
+    />
 
-    <div class="a-fadeIn-bottom" style="height: 400px">
+    <div
+      class="a-fadeIn-bottom"
+      style="height: 400px"
+    >
       <random-image :random-id="$route.path" />
     </div>
 
-    <div class="w-content text-center a-fadeIn-top" style="min-height: 400px">
+    <div
+      class="w-content text-center a-fadeIn-top"
+      style="min-height: 400px"
+    >
       <div class="title text-center my-10 text-3xl">
-        <v-icon name="tags" class="text-3xl" />
+        <v-icon
+          name="tags"
+          class="text-3xl"
+        />
         标签
       </div>
 
@@ -33,7 +45,10 @@
       </div>
     </div>
 
-    <site-footer class="mt-10" :user="user" />
+    <site-footer
+      class="mt-10"
+      :user="user"
+    />
   </div>
 </template>
 
@@ -60,7 +75,7 @@ export default defineComponent({
 
       return tags.map((tag) => ({
         tag,
-        percent: (tag.postCount / maxCount) * range + (1 - range),
+        percent: (tag.postCount / maxCount) * range + (1 - range)
       }))
     })
 
@@ -72,9 +87,9 @@ export default defineComponent({
       tagsSize,
       gotoTag(tag: TagDTO) {
         router.push(`/tags/${tag.slug}`)
-      },
+      }
     }
-  },
+  }
 })
 </script>
 

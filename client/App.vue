@@ -14,9 +14,9 @@ export default defineComponent({
     const store = useStore()
 
     return {
-      store: store.state,
+      store: store.state
     }
-  },
+  }
 })
 </script>
 

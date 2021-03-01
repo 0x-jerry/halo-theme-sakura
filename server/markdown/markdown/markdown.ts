@@ -55,7 +55,7 @@ export const createMarkdownRenderer = (
     html: true,
     linkify: true,
     highlight,
-    ...options,
+    ...options
   })
 
   // custom plugins
@@ -70,7 +70,7 @@ export const createMarkdownRenderer = (
     .use(linkPlugin, {
       target: '_blank',
       rel: 'noopener noreferrer',
-      ...options.externalLinks,
+      ...options.externalLinks
     })
 
     // 3rd party plugins
@@ -81,13 +81,13 @@ export const createMarkdownRenderer = (
       permalinkBefore: true,
       permalinkSymbol: '#',
       permalinkAttrs: () => ({ 'aria-hidden': true }),
-      ...options.anchor,
+      ...options.anchor
     })
     .use(toc, {
       slugify,
       includeLevel: [2, 3],
       format: parseHeader,
-      ...options.toc,
+      ...options.toc
     })
 
   // apply user config
@@ -106,7 +106,7 @@ export const createMarkdownRenderer = (
     const html = render.call(md, src)
     return {
       html,
-      data: (md as any).__data,
+      data: (md as any).__data
     }
   }
   ;(md as any).render = wrappedRender

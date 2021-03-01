@@ -19,7 +19,7 @@ const HTML_SEQUENCES: [RegExp, RegExp, boolean][] = [
   // PascalCase Components
   [/^<[A-Z]/, />/, true],
   // custom elements with hyphens
-  [/^<\w+\-/, />/, true],
+  [/^<\w+-/, />/, true],
   [
     new RegExp('^</?(' + blockNames.join('|') + ')(?=(\\s|/?>|$))', 'i'),
     /^$/,

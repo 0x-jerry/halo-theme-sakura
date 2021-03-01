@@ -1,5 +1,5 @@
 <template>
-  <i :class="[klass, `fa-${name}`]"></i>
+  <i :class="[klass, `fa-${name}`]" />
 </template>
 
 <script lang="ts">
@@ -13,9 +13,9 @@ export default defineComponent({
         const keys = ['fas', 'fad', 'far', 'fab'] as const
 
         return keys.filter((c) => props[c] !== undefined).join(' ') || 'fa'
-      }),
+      })
     }
-  },
+  }
 })
 </script>
 

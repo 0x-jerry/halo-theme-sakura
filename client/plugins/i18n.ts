@@ -10,6 +10,6 @@ export const i18nPlugin: Plugin = (app) => {
 
 function def(obj: any, prop: string, getter: () => any) {
   Object.defineProperty(obj, prop, {
-    get: getter,
+    get: getter
   })
 }

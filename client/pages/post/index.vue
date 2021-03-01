@@ -1,6 +1,9 @@
 <template>
   <div class="post-content">
-    <site-header :user="user" :menus="menus" />
+    <site-header
+      :user="user"
+      :menus="menus"
+    />
 
     <div class="thumb overflow-hidden relative a-fadeIn-bottom">
       <random-image
@@ -14,17 +17,33 @@
       <div class="title text-center text-3xl font-bold pt-10 pb-5">
         {{ post.title }}
       </div>
-      <div class="desc text-gray-400">{{ info.createTime }}</div>
-      <hr class="w-1/3 m-auto bg-gray-100 my-2" style="height: 1px" />
+      <div class="desc text-gray-400">
+        {{ info.createTime }}
+      </div>
+      <hr
+        class="w-1/3 m-auto bg-gray-100 my-2"
+        style="height: 1px"
+      >
 
-      <markdown :html="post.formatContent" class="py-5" />
+      <markdown
+        :html="post.formatContent"
+        class="py-5"
+      />
 
       <div class="tags py-20">
-        <v-tag v-for="tag in post.tags" :key="tag.id" :tag="tag" class="mr-2" />
+        <v-tag
+          v-for="tag in post.tags"
+          :key="tag.id"
+          :tag="tag"
+          class="mr-2"
+        />
       </div>
     </div>
 
-    <site-footer class="mt-10" :user="user" />
+    <site-footer
+      class="mt-10"
+      :user="user"
+    />
   </div>
 </template>
 
@@ -64,7 +83,7 @@ export default defineComponent({
 
     const info = computed(() => {
       return {
-        createTime: dayjs(post.value.createTime).format('YYYY-MM-DD'),
+        createTime: dayjs(post.value.createTime).format('YYYY-MM-DD')
       }
     })
 
@@ -72,9 +91,9 @@ export default defineComponent({
       user,
       menus,
       post,
-      info,
+      info
     }
-  },
+  }
 })
 </script>
 

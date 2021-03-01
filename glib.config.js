@@ -4,7 +4,7 @@ module.exports = defineConfig({
   release: {
     steps: {
       build: false,
-      test: false,
-    },
-  },
+      test: false
+    }
+  }
 })

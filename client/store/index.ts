@@ -1,7 +1,7 @@
 import {
   StoreOptions,
   createStore as createStoreRaw,
-  useStore as useStoreRaw,
+  useStore as useStoreRaw
 } from 'vuex'
 
 import {
@@ -19,7 +19,7 @@ import {
   TagDTOMore,
   tagsGet,
   UserDTO,
-  usersProfileGet,
+  usersProfileGet
 } from '../api'
 
 export interface ISiteState {
@@ -39,7 +39,7 @@ export const createState: () => StoreOptions<ISiteState> = () => {
       tags: [],
       categories: [],
       archives: undefined,
-      postsMap: {},
+      postsMap: {}
     },
     mutations: {
       setMenus(state, menus) {
@@ -60,7 +60,7 @@ export const createState: () => StoreOptions<ISiteState> = () => {
       setPost(state, post: PostDetailVO) {
         state.postsMap[post.id] = post
         state.postsMap[post.slug] = post
-      },
+      }
     },
     actions: {
       async serverInit({ commit }) {
@@ -68,7 +68,7 @@ export const createState: () => StoreOptions<ISiteState> = () => {
           menusGet({}),
           usersProfileGet(),
           tagsGet({ more: true }),
-          categoriesGet({ more: true }),
+          categoriesGet({ more: true })
         ])
 
         menus.sort((a, b) => a.priority - b.priority)
@@ -109,8 +109,8 @@ export const createState: () => StoreOptions<ISiteState> = () => {
         }
 
         commit('setPost', post)
-      },
-    },
+      }
+    }
   }
 }
 

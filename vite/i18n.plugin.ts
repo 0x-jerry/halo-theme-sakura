@@ -23,7 +23,7 @@ export function I18nPlugin(i18nDir: string): Plugin {
       ctx.server.ws.send({
         type: 'custom',
         event: hotUpdateId,
-        data,
+        data
       })
     },
     async load(id) {
@@ -34,9 +34,9 @@ export function I18nPlugin(i18nDir: string): Plugin {
       const code = await generateCode(i18nDir)
 
       return {
-        code,
+        code
       }
-    },
+    }
   }
 }
 
@@ -77,7 +77,7 @@ async function getMessage(file: string) {
 
   return {
     lang,
-    message: msg,
+    message: msg
   }
 }
 

@@ -6,10 +6,20 @@
     @click="gotoTop"
   >
     <v-link class="text-gray-500">
-      <f-icon name="angle-up" class="scroll-icon" />
+      <f-icon
+        name="angle-up"
+        class="scroll-icon"
+      />
     </v-link>
-    <svg class="bg-ring" :width="style.cx * 2" :height="style.cy * 2">
-      <circle class="bg-ring__circle" :style="style" />
+    <svg
+      class="bg-ring"
+      :width="style.cx * 2"
+      :height="style.cy * 2"
+    >
+      <circle
+        class="bg-ring__circle"
+        :style="style"
+      />
     </svg>
   </div>
 </template>
@@ -50,7 +60,7 @@ export default defineComponent({
         strokeDasharray: `${circumference} ${circumference}`,
         r: r,
         cx: r,
-        cy: r,
+        cy: r
       }
     })
 
@@ -59,9 +69,9 @@ export default defineComponent({
       gotoTop() {
         window.scrollTo(0, 0)
       },
-      style,
+      style
     }
-  },
+  }
 })
 </script>
 

@@ -39,7 +39,7 @@ export const highlightLinePlugin = (md: MarkdownIt) => {
           return lineNumber === start
         })
         if (inRange) {
-          return `<div class="highlighted">&nbsp;</div>`
+          return '<div class="highlighted">&nbsp;</div>'
         }
         return '<br>'
       })

@@ -10,7 +10,7 @@ export const containerPlugin = (md: MarkdownIt) => {
     // explicitly escape Vue syntax
     .use(container, 'v-pre', {
       render: (tokens: Token[], idx: number) =>
-        tokens[idx].nesting === 1 ? `<div v-pre>\n` : `</div>\n`
+        tokens[idx].nesting === 1 ? '<div v-pre>\n' : '</div>\n'
     })
 }
 
@@ -35,7 +35,7 @@ function createContainer(klass: string, defaultTitle: string): ContainerArgs {
             info || defaultTitle
           }</p>\n`
         } else {
-          return `</div>\n`
+          return '</div>\n'
         }
       }
     }

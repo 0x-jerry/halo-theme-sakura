@@ -5,12 +5,12 @@ import { createMarkdownRenderer } from './markdown'
 const mdCache = new LRU({
   // 24 h
   maxAge: 1000 * 60 * 60 * 24,
-  max: 100,
+  max: 100
 })
 
 export function createHaloApi(): Middleware {
   const md = createMarkdownRenderer('/', {
-    lineNumbers: true,
+    lineNumbers: true
   })
 
   return (ctx) => {

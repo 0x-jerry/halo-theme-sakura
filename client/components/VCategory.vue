@@ -1,5 +1,8 @@
 <template>
-  <span class="tag text-gray-400" @click.stop="clickTag">
+  <span
+    class="tag text-gray-400"
+    @click.stop="clickTag"
+  >
     <v-link>
       <v-icon name="file" />
       <span>{{ category.name }}</span>
@@ -16,8 +19,8 @@ export default defineComponent({
   props: {
     category: {
       required: true,
-      type: Object as PropType<CategoryDTO>,
-    },
+      type: Object as PropType<CategoryDTO>
+    }
   },
   setup(props) {
     const router = useRouter()
@@ -25,9 +28,9 @@ export default defineComponent({
     return {
       clickTag() {
         router.push(`/categories/${props.category.slug}`)
-      },
+      }
     }
-  },
+  }
 })
 </script>
 

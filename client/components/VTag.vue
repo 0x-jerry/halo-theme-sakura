@@ -1,5 +1,8 @@
 <template>
-  <span class="tag text-gray-400" @click.stop="clickTag">
+  <span
+    class="tag text-gray-400"
+    @click.stop="clickTag"
+  >
     <v-link>
       <v-icon name="tags" />
       <span>{{ tag.name }}</span>
@@ -16,8 +19,8 @@ export default defineComponent({
   props: {
     tag: {
       required: true,
-      type: Object as PropType<TagDTO>,
-    },
+      type: Object as PropType<TagDTO>
+    }
   },
   setup(props) {
     const router = useRouter()
@@ -25,9 +28,9 @@ export default defineComponent({
     return {
       clickTag() {
         router.push(`/tags/${props.tag.slug}`)
-      },
+      }
     }
-  },
+  }
 })
 </script>
 
