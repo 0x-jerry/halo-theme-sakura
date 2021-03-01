@@ -2,13 +2,15 @@ import 'windi.css'
 import './style/app.css'
 import viteSSR from 'vite-ssr'
 import routes from 'voie-pages'
-import { i18n } from 'vite-i18n-plugin'
-// import { useI18n } from 'vue-i18n'
 import { createStore } from './store'
 import { isSSR } from './utils'
-import App from './App.vue' // Vue or React main app
 import { Router } from 'vue-router'
-import { NProgressPlugin } from './plugins'
+import App from './App.vue'
+/**
+ * virtual module, implement at {@link '../vite/i18n.plugin.ts'}
+ */
+import { i18n } from 'vite-i18n-plugin'
+import { NProgressPlugin, i18nPlugin } from './plugins'
 
 export default viteSSR(
   App,
@@ -20,6 +22,8 @@ export default viteSSR(
 
     const store = createStore()
     app.use(store)
+
+    app.use(i18nPlugin)
 
     const r: Router = router
 
