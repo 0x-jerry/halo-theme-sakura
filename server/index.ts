@@ -6,7 +6,9 @@ import { haloAccessKey, haloTarget, isDev } from './config'
 import { createHaloApi } from './halo-api'
 import { router } from './router'
 import path from 'path'
-import serve from 'koa-static'
+import fs from 'fs'
+import c2k from 'koa-connect'
+import { serveViteBuild, serveViteDev } from './vite'
 
 const url = new URL(haloTarget)
 
@@ -16,7 +18,7 @@ const proxyConf = {
   accessKey: haloAccessKey
 }
 
-function main() {
+async function main() {
   const app = new Koa()
 
   const haloProxy = createHaloProxy({
@@ -81,7 +83,20 @@ function main() {
       }
     })
 
-  if (!isDev) {
+  if (isDev) {
+    const root = process.cwd()
+    const vite = await (await import('vite')).createServer({
+      root,
+      logLevel: 'info',
+      server: {
+        middlewareMode: true
+      }
+    })
+
+    // use vite's connect instance as middleware
+    app.use(c2k(vite.middlewares))
+    app.use(serveViteDev(vite))
+  } else {
     app.use(serveViteBuild(path.join(__dirname, 'client')))
   }
 
@@ -95,40 +110,6 @@ function main() {
 }
 
 main()
-
-function serveViteBuild(dist: string): Middleware {
-  // This contains a list of static routes (assets)
-  const { ssr } = require(`${dist}/server/package.json`)
-
-  // The manifest is required for preloading assets
-  const manifest = require(`${dist}/client/ssr-manifest.json`)
-
-  // This is the server renderer we just built
-  const { default: renderPage } = require(`${dist}/server/main.js`)
-
-  const serveStatic = serve(path.join(dist, 'client'))
-
-  return async (ctx, next) => {
-    const { request, res } = ctx
-
-    // Serve every static asset route
-    for (const asset of ssr.assets || []) {
-      if (request.path.startsWith('/' + asset)) {
-        await serveStatic(ctx, next)
-        return
-      }
-    }
-
-    const url = request.url
-
-    const { html } = await renderPage(url, {
-      manifest,
-      preload: true
-    })
-
-    res.end(html)
-  }
-}
 
 function createHaloProxy(opt: {
   target: string

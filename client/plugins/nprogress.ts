@@ -12,7 +12,9 @@ export function NProgressPlugin(router: Router) {
     trickleSpeed: 50
   })
 
-  router.beforeEach(() => NProgress.start())
+  router.beforeEach(() => {
+    NProgress.start()
+  })
 
   router.afterEach((to, from) => {
     if (from === router.currentRoute.value) {

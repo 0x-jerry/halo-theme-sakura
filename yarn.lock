@@ -2605,6 +2605,11 @@ koa-compose@^4.1.0:
   resolved "https://registry.npm.taobao.org/koa-compose/download/koa-compose-4.1.0.tgz"
   integrity sha1-UHMGuTcZAdtBEhyBLpI9DWfT6Hc=
 
+koa-connect@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npm.taobao.org/koa-connect/download/koa-connect-2.1.0.tgz#16bce0a917c4cb24233aaac83fbc5b83804b4a1c"
+  integrity sha1-FrzgqRfEyyQjOqrIP7xbg4BLShw=
+
 koa-convert@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npm.taobao.org/koa-convert/download/koa-convert-1.2.0.tgz"
