@@ -1,15 +1,16 @@
 <template>
   <div class="halo-theme sakura">
-    <site-header
-      :user="user"
-      :menus="menus"
-    />
+    <site-header :user="user" :menus="menus" />
 
-    <div
-      class="a-fadeIn-bottom"
-      style="height: 400px"
-    >
+    <div class="a-fadeIn-bottom" style="height: 400px">
       <random-image :random-id="$route.path" />
+    </div>
+
+    <div>
+      <div class="title text-center my-10 text-3xl">
+        <v-icon name="tags" class="text-3xl" />
+        {{ currentTag?.name }}
+      </div>
     </div>
 
     <div class="posts w-content a-fadeIn-top">
@@ -28,10 +29,7 @@
       />
     </div>
 
-    <site-footer
-      class="mt-10"
-      :user="user"
-    />
+    <site-footer class="mt-10" :user="user" />
   </div>
 </template>
 
@@ -66,6 +64,9 @@ export default defineComponent({
     const route = useRoute()
 
     return {
+      currentTag: computed(() =>
+        store.state.tags.find((t) => t.slug === route.params.slug)
+      ),
       data,
       isLoadingPost,
       user,

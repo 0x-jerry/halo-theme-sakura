@@ -23,6 +23,7 @@
     "space-before-function-paren": "off",
     "no-unused-vars": "warn",
 
-    "vue/html-self-closing": "off"
+    "vue/html-self-closing": "off",
+    "vue/max-attributes-per-line": "off"
   }
 }

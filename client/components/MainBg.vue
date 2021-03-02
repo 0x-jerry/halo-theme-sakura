@@ -3,20 +3,14 @@
     <div
       class="bg-fixed bg-cover bg-center flex items-center justify-center h-screen"
     >
-      <random-image
-        class="absolute z-0"
-        random-id="main"
-      />
+      <random-image class="absolute z-0" random-id="main" />
       <div class="bg-grid absolute z-10 w-full h-full" />
       <div class="block relative z-20">
-        <h1
-          class="text-center glitch"
-          data-text="Hi, Friend"
-        >
+        <h1 class="text-center glitch" data-text="Hi, Friend">
           Hi, Friend
         </h1>
         <p
-          class="desc bg-black bg-opacity-25 rounded-3xl text-white text-center py-5"
+          class="desc bg-black bg-opacity-50 rounded-3xl text-white text-center py-5"
         >
           {{ user.description }}
         </p>
@@ -25,11 +19,7 @@
         class="arrow-animation transform absolute z-20 bottom-10 animate-bounce cursor-pointer w-full text-center"
       >
         <span @click="scrollOnePage">
-          <f-icon
-            fas
-            name="chevron-down"
-            class="text-white text-6xl"
-          />
+          <f-icon fas name="chevron-down" class="text-white text-6xl" />
         </span>
       </div>
     </div>
@@ -39,10 +29,8 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import { UserDTO } from '../api'
-import FIcon from './FIcon.vue'
 
 export default defineComponent({
-  components: { FIcon },
   props: {
     user: {
       type: Object as PropType<UserDTO>,
@@ -61,20 +49,25 @@ export default defineComponent({
 
 <style scoped>
 .bg-grid {
-  background: linear-gradient(rgba(10, 10, 10, 0.1), rgba(0, 0, 0, 0.3)),
+  background: linear-gradient(#0a0a0a1a, #0000004d),
     repeating-linear-gradient(
       0,
       transparent,
       transparent 2px,
-      black 3px,
-      black 3px
+      #8d8d8d 3px,
+      #b3b3b3 3px
     );
 }
 
 .arrow-animation {
   animation-duration: 3s;
 }
+.desc {
+  width: 600px;
+}
+</style>
 
+<style>
 .glitch {
   margin: auto;
   font-family: Ubuntu, sans-serif;
@@ -225,9 +218,5 @@ export default defineComponent({
     left: -1px;
     clip: rect(31px, 9999px, 149px, 0);
   }
-}
-
-.desc {
-  width: 600px;
 }
 </style>

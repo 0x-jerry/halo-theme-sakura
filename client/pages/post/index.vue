@@ -1,9 +1,6 @@
 <template>
   <div class="post-content">
-    <site-header
-      :user="user"
-      :menus="menus"
-    />
+    <site-header :user="user" :menus="menus" />
 
     <div class="thumb overflow-hidden relative a-fadeIn-bottom">
       <random-image
@@ -20,30 +17,16 @@
       <div class="desc text-gray-400">
         {{ info.createTime }}
       </div>
-      <hr
-        class="w-1/3 m-auto bg-gray-100 my-2"
-        style="height: 1px"
-      >
+      <hr class="w-1/3 m-auto bg-gray-100 my-2" style="height: 1px" />
 
-      <markdown
-        :html="post.formatContent"
-        class="py-5"
-      />
+      <markdown :html="post.formatContent" class="py-5" />
 
       <div class="tags py-20">
-        <v-tag
-          v-for="tag in post.tags"
-          :key="tag.id"
-          :tag="tag"
-          class="mr-2"
-        />
+        <v-tag v-for="tag in post.tags" :key="tag.id" :tag="tag" class="mr-2" />
       </div>
     </div>
 
-    <site-footer
-      class="mt-10"
-      :user="user"
-    />
+    <site-footer class="mt-10" :user="user" />
   </div>
 </template>
 
@@ -51,8 +34,8 @@
 import dayjs from 'dayjs'
 import { computed, defineComponent } from 'vue'
 import { useRoute } from 'vue-router'
-import { useUniversalFetch } from '../../hooks'
-import { useStore } from '../../store'
+import { useUniversalFetch } from '~/hooks'
+import { useStore } from '~/store'
 
 export default defineComponent({
   async beforeRouteEnter(to, _from, next) {
@@ -97,23 +80,21 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-.title:before,
-.title:after {
-  font-weight: 700;
-
-  @apply text-blue-500;
-}
-
-.title:before {
-  content: '{';
-}
-
-.title:after {
-  content: '}';
-}
-
+<style lang="less" scoped>
 .thumb {
   height: 400px;
+}
+
+.title {
+  &:before,
+  &:after {
+    content: '}';
+    font-weight: 700;
+    @apply text-blue-500;
+  }
+
+  &:before {
+    content: '{';
+  }
 }
 </style>

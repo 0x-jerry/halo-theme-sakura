@@ -1,9 +1,6 @@
 <template>
   <div class="halo-theme sakura">
-    <site-header
-      :user="user"
-      :menus="menus"
-    />
+    <site-header :user="user" :menus="menus" />
 
     <main-bg :user="user" />
     <div class="posts w-content a-fadeIn-top">
@@ -22,10 +19,7 @@
       />
     </div>
 
-    <site-footer
-      class="mt-10"
-      :user="user"
-    />
+    <site-footer class="mt-10" :user="user" />
   </div>
 </template>
 

@@ -19,11 +19,7 @@
     </div>
     <div class="right flex justify-end w-60">
       <span class="site-avatar">
-        <img
-          class="w-full h-full"
-          :src="user.avatar"
-          alt=""
-        >
+        <img class="w-full h-full" :src="user.avatar" alt="" />
       </span>
     </div>
   </header>
@@ -32,8 +28,8 @@
 <script lang="ts">
 import { computed, defineComponent, PropType, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { MenuDTO, UserDTO } from '../api'
-import { useScrollEvent } from '../hooks'
+import { MenuDTO, UserDTO } from '~/api'
+import { useScrollEvent } from '~/hooks'
 
 export default defineComponent({
   props: {

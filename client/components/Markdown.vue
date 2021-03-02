@@ -1,16 +1,15 @@
 <template>
-  <div
-    class="markdown-content markdown-body"
-    v-html="html"
-  />
+  <div class="markdown-content markdown-body" v-html="html" />
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   props: {
     html: String
   }
-}
+})
 </script>
 
 <style lang="less">
