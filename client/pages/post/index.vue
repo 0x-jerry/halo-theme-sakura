@@ -88,14 +88,21 @@ export default defineComponent({
 .title {
   &:before,
   &:after {
-    content: '\}';
     font-weight: 700;
+    position: relative;
     @apply text-blue-500;
   }
 
   // !fixme https://github.com/windicss/vite-plugin-windicss/issues/63
-  // &:before {
-  //   content: '{';
-  // }
+  // {} would lead a bug, so use 「」 instead
+  &:before {
+    top: -5px;
+    content: '「';
+  }
+
+  &:after {
+    content: '」';
+    bottom: -7px;
+  }
 }
 </style>
