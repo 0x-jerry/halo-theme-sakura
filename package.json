@@ -7,9 +7,7 @@
   "author": "Gem Xli <x.li.gem@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "run-p dev:*",
-    "dev:client": "vite-ssr dev",
-    "dev:server": "ts-node server/index.ts",
+    "dev": "ts-node server/index.ts",
     "build": "run-p build:*",
     "build:client": "vite-ssr build",
     "build:server": "rm -rf dist-server && tsc -p server",

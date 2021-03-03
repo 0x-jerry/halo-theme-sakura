@@ -13,7 +13,7 @@ import { i18n } from 'vite-i18n-plugin'
 import { NProgressPlugin, i18nPlugin } from './plugins'
 import { createSSRApp } from 'vue'
 
-export async function createApp() {
+export async function createApp(initialState: Record<string, any>) {
   const router = createRouter({
     history: isSSR ? createMemoryHistory() : createWebHistory(),
     routes
@@ -28,10 +28,10 @@ export async function createApp() {
 
   if (isSSR) {
     await store.dispatch('serverInit')
-    // initialState.storeState = store.state
+    initialState.storeState = store.state
   } else {
-    // store.replaceState(initialState.storeState)
-    // r.currentRoute.value.meta.state = initialState.state
+    store.replaceState(initialState.storeState)
+    router.currentRoute.value.meta.state = initialState.state
     NProgressPlugin(router)
   }
 

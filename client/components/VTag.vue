@@ -1,8 +1,5 @@
 <template>
-  <span
-    class="tag text-gray-400"
-    @click.stop="clickTag"
-  >
+  <span class="tag text-gray-400" @click.stop="clickTag">
     <v-link>
       <v-icon name="tags" />
       <span>{{ tag.name }}</span>

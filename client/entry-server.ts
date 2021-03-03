@@ -10,7 +10,8 @@ interface RenderedContext {
 }
 
 export async function render(url: string, manifest: SSRManifest) {
-  const { app, router } = await createApp()
+  const initialState = {}
+  const { app, router } = await createApp(initialState)
 
   // set the router to the desired URL before rendering
   router.push(url)
@@ -28,7 +29,15 @@ export async function render(url: string, manifest: SSRManifest) {
   // which we can then use to determine what files need to be preloaded for this
   // request.
   const preloadLinks = renderPreloadLinks(ctx.modules, manifest)
-  return [html, preloadLinks]
+
+  // merge router state
+  Object.assign(initialState, router.currentRoute.value.meta.state)
+
+  return {
+    html,
+    preloadLinks,
+    initialState
+  }
 }
 
 function renderPreloadLinks(modules: string[], manifest: SSRManifest) {

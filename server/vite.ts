@@ -17,15 +17,21 @@ export function serveViteDev(vite: ViteDevServer): Middleware {
       const render = (await vite.ssrLoadModule('/client/entry-server.ts'))
         .render
 
-      const [appHtml, preloadLinks] = await render(url, manifest)
+      const { html, preloadLinks, initialState } = await render(url, manifest)
 
-      const html = template
+      const appHtml = template
         .replace('<!--preload-links-->', preloadLinks)
-        .replace('<!--app-html-->', appHtml)
+        .replace('<!--app-html-->', html)
+        .replace(
+          '<!--initial-state-->',
+          `<script>window.__INITIAL_STATE__=${JSON.stringify(
+            initialState
+          )}</script>`
+        )
 
       ctx.status = 200
       ctx.set({ 'Content-Type': 'text/html' })
-      ctx.body = html
+      ctx.body = appHtml
     } catch (e) {
       vite && vite.ssrFixStacktrace(e)
       console.log(e.stack)
