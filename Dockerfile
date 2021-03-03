@@ -21,7 +21,7 @@ COPY package.json yarn.lock ./
 
 RUN yarn --frozen-lockfile
 
-COPY --from=builder /app/dist-server ./dist
+COPY --from=builder /app/dist ./dist
 
 EXPOSE 9556
 

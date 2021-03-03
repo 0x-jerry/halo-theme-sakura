@@ -4,8 +4,6 @@ import { Context, Middleware } from 'koa'
 import { createMarkdownRenderer } from './markdown'
 import axios from 'axios'
 
-const debug = require('debug')('sakura:halo')
-
 const mdCache = new LRU({
   // 24 h
   maxAge: 1000 * 60 * 60 * 24,
@@ -74,16 +72,13 @@ export function haloProxy(proxyConf: any): Middleware {
     }
 
     if (haloAdminPrefix.find((r) => reqPath.startsWith(r))) {
-      debug('admin proxy: %s', reqPath)
       return haloAdminProxy(ctx, next)
     }
 
     if (reqPath.startsWith('/api')) {
-      debug('halo api proxy: %s', reqPath)
       await haloProxy(ctx, next)
       await rewriteHaloApi(ctx)
     } else {
-      debug('halo pass: %s', reqPath)
       await next()
     }
   }

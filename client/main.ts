@@ -1,6 +1,5 @@
 import 'windi.css'
 import './style/app.css'
-// import viteSSR from 'vite-ssr'
 import routes from 'voie-pages'
 import { createStore } from './store'
 import { isSSR } from './utils'

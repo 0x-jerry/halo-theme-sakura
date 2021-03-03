@@ -11,10 +11,20 @@ export function serveViteDev(vite: ViteDevServer): Middleware {
 
   return async (ctx) => {
     try {
-      const appHtml = await viteRender(vite, {
-        url: ctx.request.originalUrl,
-        manifest
-      })
+      const url = ctx.request.originalUrl
+
+      debug('url: %s', url)
+
+      // always read fresh template in dev
+      let template = fs.readFileSync(path.resolve('index.html'), 'utf-8')
+      template = await vite.transformIndexHtml(url, template)
+      const render = (await vite.ssrLoadModule('/client/entry-server.ts'))
+        .render
+
+      const { html, preloadLinks, initialState } = await render(url, manifest)
+
+      const appHtml = renderHtml(template, { preloadLinks, html, initialState })
+
       ctx.status = 200
       ctx.set({ 'Content-Type': 'text/html' })
       ctx.body = appHtml
@@ -27,55 +37,42 @@ export function serveViteDev(vite: ViteDevServer): Middleware {
   }
 }
 
-export function serveViteBuild(dist: string): Middleware {
-  // This contains a list of static routes (assets)
-  const { ssr } = require(`${dist}/server/package.json`)
+export function serveViteBuild(dist: string): Middleware[] {
+  const indexTpl = fs.readFileSync(`${dist}/client/index.html`, {
+    encoding: 'utf-8'
+  })
 
-  // The manifest is required for preloading assets
   const manifest = require(`${dist}/client/ssr-manifest.json`)
 
   // This is the server renderer we just built
-  const { default: renderPage } = require(`${dist}/server/main.js`)
+  const render = require(`${dist}/server/entry-server.js`).render
 
-  const serveStatic = serve(path.join(dist, 'client'))
+  const serveStatic = serve(path.join(dist, 'client'), { index: false })
 
-  return async (ctx, next) => {
-    const { request, res } = ctx
+  return [
+    serveStatic,
+    async (ctx, next) => {
+      const url = ctx.request.url
 
-    // Serve every static asset route
-    for (const asset of ssr.assets || []) {
-      if (request.path.startsWith('/' + asset)) {
-        await serveStatic(ctx, next)
-        return
-      }
+      const { html, preloadLinks, initialState } = await render(url, manifest)
+
+      const appHtml = renderHtml(indexTpl, { html, preloadLinks, initialState })
+
+      ctx.body = appHtml
     }
-
-    const url = request.url
-
-    const { html } = await renderPage(url, {
-      manifest,
-      preload: true
-    })
-
-    res.end(html)
-  }
+  ]
 }
 
-async function viteRender(
-  vite: ViteDevServer,
-  opt: { url: string; manifest: any }
+function renderHtml(
+  template: string,
+  opt: {
+    preloadLinks: any
+    html: any
+    initialState: any
+  }
 ) {
-  const { url, manifest } = opt
-  debug('url: %s', url)
-
-  // always read fresh template in dev
-  let template = fs.readFileSync(path.resolve('index.html'), 'utf-8')
-  template = await vite.transformIndexHtml(url, template)
-  const render = (await vite.ssrLoadModule('/client/entry-server.ts')).render
-
-  const { html, preloadLinks, initialState } = await render(url, manifest)
-
-  const appHtml = template
+  const { preloadLinks, html, initialState } = opt
+  return template
     .replace('<!--preload-links-->', preloadLinks)
     .replace('<!--app-html-->', html)
     .replace(
@@ -84,6 +81,4 @@ async function viteRender(
         initialState
       )}</script>`
     )
-
-  return appHtml
 }

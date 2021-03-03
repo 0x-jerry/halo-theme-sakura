@@ -1,16 +1,13 @@
 import Koa from 'koa'
 import cors from '@koa/cors'
+import path from 'path'
 import { haloAccessKey, haloTarget, isDev } from './config'
 import { router } from './router'
-import path from 'path'
 import { serveViteBuild, serveViteDev } from './vite'
 import { haloProxy } from './halo'
-import c2k from 'koa-connect'
 import { ViteDevServer } from 'vite'
 
 const url = new URL(haloTarget)
-
-const debug = require('debug')('sakura:server')
 
 const proxyConf = {
   target: url.toString(),
@@ -42,21 +39,18 @@ async function main() {
   }
 
   app
-    .use(async (ctx, next) => {
-      const { request } = ctx
-      debug('[server] start: %s', request.path)
-      await next()
-      debug('[server]   end: %s', request.path)
-    })
     .use(router.routes())
     .use(router.allowedMethods())
     .use(haloProxy(proxyConf))
 
   if (isDev) {
+    const c2k = (await import('koa-connect')).default
     app.use(c2k(vite!.middlewares))
     app.use(serveViteDev(vite!))
   } else {
-    app.use(serveViteBuild(path.join(__dirname, 'client')))
+    const [serve, vite] = serveViteBuild(path.join(__dirname, 'client'))
+    app.use(serve)
+    app.use(vite)
   }
 
   const port = isDev ? 9555 : 9556
