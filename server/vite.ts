@@ -4,31 +4,17 @@ import serve from 'koa-static'
 import { Middleware } from 'koa'
 import { ViteDevServer } from 'vite'
 
+const debug = require('debug')('sakura:vite')
+
 export function serveViteDev(vite: ViteDevServer): Middleware {
   const manifest = {}
 
   return async (ctx) => {
     try {
-      const url = ctx.request.originalUrl
-
-      // always read fresh template in dev
-      let template = fs.readFileSync(path.resolve('index.html'), 'utf-8')
-      template = await vite.transformIndexHtml(url, template)
-      const render = (await vite.ssrLoadModule('/client/entry-server.ts'))
-        .render
-
-      const { html, preloadLinks, initialState } = await render(url, manifest)
-
-      const appHtml = template
-        .replace('<!--preload-links-->', preloadLinks)
-        .replace('<!--app-html-->', html)
-        .replace(
-          '<!--initial-state-->',
-          `<script>window.__INITIAL_STATE__=${JSON.stringify(
-            initialState
-          )}</script>`
-        )
-
+      const appHtml = await viteRender(vite, {
+        url: ctx.request.originalUrl,
+        manifest
+      })
       ctx.status = 200
       ctx.set({ 'Content-Type': 'text/html' })
       ctx.body = appHtml
@@ -73,4 +59,31 @@ export function serveViteBuild(dist: string): Middleware {
 
     res.end(html)
   }
+}
+
+async function viteRender(
+  vite: ViteDevServer,
+  opt: { url: string; manifest: any }
+) {
+  const { url, manifest } = opt
+  debug('url: %s', url)
+
+  // always read fresh template in dev
+  let template = fs.readFileSync(path.resolve('index.html'), 'utf-8')
+  template = await vite.transformIndexHtml(url, template)
+  const render = (await vite.ssrLoadModule('/client/entry-server.ts')).render
+
+  const { html, preloadLinks, initialState } = await render(url, manifest)
+
+  const appHtml = template
+    .replace('<!--preload-links-->', preloadLinks)
+    .replace('<!--app-html-->', html)
+    .replace(
+      '<!--initial-state-->',
+      `<script>window.__INITIAL_STATE__=${JSON.stringify(
+        initialState
+      )}</script>`
+    )
+
+  return appHtml
 }
