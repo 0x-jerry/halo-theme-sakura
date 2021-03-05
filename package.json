@@ -31,7 +31,7 @@
     "@koa/cors": "^3.1.0",
     "@koa/router": "^10.0.0",
     "@vue/server-renderer": "^3.0.7",
-    "@vueuse/head": "^0.3.1",
+    "@vueuse/head": "^0.3.2",
     "axios": "^0.21.1",
     "chalk": "^4.1.0",
     "dayjs": "^1.10.4",
