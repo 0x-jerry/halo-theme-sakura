@@ -36,6 +36,7 @@ Docker: https://hub.docker.com/r/cwxyz/halo-theme-sakura
 - [ ] 友情连接页面
 - [ ] 图库页面
 - [ ] 日志页面
+- [ ] 第一次启动时，初始化页面
 
 TODO
 
