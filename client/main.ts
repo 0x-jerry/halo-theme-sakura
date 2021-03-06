@@ -26,8 +26,14 @@ export async function createApp(initialState: Record<string, any>) {
   app.use(i18n).use(i18nPlugin)
 
   if (isSSR) {
-    await store.dispatch('serverInit')
-    initialState.storeState = store.state
+    try {
+      await store.dispatch('serverInit')
+      initialState.storeState = store.state
+    } catch (error) {
+      initialState.storeState = {
+        error: String(error)
+      }
+    }
   } else {
     store.replaceState(initialState.storeState)
     router.currentRoute.value.meta.state = initialState.state

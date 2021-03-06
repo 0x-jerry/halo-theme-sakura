@@ -43,6 +43,16 @@ async function main() {
     .use(router.allowedMethods())
     .use(haloProxy(proxyConf))
 
+  app.use(async (ctx, next) => {
+    await next()
+
+    if (ctx.status === 500) {
+      if (ctx.request.path !== '/error') {
+        ctx.redirect('/error')
+      }
+    }
+  })
+
   if (isDev) {
     const c2k = (await import('koa-connect')).default
     app.use(c2k(vite!.middlewares))
