@@ -92,3 +92,5 @@ sw.*
 .nuxt-dev
 
 dist*
+
+halo-data
