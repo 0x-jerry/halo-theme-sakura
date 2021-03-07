@@ -4,7 +4,7 @@ import path from 'path'
 import { haloAccessKey, haloTarget, isDev } from './config'
 import { router } from './router'
 import { serveViteBuild, serveViteDev } from './vite'
-import { haloProxy } from './halo'
+import { checkInstall, haloProxy } from './halo'
 import { ViteDevServer } from 'vite'
 
 const url = new URL(haloTarget)
@@ -44,10 +44,19 @@ async function main() {
     .use(haloProxy(proxyConf))
 
   app.use(async (ctx, next) => {
+    const reqPath = ctx.request.path
+    if (reqPath.startsWith('/admin')) {
+      return
+    }
+
     await next()
 
     if (ctx.status === 500) {
-      if (ctx.request.path !== '/error') {
+      const isInstalled = await checkInstall()
+
+      if (!isInstalled) {
+        ctx.redirect('/admin')
+      } else if (ctx.request.path !== '/error') {
         ctx.redirect('/error')
       }
     }

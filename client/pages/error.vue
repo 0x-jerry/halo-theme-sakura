@@ -14,21 +14,10 @@
 
 <script>
 import { defineComponent, onMounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { isSSR } from '~/utils'
 
 export default defineComponent({
   setup() {
     const errorMsg = ref('')
-
-    if (!isSSR) {
-      const isInstalled = window.__INITIAL_STATE__?.isInstalled
-      const router = useRouter()
-
-      if (!isInstalled) {
-        router.push('/install')
-      }
-    }
 
     onMounted(() => {
       errorMsg.value =
