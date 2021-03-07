@@ -6,10 +6,6 @@ Docker: https://hub.docker.com/r/cwxyz/halo-theme-sakura
 
 ## [预览](https://blog.tiny-online.online/)
 
-已知问题
-
-- 文章标题样式缺失（疑似 vite + windicss 插件导致编译后样式格式错误）
-
 优势:
 
 - [x] Tailwind
@@ -36,7 +32,6 @@ Docker: https://hub.docker.com/r/cwxyz/halo-theme-sakura
 - [ ] 友情连接页面
 - [ ] 图库页面
 - [ ] 日志页面
-- [ ] 第一次启动时，初始化页面
 
 TODO
 
