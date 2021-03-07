@@ -2,7 +2,7 @@
   <a
     :href="href"
     :target="open ? '_blank' : ''"
-    class="hover:text-blue-500 cursor-pointer transition-colors"
+    class="v-link hover:text-blue-500 cursor-pointer transition-colors"
     @click="(e) => $emit('click', e)"
   >
     <slot>{{ content }}</slot>
@@ -17,12 +17,13 @@ export default defineComponent({
     href: String,
     open: Boolean,
     content: String
-  }
+  },
+  emits: ['click']
 })
 </script>
 
 <style>
-.active {
+.v-link.active {
   @apply text-blue-500;
 }
 </style>

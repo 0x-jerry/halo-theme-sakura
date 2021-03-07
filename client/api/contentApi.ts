@@ -104,7 +104,10 @@ async function get(path: string, data?: any = {}) {
 async function post(path: string, data?: any = {}) {
   const { __body, ...other } = data;
 
-  const res = await configs.axios.post(path, { params: other, data: __body });
+  const res = await configs.axios.post(path, __body, {
+    params: other,
+    data: __body,
+  });
 
   return decodeResponseData(res.data);
 }
@@ -112,7 +115,10 @@ async function post(path: string, data?: any = {}) {
 async function put(path: string, data?: any = {}) {
   const { __body, ...other } = data;
 
-  const res = await configs.axios.put(path, { params: other, data: __body });
+  const res = await configs.axios.put(path, __body, {
+    params: other,
+    data: __body,
+  });
 
   return decodeResponseData(res.data);
 }
