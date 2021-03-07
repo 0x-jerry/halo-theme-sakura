@@ -47,15 +47,3 @@ export async function createApp(initialState: Record<string, any>) {
 
   return { app, router }
 }
-
-// export default viteSSR(
-//   App,
-//   { routes },
-//   async ({ app, initialState, router }) => {
-
-//     r.beforeEach((to) => {
-//       to.meta.app = app
-//       to.meta.store = store
-//     })
-//   }
-// )

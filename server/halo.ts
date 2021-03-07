@@ -2,7 +2,7 @@ import LRU from 'lru-cache'
 import proxy from 'koa-better-http-proxy'
 import { Context, Middleware } from 'koa'
 import { createMarkdownRenderer } from './markdown'
-import axios from 'axios'
+import axios, { AxiosInstance } from 'axios'
 
 const mdCache = new LRU({
   // 24 h
@@ -84,6 +84,8 @@ export function haloProxy(proxyConf: any): Middleware {
   }
 }
 
+let axiosInstance: AxiosInstance | null = null
+
 function createHaloProxy(opt: {
   target: string
   accessKey: string
@@ -91,6 +93,7 @@ function createHaloProxy(opt: {
   const instance = axios.create({
     baseURL: opt.target
   })
+  axiosInstance = instance
 
   instance.interceptors.request.use((conf) => {
     if (conf.url?.match('/api/admin')) {
@@ -113,4 +116,17 @@ function createHaloProxy(opt: {
 
     ctx.body = res.data
   }
+}
+
+let cacheInstalled = false
+export async function checkInstall() {
+  if (cacheInstalled) {
+    return true
+  }
+
+  const res = await axiosInstance?.get('/api/admin/is_installed')
+
+  cacheInstalled = !!res?.data?.data
+
+  return cacheInstalled
 }

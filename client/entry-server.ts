@@ -9,8 +9,15 @@ interface RenderedContext {
   modules: string[]
 }
 
-export async function render(url: string, manifest: SSRManifest) {
-  const initialState = {}
+export async function render(
+  url: string,
+  manifest: SSRManifest,
+  ssrContext: any
+) {
+  const initialState = {
+    isInstalled: ssrContext.isInstalled
+  }
+
   const { app, router } = await createApp(initialState)
 
   // set the router to the desired URL before rendering

@@ -13,12 +13,30 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { isSSR } from '~/utils'
 
 export default defineComponent({
   setup() {
+    const errorMsg = ref('')
+
+    if (!isSSR) {
+      const isInstalled = window.__INITIAL_STATE__?.isInstalled
+      const router = useRouter()
+
+      if (!isInstalled) {
+        router.push('/install')
+      }
+    }
+
+    onMounted(() => {
+      errorMsg.value =
+        window.__INITIAL_STATE__?.storeState?.error || 'Unknown Error'
+    })
+
     return {
-      errorMsg: window.__INITIAL_STATE__?.storeState?.error || 'Unknown Error'
+      errorMsg
     }
   }
 })

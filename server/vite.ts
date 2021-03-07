@@ -3,6 +3,7 @@ import fs from 'fs'
 import serve from 'koa-static'
 import { Middleware } from 'koa'
 import { ViteDevServer } from 'vite'
+import { checkInstall } from './halo'
 
 const debug = require('debug')('sakura:vite')
 
@@ -10,6 +11,8 @@ export function serveViteDev(vite: ViteDevServer): Middleware {
   const manifest = {}
 
   return async (ctx) => {
+    const ssrContext = getSSRContext()
+
     try {
       const url = ctx.request.originalUrl
 
@@ -21,7 +24,11 @@ export function serveViteDev(vite: ViteDevServer): Middleware {
       const render = (await vite.ssrLoadModule('/client/entry-server.ts'))
         .render
 
-      const { html, preloadLinks, initialState } = await render(url, manifest)
+      const { html, preloadLinks, initialState } = await render(
+        url,
+        manifest,
+        ssrContext
+      )
 
       const appHtml = renderHtml(template, { preloadLinks, html, initialState })
 
@@ -52,15 +59,27 @@ export function serveViteBuild(dist: string): Middleware[] {
   return [
     serveStatic,
     async (ctx, next) => {
+      const ssrContext = await getSSRContext()
+
       const url = ctx.request.url
 
-      const { html, preloadLinks, initialState } = await render(url, manifest)
+      const { html, preloadLinks, initialState } = await render(
+        url,
+        manifest,
+        ssrContext
+      )
 
       const appHtml = renderHtml(indexTpl, { html, preloadLinks, initialState })
 
       ctx.body = appHtml
     }
   ]
+}
+
+async function getSSRContext() {
+  return {
+    isInstalled: await checkInstall()
+  }
 }
 
 function renderHtml(
