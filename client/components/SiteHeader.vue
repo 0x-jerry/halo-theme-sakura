@@ -12,13 +12,13 @@
         :key="o.id"
         class="menu-item"
         :class="{ active: isActive(o) }"
-        @click="goToUrl(o)"
+        @click="gotoUrl(o)"
       >
         {{ o.name }}
       </v-link>
     </div>
     <div class="right flex justify-end w-60">
-      <span class="site-avatar">
+      <span class="site-avatar cursor-pointer" @click="gotoAdmin">
         <img class="w-full h-full" :src="user.avatar" alt="" />
       </span>
     </div>
@@ -70,7 +70,7 @@ export default defineComponent({
     return {
       stickHeader,
       vMenus,
-      goToUrl(o: MenuDTO) {
+      gotoUrl(o: MenuDTO) {
         if (o.target === '_blank') {
           window.open(o.url)
         } else {
@@ -82,6 +82,13 @@ export default defineComponent({
             router.push(o.url)
           }
         }
+      },
+      gotoAdmin() {
+        const url = new URL(location.href)
+        url.search = ''
+        url.pathname = '/admin'
+
+        window.open(url.toString())
       },
       isActive(o: MenuDTO) {
         return route.fullPath === o.url
