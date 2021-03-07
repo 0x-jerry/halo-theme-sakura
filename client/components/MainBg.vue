@@ -1,15 +1,21 @@
 <template>
   <div class="main-bg a-fadeIn-bottom">
     <div
-      class="bg-fixed bg-cover bg-center flex items-center justify-center h-screen"
+      ref="image"
+      class="bg-fixed bg-cover bg-center flex items-center justify-center h-xs md:h-screen"
     >
       <random-image class="absolute z-0" random-id="main" />
       <div class="bg-grid absolute z-10 w-full h-full" />
       <div class="block relative z-20">
-        <h1 class="text-center glitch" data-text="Hi, Friend">
+        <h1
+          class="text-center glitch text-4xl md:text-9xl"
+          :class="{ active: isMobile }"
+          data-text="Hi, Friend"
+        >
           Hi, Friend
         </h1>
         <p
+          v-if="user.description"
           class="desc bg-black bg-opacity-50 rounded-3xl text-white text-center py-5"
         >
           {{ user.description }}
@@ -19,7 +25,11 @@
         class="arrow-animation transform absolute z-20 bottom-10 animate-bounce cursor-pointer w-full text-center"
       >
         <span @click="scrollOnePage">
-          <f-icon fas name="chevron-down" class="text-white text-6xl" />
+          <f-icon
+            fas
+            name="chevron-down"
+            class="text-white text-3xl md:text-6xl"
+          />
         </span>
       </div>
     </div>
@@ -27,7 +37,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, PropType, ref } from 'vue'
+import { useMobile } from '~/hooks/useMobile'
 import { UserDTO } from '../api'
 
 export default defineComponent({
@@ -38,9 +49,13 @@ export default defineComponent({
     }
   },
   setup() {
+    const image = ref<HTMLDivElement | null>(null)
+    const isMobile = useMobile()
     return {
+      isMobile,
+      image,
       scrollOnePage() {
-        window.scrollTo(0, window.innerHeight)
+        window.scrollTo(0, image.value?.clientHeight || 0)
       }
     }
   }
@@ -71,7 +86,6 @@ export default defineComponent({
 .glitch {
   margin: auto;
   font-family: Ubuntu, sans-serif;
-  font-size: 80px;
   transition: background 1s;
   font-weight: 900;
 
@@ -102,11 +116,13 @@ export default defineComponent({
   text-shadow: -1px 0 #00a7e0;
 }
 
+.glitch.active:before,
 .glitch:hover:before {
   text-shadow: 4px 0 #ff3f1a;
   animation: glitch-loop-1 0.8s infinite ease-in-out alternate-reverse;
 }
 
+.glitch.active:after,
 .glitch:hover:after {
   text-shadow: -5px 0 #00a7e0;
   animation: glitch-loop-2 0.8s infinite ease-in-out alternate-reverse;

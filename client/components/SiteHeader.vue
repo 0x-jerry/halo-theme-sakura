@@ -1,6 +1,6 @@
 <template>
   <header
-    class="site-header flex items-center px-3 a-fadeIn"
+    class="site-header hidden flex items-center px-3 a-fadeIn"
     :class="{ active: stickHeader }"
   >
     <div class="left w-60">
