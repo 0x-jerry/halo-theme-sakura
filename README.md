@@ -26,7 +26,7 @@ Docker: https://hub.docker.com/r/cwxyz/halo-theme-sakura
 - [x] 分类页面
 - [ ] 关于页面
 - [x] 文章详情页
-- [ ] 移动端适配
+- [x] 移动端适配
 - [x] 图片懒加载
 - [x] 随机图
 - [ ] 友情连接页面
