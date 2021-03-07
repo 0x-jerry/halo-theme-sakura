@@ -1,7 +1,7 @@
 <template>
   <div
     ref="root"
-    class="post mt-16 shadow-xl rounded-2xl overflow-hidden border border-gray-200 flex"
+    class="post mt-16 md:shadow-xl md:rounded-2xl overflow-hidden border border-gray-200 flex"
     :class="{ flip, visible }"
   >
     <article
@@ -105,7 +105,7 @@ export default defineComponent({
 .post {
   height: 300px;
   opacity: 0;
-  transition: all ease 1s;
+  transition: all ease 0.1s;
   transform: translate(0, 30px) scale(0.9);
 }
 
@@ -145,7 +145,13 @@ export default defineComponent({
   transition: transform ease 0.4s;
 }
 
-.post:hover .thumb .img {
-  transform: scale(1.2);
+@media (min-width: 520px) {
+  .post {
+    transition: all ease 1s;
+  }
+
+  .post:hover .thumb .img {
+    transform: scale(1.2);
+  }
 }
 </style>

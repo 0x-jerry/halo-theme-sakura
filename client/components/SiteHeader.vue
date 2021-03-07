@@ -1,12 +1,29 @@
 <template>
-  <header
-    class="site-header hidden flex items-center px-3 a-fadeIn"
-    :class="{ active: stickHeader }"
+  <div
+    v-if="isMobile"
+    class="fixed top-0 left-0 w-full h-10 bg-white bg-opacity-60 z-10 flex justify-center items-center"
+    @click="showHeader = !showHeader"
   >
-    <div class="left w-60">
+    Menu
+  </div>
+  <div
+    v-if="isMobile"
+    class="fixed top-0 left-0 w-screen h-screen bg-white bg-opacity-80 z-30"
+    :class="{
+      hidden: !showHeader
+    }"
+    @click="showHeader = !showHeader"
+  ></div>
+  <header
+    class="site-header hidden md:flex flex-col md:flex-row items-center px-3 a-fadeIn"
+    :class="{ active: isMobile ? showHeader : stickHeader }"
+  >
+    <div class="w-full md:w-60">
       <span class="site-logo" />
     </div>
-    <div class="center flex-1 flex justify-center text-gray-500 a-fadeIn-left">
+    <div
+      class="flex-1 flex flex-col md:flex-row md:justify-center text-gray-500 a-fadeIn-right"
+    >
       <v-link
         v-for="o in vMenus"
         :key="o.id"
@@ -17,7 +34,7 @@
         {{ o.name }}
       </v-link>
     </div>
-    <div class="right flex justify-end w-60">
+    <div class="flex w-full md:justify-end md:w-60">
       <span class="site-avatar cursor-pointer" @click="gotoAdmin">
         <img class="w-full h-full" :src="user.avatar" alt="" />
       </span>
@@ -30,6 +47,7 @@ import { computed, defineComponent, PropType, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { MenuDTO, UserDTO } from '~/api'
 import { useScrollEvent } from '~/hooks'
+import { useMobile } from '~/hooks/useMobile'
 
 export default defineComponent({
   props: {
@@ -43,6 +61,9 @@ export default defineComponent({
     }
   },
   setup(props) {
+    const isMobile = useMobile()
+    const showHeader = ref(false)
+
     const vMenus = computed(() =>
       props.menus.map((menu) => {
         const url = /^\/s\//.test(menu.url)
@@ -68,6 +89,8 @@ export default defineComponent({
     const router = useRouter()
 
     return {
+      isMobile,
+      showHeader,
       stickHeader,
       vMenus,
       gotoUrl(o: MenuDTO) {
@@ -79,6 +102,7 @@ export default defineComponent({
           if (o.url === routePath) {
             window.scrollTo(0, 0)
           } else {
+            showHeader.value = false
             router.push(o.url)
           }
         }
@@ -100,14 +124,15 @@ export default defineComponent({
 
 <style scoped>
 .site-header {
-  @apply fixed top-0 left-0 w-full h-16 bg-white z-40 bg-opacity-40;
+  @apply fixed top-0 left-0 w-1/3 h-screen bg-white z-40 bg-opacity-90;
   @apply hover:bg-opacity-90;
-  @apply transition-colors duration-500;
+  @apply transition-colors duration-100 md:duration-500;
+  @apply py-5 md:py-0;
 }
 
 .site-header.active {
-  @apply bg-opacity-90;
-  @apply shadow-xl;
+  @apply flex bg-opacity-90;
+  @apply md:shadow-xl;
 }
 
 .site-logo {
@@ -120,5 +145,11 @@ export default defineComponent({
 
 .menu-item {
   @apply p-2;
+}
+
+@media (min-width: 520px) {
+  .site-header {
+    @apply w-full h-16 bg-opacity-40;
+  }
 }
 </style>

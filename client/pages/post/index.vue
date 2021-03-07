@@ -10,7 +10,7 @@
       />
     </div>
 
-    <div class="w-content a-fadeIn-top">
+    <div class="w-content a-fadeIn-top px-8">
       <div class="title text-center text-3xl font-bold pt-10 pb-5">
         {{ post.title }}
       </div>

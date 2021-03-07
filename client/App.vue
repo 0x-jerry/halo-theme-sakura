@@ -43,8 +43,12 @@ html {
 
 #animate {
   .fade(@name, @from, @to) {
-    animation: @name 0.6s linear 1 forwards;
+    animation: @name 0.1s linear 1 forwards;
     opacity: 0;
+
+    @media (min-width: 520px) {
+      animation: @name 0.6s linear 1 forwards;
+    }
 
     @keyframes @name {
       0% {
