@@ -46,8 +46,9 @@ export default defineComponent({
     next()
   },
   async beforeRouteUpdate(to, _from, next) {
-    const store = useStore()
-    await store.dispatch('fetchPost', to.query)
+    await useUniversalFetch(to, async (store) => {
+      await store.dispatch('fetchPost', to.query)
+    })
     next()
   },
   setup() {
