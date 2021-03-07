@@ -39,7 +39,7 @@ async function rewriteHaloApi(ctx: Context) {
   }
 }
 
-export function haloProxy(proxyConf: any): Middleware {
+export function haloProxy(proxyConf: any): Middleware[] {
   const haloProxy = createHaloProxy({
     target: proxyConf.target,
     accessKey: proxyConf.accessKey
@@ -52,36 +52,47 @@ export function haloProxy(proxyConf: any): Middleware {
     port: +haloUrl.port || undefined
   })
 
-  return async (ctx, next) => {
-    const reqPath = ctx.request.path
+  const haloAdminPrefix = [
+    '/admin',
+    '/theme',
+    '/api/admin',
+    '/images',
+    '/upload',
+    '/rss.xml',
+    '/sitemap.xml',
+    '/sitemap.html'
+  ]
 
-    const haloAdminPrefix = [
-      '/admin',
-      '/theme',
-      '/api/admin',
-      '/images',
-      '/upload',
-      '/rss.xml',
-      '/sitemap.xml',
-      '/sitemap.html'
-    ]
+  return [
+    async (ctx, next) => {
+      const reqPath = ctx.request.path
 
-    if (/^\/admin(\/)?$/.test(reqPath)) {
-      ctx.redirect('/admin/index.html')
-      return
-    }
+      if (/^\/admin(\/)?$/.test(reqPath)) {
+        ctx.redirect('/admin/index.html')
+        return
+      }
 
-    if (haloAdminPrefix.find((r) => reqPath.startsWith(r))) {
-      return haloAdminProxy(ctx, next)
-    }
+      if (haloAdminPrefix.find((r) => reqPath.startsWith(r))) {
+        return haloAdminProxy(ctx, next)
+      }
 
-    if (reqPath.startsWith('/api')) {
-      await haloProxy(ctx, next)
-      await rewriteHaloApi(ctx)
-    } else {
+      if (reqPath.startsWith('/api')) {
+        await haloProxy(ctx, next)
+        await rewriteHaloApi(ctx)
+      } else {
+        await next()
+      }
+    },
+    async (ctx, next) => {
+      const reqPath = ctx.request.path
+
+      if (haloAdminPrefix.find((r) => reqPath.startsWith(r))) {
+        return
+      }
+
       await next()
     }
-  }
+  ]
 }
 
 let axiosInstance: AxiosInstance | null = null

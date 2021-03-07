@@ -38,17 +38,12 @@ async function main() {
     )
   }
 
-  app
-    .use(router.routes())
-    .use(router.allowedMethods())
-    .use(haloProxy(proxyConf))
+  app.use(router.routes()).use(router.allowedMethods())
+
+  const [halo, haloNext] = haloProxy(proxyConf)
+  app.use(halo).use(haloNext)
 
   app.use(async (ctx, next) => {
-    const reqPath = ctx.request.path
-    if (reqPath.startsWith('/admin')) {
-      return
-    }
-
     await next()
 
     if (ctx.status === 500) {
