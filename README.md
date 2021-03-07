@@ -32,6 +32,7 @@ Docker: https://hub.docker.com/r/cwxyz/halo-theme-sakura
 - [ ] 友情连接页面
 - [ ] 图库页面
 - [ ] 日志页面
+- [ ] 接入评论功能
 
 TODO
 
