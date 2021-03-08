@@ -573,16 +573,16 @@
   resolved "https://registry.npm.taobao.org/@vueuse/head/download/@vueuse/head-0.3.1.tgz"
   integrity sha1-vwlBXCpK5atqloas3xQ5jvUwJBQ=
 
-"@windicss/plugin-utils@0.6.4":
-  version "0.6.4"
-  resolved "https://registry.npm.taobao.org/@windicss/plugin-utils/download/@windicss/plugin-utils-0.6.4.tgz#854f411b156fea61b2e6724799e91f0f9407a637"
-  integrity sha1-hU9BGxVv6mGy5nJHmekfD5QHpjc=
+"@windicss/plugin-utils@0.6.11":
+  version "0.6.11"
+  resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-0.6.11.tgz#9d2a2f5ba3170700ad4b223435b8796cff934167"
+  integrity sha512-UBPe1yb4ZzGjISjbHV+e9/sj3+bvK2Bb+Mcn18qSW4mUfPnTY+tXBV7yvoaYILgZat9BOppHrRk9dwrI2DJD3w==
   dependencies:
-    esbuild "^0.8.54"
-    esbuild-register "^2.0.0"
+    esbuild "^0.8.56"
+    esbuild-register "^2.2.0"
     fast-glob "^3.2.5"
     micromatch "^4.0.2"
-    windicss "^2.2.3"
+    windicss "^2.2.6"
 
 JSONStream@^1.0.4:
   version "1.3.5"
@@ -1492,20 +1492,22 @@ es6-promise@^3.3.1:
   resolved "https://registry.npm.taobao.org/es6-promise/download/es6-promise-3.3.1.tgz"
   integrity sha1-oIzd6EzNvzTQJ6FFG8kdS80ophM=
 
-esbuild-register@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npm.taobao.org/esbuild-register/download/esbuild-register-2.0.0.tgz"
-  integrity sha1-V5pu/05XE6MYYCtNMFvLb4xbCPk=
+esbuild-register@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/esbuild-register/-/esbuild-register-2.2.0.tgz#1c68af6e8e6c4a23af01825224e71bcbd3c85d83"
+  integrity sha512-27039YMtpC3lI8yYGGm78SAQBtBo/4IPMReWVsNh4++VtvozmasBd1a2HiTdk0297iuA2pMzrzvL5cZJqQCKxQ==
   dependencies:
-    joycon "^2.2.5"
-    pirates "^4.0.1"
-    source-map-support "^0.5.19"
-    strip-json-comments "^3.1.1"
+    jsonc-parser "^3.0.0"
 
-esbuild@^0.8.52, esbuild@^0.8.54:
+esbuild@^0.8.52:
   version "0.8.54"
   resolved "https://registry.npm.taobao.org/esbuild/download/esbuild-0.8.54.tgz"
   integrity sha1-LzL/gOlcaaDyW3mddqJ8BeKFfN8=
+
+esbuild@^0.8.56:
+  version "0.8.56"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.8.56.tgz#9c7c3d6e614db7367afa348adb0ab287c296735e"
+  integrity sha512-PTMdAWK3JI2MNW811znGssGP5GR44tQPr++VQ1rPP0n8Z1cTKbCPD3S/kXPLr3ZZDIwAaVm08fuFym6Rp8l/0A==
 
 escalade@^3.1.1:
   version "3.1.1"
@@ -2403,11 +2405,6 @@ isstream@0.1.x:
   resolved "https://registry.npm.taobao.org/isstream/download/isstream-0.1.2.tgz"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
-joycon@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.npm.taobao.org/joycon/download/joycon-2.2.5.tgz"
-  integrity sha1-jUz0y7JUTXt1g8IW/N/sGfa+FhU=
-
 js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npm.taobao.org/js-tokens/download/js-tokens-4.0.0.tgz"
@@ -2465,6 +2462,11 @@ jsonc-eslint-parser@^0.6.0:
   dependencies:
     eslint-visitor-keys "^1.3.0"
     espree "^6.0.0 || ^7.2.0"
+
+jsonc-parser@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-3.0.0.tgz#abdd785701c7e7eaca8a9ec8cf070ca51a745a22"
+  integrity sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==
 
 jsonparse@^1.2.0:
   version "1.3.1"
@@ -2993,11 +2995,6 @@ nice-try@^1.0.4:
   resolved "https://registry.npm.taobao.org/nice-try/download/nice-try-1.0.5.tgz?cache=0&sync_timestamp=1614510016909&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnice-try%2Fdownload%2Fnice-try-1.0.5.tgz"
   integrity sha1-ozeKdpbOfSI+iPybdkvX7xCJ42Y=
 
-node-modules-regexp@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npm.taobao.org/node-modules-regexp/download/node-modules-regexp-1.0.0.tgz"
-  integrity sha1-jZ2+KJZKSsVxLpExZCEHxx6Q7EA=
-
 normalize-package-data@^2.3.0, normalize-package-data@^2.3.2, normalize-package-data@^2.3.4, normalize-package-data@^2.5.0:
   version "2.5.0"
   resolved "https://registry.npm.taobao.org/normalize-package-data/download/normalize-package-data-2.5.0.tgz"
@@ -3340,13 +3337,6 @@ pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.npm.taobao.org/pinkie/download/pinkie-2.0.4.tgz"
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
-
-pirates@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.npm.taobao.org/pirates/download/pirates-4.0.1.tgz"
-  integrity sha1-ZDqSyviUVm+RsrmG0sZpUKji+4c=
-  dependencies:
-    node-modules-regexp "^1.0.0"
 
 pkg-dir@^2.0.0:
   version "2.0.0"
@@ -3844,7 +3834,7 @@ slice-ansi@^4.0.0:
     astral-regex "^2.0.0"
     is-fullwidth-code-point "^3.0.0"
 
-source-map-support@^0.5.17, source-map-support@^0.5.19:
+source-map-support@^0.5.17:
   version "0.5.19"
   resolved "https://registry.npm.taobao.org/source-map-support/download/source-map-support-0.5.19.tgz"
   integrity sha1-qYti+G3K9PZzmWSMCFKRq56P7WE=
@@ -4284,13 +4274,13 @@ vite-plugin-voie@^0.7.3:
     glob-to-regexp "^0.4.1"
     voie-pages "^0.4.0"
 
-vite-plugin-windicss@^0.6.4:
-  version "0.6.4"
-  resolved "https://registry.npm.taobao.org/vite-plugin-windicss/download/vite-plugin-windicss-0.6.4.tgz#2d2bc7831dddff129d597959efaff616c6408a01"
-  integrity sha1-LSvHgx3d/xKdWXlZ76/2FsZAigE=
+vite-plugin-windicss@^0.6.11:
+  version "0.6.11"
+  resolved "https://registry.yarnpkg.com/vite-plugin-windicss/-/vite-plugin-windicss-0.6.11.tgz#62156e30d9ae1dd9d0a1664686c263ef36092f27"
+  integrity sha512-cFHyEVyCHGZ5Bu7L3EmiMKVsYtsI23+YBEd/bggEbdhdbv93bBk0M3j8ZVwZxwvKgJhLVG9Fthl3jAE+FVl0EA==
   dependencies:
-    "@windicss/plugin-utils" "0.6.4"
-    windicss "^2.2.3"
+    "@windicss/plugin-utils" "0.6.11"
+    windicss "^2.2.6"
 
 vite@^2.0.5:
   version "2.0.5"
@@ -4370,10 +4360,10 @@ which@^2.0.1:
   dependencies:
     isexe "^2.0.0"
 
-windicss@^2.2.3:
-  version "2.2.3"
-  resolved "https://registry.npm.taobao.org/windicss/download/windicss-2.2.3.tgz#5d25cab4b397d64f74660cac9b947b29cda240e9"
-  integrity sha1-XSXKtLOX1k90Zgysm5R7Kc2iQOk=
+windicss@^2.2.6:
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/windicss/-/windicss-2.2.8.tgz#ed4bad66b3ac8b4fd5a6bf94cd3ac343a283ab31"
+  integrity sha512-zNh65NiuGDChJvCjkEEMpA5NpykouYOc5vGeT3ynC5XydbENJYCEP7Jt9cfVD9BAG+OQxsNYtsYOabtzQeq4Iw==
 
 winston@^2.3.1:
   version "2.4.5"
