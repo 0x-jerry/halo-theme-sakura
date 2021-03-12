@@ -132,10 +132,10 @@
   resolved "https://registry.npm.taobao.org/@intlify/shared/download/@intlify/shared-9.0.0.tgz"
   integrity sha1-2Fs7X5Az83fFzyICzyRZqkmUjzY=
 
-"@intlify/vite-plugin-vue-i18n@^2.0.0-rc.2":
-  version "2.0.0"
-  resolved "https://registry.npm.taobao.org/@intlify/vite-plugin-vue-i18n/download/@intlify/vite-plugin-vue-i18n-2.0.0.tgz"
-  integrity sha1-V7+5+PC6I4zjL1b5E/rk3qLHDtU=
+"@intlify/vite-plugin-vue-i18n@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@intlify/vite-plugin-vue-i18n/-/vite-plugin-vue-i18n-2.0.2.tgz#29feba253bd1c1ea9b6d4c0434a010152ada4dc1"
+  integrity sha512-LFGNHQoR9Xmc0TEHo56MLPH7+LYt3fF640lkAgZGfaJtVRv6resNW3CnO4WnW5jvSkSNH6eP2JPLechjs2co2w==
   dependencies:
     "@intlify/cli" "^0.2.0"
     "@intlify/shared" "^9.0.0"
