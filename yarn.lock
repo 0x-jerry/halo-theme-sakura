@@ -132,14 +132,15 @@
   resolved "https://registry.npm.taobao.org/@intlify/shared/download/@intlify/shared-9.0.0.tgz"
   integrity sha1-2Fs7X5Az83fFzyICzyRZqkmUjzY=
 
-"@intlify/vite-plugin-vue-i18n@^2.0.0-rc.2":
-  version "2.0.0"
-  resolved "https://registry.npm.taobao.org/@intlify/vite-plugin-vue-i18n/download/@intlify/vite-plugin-vue-i18n-2.0.0.tgz"
-  integrity sha1-V7+5+PC6I4zjL1b5E/rk3qLHDtU=
+"@intlify/vite-plugin-vue-i18n@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@intlify/vite-plugin-vue-i18n/-/vite-plugin-vue-i18n-2.0.4.tgz#364134a63db3a4d6a50cf53850a824e63419fad1"
+  integrity sha512-Wumxwenjoo+Lors1q6pxovngLfjba9b5JM0FKWbgQxroBP0yJpdn9GNrs0+WZp+hHqqUAtYvTfOPCovymySFxw==
   dependencies:
     "@intlify/cli" "^0.2.0"
     "@intlify/shared" "^9.0.0"
     "@rollup/pluginutils" "^4.1.0"
+    debug "^4.1.1"
     fast-glob "^3.2.5"
 
 "@koa/cors@^3.1.0":
@@ -1280,14 +1281,7 @@ debug@^3.1.0, debug@^3.2.6:
   dependencies:
     ms "^2.1.1"
 
-debug@^4.0.1, debug@^4.1.1, debug@^4.2.0, debug@^4.3.1:
-  version "4.3.1"
-  resolved "https://registry.npm.taobao.org/debug/download/debug-4.3.1.tgz?cache=0&sync_timestamp=1607566939528&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdebug%2Fdownload%2Fdebug-4.3.1.tgz"
-  integrity sha1-8NIpxQXgxtjEmsVT0bE9wYP2su4=
-  dependencies:
-    ms "2.1.2"
-
-debug@^4.3.2:
+debug@^4.0.1, debug@^4.1.1, debug@^4.2.0, debug@^4.3.1, debug@^4.3.2:
   version "4.3.2"
   resolved "https://registry.npm.taobao.org/debug/download/debug-4.3.2.tgz?cache=0&sync_timestamp=1607566939528&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdebug%2Fdownload%2Fdebug-4.3.2.tgz"
   integrity sha1-8KScGKyHeeMdSgxgKd+3aHPHQos=
