@@ -4,8 +4,6 @@
 
 Docker: https://hub.docker.com/r/cwxyz/halo-theme-sakura
 
-## [预览](https://blog.tiny-online.online/)
-
 优势:
 
 - [x] Tailwind
