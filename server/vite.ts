@@ -54,7 +54,7 @@ export function serveViteBuild(dist: string): Middleware[] {
   // This is the server renderer we just built
   const render = require(`${dist}/server/entry-server.js`).render
 
-  const serveStatic = serve(path.join(dist, 'client'), { index: false })
+  const serveStatic = serve(path.join(dist, 'client'), { index: false }) as any
 
   return [
     serveStatic,

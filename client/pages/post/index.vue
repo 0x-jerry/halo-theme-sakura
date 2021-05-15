@@ -94,8 +94,6 @@ export default defineComponent({
     @apply text-blue-500;
   }
 
-  // !fixme https://github.com/windicss/vite-plugin-windicss/issues/63
-  // {} would lead a bug, so use 「」 instead
   &:before {
     top: -5px;
     content: '「';
