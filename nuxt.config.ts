@@ -4,7 +4,8 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/color-mode',
     '@vueuse/nuxt',
-    '@vite-pwa/nuxt'
+    '@vite-pwa/nuxt',
+    '@formkit/auto-animate/nuxt'
   ],
   devtools: { enabled: true }
 })

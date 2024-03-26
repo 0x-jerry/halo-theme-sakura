@@ -22,6 +22,9 @@ dependencies:
     version: 4.3.0(vue@3.4.21)
 
 devDependencies:
+  '@formkit/auto-animate':
+    specifier: ^0.8.1
+    version: 0.8.1
   '@vite-pwa/nuxt':
     specifier: ^0.6.0
     version: 0.6.0(rollup@2.79.1)(vite@5.2.6)(workbox-build@7.0.0)(workbox-window@7.0.0)
@@ -1538,6 +1541,10 @@ packages:
 
   /@floating-ui/utils@0.2.1:
     resolution: {integrity: sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==}
+
+  /@formkit/auto-animate@0.8.1:
+    resolution: {integrity: sha512-0/Z2cuNXWVVIG/l0SpcHAWFhGdvLJ8DRvEfRWvmojtmRWfEy+LWNwgDazbZqY0qQYtkHcoEK3jBLkhiZaB/4Ig==}
+    dev: true
 
   /@headlessui/tailwindcss@0.2.0(tailwindcss@3.4.1):
     resolution: {integrity: sha512-fpL830Fln1SykOCboExsWr3JIVeQKieLJ3XytLe/tt1A0XzqUthOftDmjcCYLW62w7mQI7wXcoPXr3tZ9QfGxw==}
