@@ -7,5 +7,9 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@formkit/auto-animate/nuxt'
   ],
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+  routeRules: {
+    // todo
+     '/api/halo': { proxy: 'https://example.com' },
+  }
 })
