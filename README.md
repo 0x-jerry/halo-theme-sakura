@@ -1,75 +1,24 @@
-# Nuxt 3 Minimal Starter
+# Halo Theme Sakura (WIP)
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+一个新坑，用 [Nuxt] 重写 [halo-theme-sakura]。
 
-## Setup
+## TODO
 
-Make sure to install the dependencies:
+- [ ] 首页
+- [ ] 归档页
+- [ ] 所有标签页面
+- [ ] 标签页面
+- [ ] 所有分类页面
+- [ ] 分类页面
+- [ ] 关于页面
+- [ ] 文章详情页
+- [ ] 移动端适配
+- [ ] 图片懒加载
+- [ ] 随机图
+- [ ] 友情连接页面
+- [ ] 图库页面
+- [ ] 日志页面
+- [ ] 接入评论功能
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+[nuxt]: https://nuxt.com/
+[halo-theme-sakura]: https://github.com/LIlGG/halo-theme-sakura
