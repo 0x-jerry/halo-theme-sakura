@@ -20,7 +20,7 @@ function toggleTheme() {
 </script>
 
 <template>
-  <UButton @click="toggleTheme" :icon="btnIcon"> </UButton>
+  <UButton color="gray" @click="toggleTheme" :icon="btnIcon"> </UButton>
 </template>
 
 <style lang="less" scoped></style>
