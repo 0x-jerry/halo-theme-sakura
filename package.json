@@ -19,6 +19,7 @@
   "devDependencies": {
     "@formkit/auto-animate": "^0.8.1",
     "@vite-pwa/nuxt": "^0.6.0",
-    "@vueuse/nuxt": "^10.9.0"
+    "@vueuse/nuxt": "^10.9.0",
+    "less": "^4.2.0"
   }
 }

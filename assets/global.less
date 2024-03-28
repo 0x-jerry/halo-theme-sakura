@@ -1,0 +1,46 @@
+#animate {
+  .fade(@name, @from, @to) {
+    animation: @name 0.1s linear 1 forwards;
+    opacity: 0;
+
+    @media (min-width: 520px) {
+      animation: @name 0.6s linear 1 forwards;
+    }
+
+    @keyframes @name {
+      0% {
+        transform: @from;
+        opacity: 0;
+      }
+
+      100% {
+        transform: @to;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// animate
+.a {
+  &-fadeIn {
+    #animate.fade(fadeIn, none, none);
+    @offset: 20px;
+
+    &-left {
+      #animate.fade(fadeIn-left, translateX(@offset), translateX(0));
+    }
+
+    &-right {
+      #animate.fade(fadeIn-right, translateX(-@offset), translateX(0));
+    }
+
+    &-top {
+      #animate.fade(fadeIn-top, translateY(@offset), translateY(0));
+    }
+
+    &-bottom {
+      #animate.fade(fadeIn-bottom, translateY(-@offset), translateY(0));
+    }
+  }
+}
