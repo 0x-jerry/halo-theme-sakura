@@ -1,6 +1,8 @@
 # Halo Theme Sakura (WIP)
 
-一个新坑，用 [Nuxt] 重写 [halo-theme-sakura]。
+一个新坑，用 [Nuxt] 写一遍 [sakura]。
+
+> 原作：https://2heng.xin/
 
 ## TODO
 
