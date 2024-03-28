@@ -8,13 +8,13 @@ export interface HeroImageProps {
 
 const props = defineProps<HeroImageProps>();
 
-const isMobile = ref(false);
-
 function scrollOnePage() {
   window.scrollTo(0, imgEl.value?.clientHeight || 0);
 }
 
 const _title = computed(() => props.title || "Hi, Friend!");
+
+const { count, inc } = useCounter(1);
 </script>
 
 <template>
@@ -22,21 +22,18 @@ const _title = computed(() => props.title || "Hi, Friend!");
     <div ref="imgEl" class="flex items-center justify-center h-screen">
       <img
         class="size-full absolute object-cover"
-        src="https://0x-jerry.icu/api/img"
+        :src="`https://0x-jerry.icu/api/img?c=${count}`"
       />
       <div class="bg-grid absolute z-[1] size-full" />
       <div class="block relative z-[2]">
         <h1
-          class="glitch text-center md:text-9xl text-4xl"
-          :class="{ active: isMobile }"
+          class="glitch text-center md:text-9xl text-4xl cursor-pointer"
+          @click="inc()"
           :data-text="_title"
         >
           {{ _title }}
         </h1>
-        <p
-          v-if="description"
-          class="desc bg-black bg-opacity-50 rounded-3xl text-white text-center py-5"
-        >
+        <p v-if="description" class="desc">
           {{ description }}
         </p>
       </div>
@@ -53,7 +50,7 @@ const _title = computed(() => props.title || "Hi, Friend!");
   </div>
 </template>
 
-<style scoped>
+<style lang="less" scoped>
 .bg-grid {
   background: linear-gradient(#0a0a0a1a, #0000004d),
     repeating-linear-gradient(
@@ -69,8 +66,24 @@ const _title = computed(() => props.title || "Hi, Friend!");
   animation-duration: 3s;
 }
 .desc {
+  @apply rounded-3xl text-white text-center py-5;
+
+  background: rgba(0, 0, 0, 0.5);
+  position: relative;
   max-width: 600px;
   margin: auto;
+  margin-top: 30px;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 20%;
+    transform: translate(0, -100%);
+    border-width: 15px;
+    border-style: solid;
+    border-color: transparent transparent rgba(0, 0, 0, 0.5) transparent;
+  }
 }
 </style>
 
