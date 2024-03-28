@@ -24,8 +24,9 @@ const { count, inc } = useCounter(1);
         class="size-full absolute object-cover"
         :src="`https://0x-jerry.icu/api/img?c=${count}`"
       />
-      <div class="bg-grid absolute z-[1] size-full" />
-      <div class="block relative z-[2]">
+      <HeroWaves class="!absolute bottom-0 z-10 w-full" color="237 203 224" />
+      <div class="bg-grid absolute z-20 size-full" />
+      <div class="block relative z-30">
         <h1
           class="glitch text-center md:text-9xl text-4xl cursor-pointer"
           @click="inc()"
@@ -38,7 +39,7 @@ const { count, inc } = useCounter(1);
         </p>
       </div>
       <div
-        class="arrow-animation transform absolute z-[3] bottom-10 animate-bounce cursor-pointer w-full text-center"
+        class="arrow-animation transform absolute z-50 bottom-10 animate-bounce cursor-pointer w-full text-center"
       >
         <UIcon
           @click="scrollOnePage"
