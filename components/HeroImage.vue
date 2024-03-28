@@ -9,7 +9,10 @@ export interface HeroImageProps {
 const props = defineProps<HeroImageProps>();
 
 function scrollOnePage() {
-  window.scrollTo(0, imgEl.value?.clientHeight || 0);
+  window.scrollTo({
+    top: imgEl.value?.clientHeight || 0,
+    behavior: "smooth",
+  });
 }
 
 const _title = computed(() => props.title || "Hi, Friend!");
@@ -18,7 +21,7 @@ const { count, inc } = useCounter(1);
 </script>
 
 <template>
-  <div class="a-fadeIn-bottom">
+  <div v-motion-pop-bottom>
     <div ref="imgEl" class="flex items-center justify-center h-screen">
       <img
         class="size-full absolute object-cover"
@@ -26,7 +29,18 @@ const { count, inc } = useCounter(1);
       />
       <HeroWaves class="!absolute bottom-0 z-10 w-full" color="237 203 224" />
       <div class="bg-grid absolute z-20 size-full" />
-      <div class="block relative z-30">
+      <div
+        class="arrow-animation transform absolute z-30 bottom-10 animate-bounce cursor-pointer w-full text-center"
+      >
+        <UIcon
+          @click="scrollOnePage"
+          class="text-3xl text-white"
+          name="i-heroicons-arrow-down"
+        />
+      </div>
+
+      <!-- content -->
+      <div class="block relative z-40">
         <h1
           class="glitch text-center md:text-9xl text-4xl cursor-pointer"
           @click="inc()"
@@ -37,15 +51,7 @@ const { count, inc } = useCounter(1);
         <p v-if="description" class="desc">
           {{ description }}
         </p>
-      </div>
-      <div
-        class="arrow-animation transform absolute z-50 bottom-10 animate-bounce cursor-pointer w-full text-center"
-      >
-        <UIcon
-          @click="scrollOnePage"
-          class="text-3xl text-white"
-          name="i-heroicons-arrow-down"
-        />
+        <slot></slot>
       </div>
     </div>
   </div>
