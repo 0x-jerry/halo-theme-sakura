@@ -21,7 +21,7 @@ const { count, inc } = useCounter(1);
 </script>
 
 <template>
-  <div v-motion-pop-bottom>
+  <div class="hero-image">
     <div ref="imgEl" class="flex items-center justify-center h-screen">
       <img
         class="size-full absolute object-cover"
@@ -32,9 +32,10 @@ const { count, inc } = useCounter(1);
       <div
         class="arrow-animation transform absolute z-30 bottom-10 animate-bounce cursor-pointer w-full text-center"
       >
-        <i
+        <VIcon
           @click="scrollOnePage"
-          class="text-3xl text-white i-heroicons-arrow-down"
+          class="text-3xl text-white"
+          name="i-heroicons-arrow-down"
         />
       </div>
 
@@ -69,7 +70,7 @@ const { count, inc } = useCounter(1);
 }
 
 .arrow-animation {
-  animation-duration: 3s;
+  animation-duration: 2s;
 }
 .desc {
   @apply rounded-3xl text-white text-center py-5;

@@ -20,7 +20,7 @@ const isActive = (menu: Menu) => false;
       :class="{ active: isActive(o) }"
       :to="o.url"
     >
-      <i :class="o.icon"></i>
+    <VIcon :name="o.icon" ></VIcon>
       {{ o.name }}
     </NuxtLink>
   </div>
