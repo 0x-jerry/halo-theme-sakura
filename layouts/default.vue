@@ -27,7 +27,6 @@ const menus = computed(() => {
       class="fixed z-[100] w-full dark:bg-gray-950 bg-white"
       :menus="menus"
     />
-    <UDivider />
     <slot />
   </div>
 </template>

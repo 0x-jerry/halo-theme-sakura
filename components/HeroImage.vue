@@ -32,10 +32,9 @@ const { count, inc } = useCounter(1);
       <div
         class="arrow-animation transform absolute z-30 bottom-10 animate-bounce cursor-pointer w-full text-center"
       >
-        <UIcon
+        <i
           @click="scrollOnePage"
-          class="text-3xl text-white"
-          name="i-heroicons-arrow-down"
+          class="text-3xl text-white i-heroicons-arrow-down"
         />
       </div>
 

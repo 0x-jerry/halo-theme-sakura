@@ -1,4 +1,5 @@
 <script setup>
+import '@unocss/reset/normalize.css'
 import 'animate.css';
 </script>
 

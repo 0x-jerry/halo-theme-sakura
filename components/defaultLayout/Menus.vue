@@ -14,15 +14,15 @@ const isActive = (menu: Menu) => false;
   <div
     class="flex-1 flex flex-col md:flex-row md:justify-center text-gray-500 a-fadeIn-right"
   >
-    <ULink
-      v-for="o in menus"
+    <NuxtLink
       class="menu-item"
+      v-for="o in menus"
       :class="{ active: isActive(o) }"
       :to="o.url"
     >
-      <UIcon :name="o.icon" />
+      <i :class="o.icon"></i>
       {{ o.name }}
-    </ULink>
+    </NuxtLink>
   </div>
 </template>
 
