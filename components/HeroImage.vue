@@ -21,7 +21,7 @@ const { count, inc } = useCounter(1);
 </script>
 
 <template>
-  <div class="hero-image">
+  <div class="hero-image relative">
     <div ref="imgEl" class="flex items-center justify-center h-screen">
       <img
         class="size-full absolute object-cover"

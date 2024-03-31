@@ -24,10 +24,12 @@ const menus = computed(() => {
 <template>
   <div>
     <DefaultLayoutHeader
-      class="fixed z-[100] w-full dark:bg-gray-950 bg-white"
+      class="fixed z-100 w-full dark:bg-gray-950 bg-white"
       :menus="menus"
     />
-    <slot />
+    <div class="relative z-0">
+      <slot />
+    </div>
   </div>
 </template>
 

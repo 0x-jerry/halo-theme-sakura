@@ -17,7 +17,8 @@ export default defineConfig({
     presetAttributify(),
     presetBrand({
       brand: {
-        primary: 'orange'
+        primary: 'orange',
+        gray: 'zinc'
       }
     }),
   ],
