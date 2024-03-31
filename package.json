@@ -19,7 +19,9 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
+    "@0x-jerry/unocss-preset-brand": "^0.1.0",
     "@formkit/auto-animate": "^0.8.1",
+    "@iconify-json/heroicons": "^1.1.20",
     "@types/lodash-es": "^4.17.12",
     "@unocss/nuxt": "^0.58.8",
     "@vite-pwa/nuxt": "^0.6.0",

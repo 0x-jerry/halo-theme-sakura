@@ -30,11 +30,17 @@ const { count, inc } = useCounter(1);
       <HeroWaves class="!absolute bottom-0 z-10 w-full" color="237 203 224" />
       <div class="bg-grid absolute z-20 size-full" />
       <div
-        class="arrow-animation transform absolute z-30 bottom-10 animate-bounce cursor-pointer w-full text-center"
+        class=" transform absolute z-30 bottom-10"
+        w="full"
+        text="center"
       >
         <VIcon
           @click="scrollOnePage"
-          class="text-3xl text-white"
+          class="text-3xl"
+          transition="~"
+          text="white hover:b-primary"
+          animate="bounce duration-2000"
+          cursor="pointer"
           name="i-heroicons-arrow-down"
         />
       </div>
@@ -69,9 +75,6 @@ const { count, inc } = useCounter(1);
     );
 }
 
-.arrow-animation {
-  animation-duration: 2s;
-}
 .desc {
   @apply rounded-3xl text-white text-center py-5;
 

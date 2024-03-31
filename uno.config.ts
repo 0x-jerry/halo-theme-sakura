@@ -6,8 +6,20 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from "unocss";
+import { presetBrand } from "@0x-jerry/unocss-preset-brand";
 
 export default defineConfig({
-  presets: [presetUno(), presetIcons(), presetAttributify()],
+  presets: [
+    presetUno(),
+    presetIcons({
+      autoInstall: true,
+    }),
+    presetAttributify(),
+    presetBrand({
+      brand: {
+        primary: 'orange'
+      }
+    }),
+  ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
 });
