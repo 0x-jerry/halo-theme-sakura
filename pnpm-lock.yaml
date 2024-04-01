@@ -29,8 +29,8 @@ dependencies:
 
 devDependencies:
   '@0x-jerry/unocss-preset-brand':
-    specifier: ^0.1.0
-    version: 0.1.0(postcss@8.4.38)(rollup@2.79.1)(vite@5.2.6)
+    specifier: ^0.1.1
+    version: 0.1.1(postcss@8.4.38)(rollup@2.79.1)(vite@5.2.6)
   '@formkit/auto-animate':
     specifier: ^0.8.1
     version: 0.8.1
@@ -58,8 +58,8 @@ devDependencies:
 
 packages:
 
-  /@0x-jerry/unocss-preset-brand@0.1.0(postcss@8.4.38)(rollup@2.79.1)(vite@5.2.6):
-    resolution: {integrity: sha512-zcWWz1M48LXhVx4aBc/OfIWODlLskFa/zySJepsvlemuwAri3yDKPk4p58EsFl6CdpOTSeq0Kqs9j2+eZkBf9w==}
+  /@0x-jerry/unocss-preset-brand@0.1.1(postcss@8.4.38)(rollup@2.79.1)(vite@5.2.6):
+    resolution: {integrity: sha512-teX1G2STpFVSpigaaSmgTc5kJHQXSlw5nV3HbfRabDu2fPcLMHNF2BRRfG0Cbh6vTRIAQ/aWV7jpSnu9KjuvzQ==}
     engines: {node: '>= 18'}
     dependencies:
       '@0x-jerry/utils': 2.1.2

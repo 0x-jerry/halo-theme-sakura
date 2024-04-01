@@ -17,7 +17,7 @@ const isSticky = computed(() => scrollY.value > 1);
     <div class="w-full md:w-60">
       <slot class="prefix"></slot>
     </div>
-    <DefaultLayoutMenus :menus="menus" />
+    <DefaultLayoutMenus class="flex-1" :menus="menus" />
     <div class="flex w-full md:justify-end md:w-60">
       <slot class="suffix"></slot>
     </div>
@@ -30,7 +30,7 @@ const isSticky = computed(() => scrollY.value > 1);
   @apply bg-white bg-opacity-95;
   @apply opacity-0;
   @apply flex flex-row items-center;
-  @apply py-5;
+  @apply py-0;
 
   @apply w-full h-16;
 

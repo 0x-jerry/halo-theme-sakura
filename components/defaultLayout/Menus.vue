@@ -14,7 +14,8 @@ const isActive = (menu: Menu) => route.path === menu.url;
 
 <template>
   <div
-    class="flex-1 flex flex-col md:flex-row md:justify-center text-gray-500 a-fadeIn-right"
+    flex="~ justify-center items-center gap-4"
+    text="xl"
   >
     <VLink
       class="menu-item"
@@ -31,7 +32,7 @@ const isActive = (menu: Menu) => route.path === menu.url;
 <style lang="less" scoped>
 .menu-item {
   &.active {
-    @apply text-b-primary;
+    @apply text-b-primary font-bold;
   }
 }
 </style>

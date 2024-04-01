@@ -11,4 +11,7 @@ import 'animate.css';
 
 <style>
 @import './assets/global.less';
+html,body {
+  @apply text-b-gray-8 font-sans;
+}
 </style>
