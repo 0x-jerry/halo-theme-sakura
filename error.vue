@@ -11,7 +11,7 @@ const props = defineProps({
     <HeroImage title="Unknown Area!" :description="error?.message">
       <div class="flex items-center justify-center mt-4">
         <NuxtLink to="/">
-          <button color="violet" size="xl">Take me home</button>
+          <VButton class="text-xl">Take me Home</VButton>
         </NuxtLink>
       </div>
     </HeroImage>
