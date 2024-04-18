@@ -72,24 +72,18 @@
     ts-node "^9.1.1"
     typescript "^4.2.4"
 
-"@intlify/cli@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.nlark.com/@intlify/cli/download/@intlify/cli-0.4.0.tgz#4370ddab24a295c89925f3abd447bbeda09bb0e7"
-  integrity sha1-Q3DdqySilciZJfOr1Ee77aCbsOc=
+"@intlify/bundle-utils@^3.1.2":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@intlify/bundle-utils/-/bundle-utils-3.4.0.tgz#72558611f4b223a6791f591363dc48a4bcacdf70"
+  integrity sha512-2UQkqiSAOSPEHMGWlybqWm4G2K0X+FyYho5AwXz6QklSX1EY5EDmOSxZmwscn2qmKBnp6OYsme5kUrnN9xrWzQ==
   dependencies:
-    "@intlify/core" "^9.1.0"
-    "@intlify/core-base" "^9.1.0"
-    "@intlify/message-compiler" "^9.1.0"
-    "@intlify/shared" "^9.1.0"
-    chalk "^4.1.0"
-    debug "^4.3.1"
-    glob "^7.1.6"
+    "@intlify/message-compiler" next
+    "@intlify/shared" next
     jsonc-eslint-parser "^1.0.1"
-    source-map "^0.6.1"
+    source-map "0.6.1"
     yaml-eslint-parser "^0.3.2"
-    yargs "^16.2.0"
 
-"@intlify/core-base@9.1.6", "@intlify/core-base@^9.1.0":
+"@intlify/core-base@9.1.6":
   version "9.1.6"
   resolved "https://registry.nlark.com/@intlify/core-base/download/@intlify/core-base-9.1.6.tgz#887fbeafe37d955bac50318f30ac589839f0d9fb"
   integrity sha1-iH++r+N9lVusUDGPMKxYmDnw2fs=
@@ -101,13 +95,6 @@
     "@intlify/shared" "9.1.6"
     "@intlify/vue-devtools" "9.1.6"
 
-"@intlify/core@^9.1.0":
-  version "9.1.6"
-  resolved "https://registry.nlark.com/@intlify/core/download/@intlify/core-9.1.6.tgz#02215f4f41fa2838923faf51b9d97d6ce055f0a1"
-  integrity sha1-AiFfT0H6KDiSP69Rudl9bOBV8KE=
-  dependencies:
-    "@intlify/core-base" "9.1.6"
-
 "@intlify/devtools-if@9.1.6":
   version "9.1.6"
   resolved "https://registry.nlark.com/@intlify/devtools-if/download/@intlify/devtools-if-9.1.6.tgz#739b195e430e24fbf8f864ec8a51e243e3347385"
@@ -115,7 +102,7 @@
   dependencies:
     "@intlify/shared" "9.1.6"
 
-"@intlify/message-compiler@9.1.6", "@intlify/message-compiler@^9.1.0":
+"@intlify/message-compiler@9.1.6":
   version "9.1.6"
   resolved "https://registry.nlark.com/@intlify/message-compiler/download/@intlify/message-compiler-9.1.6.tgz#e3e99165c1e6ecc496211017799ae59e15b05a18"
   integrity sha1-4+mRZcHm7MSWIRAXeZrlnhWwWhg=
@@ -123,6 +110,14 @@
     "@intlify/message-resolver" "9.1.6"
     "@intlify/shared" "9.1.6"
     source-map "0.6.1"
+
+"@intlify/message-compiler@next":
+  version "9.4.1"
+  resolved "https://registry.yarnpkg.com/@intlify/message-compiler/-/message-compiler-9.4.1.tgz#aa00629a455e23cece3464293834a02994b4fb04"
+  integrity sha512-aN2N+dUx320108QhH51Ycd2LEpZ+NKbzyQ2kjjhqMcxhHdxtOnkgdx+MDBhOy/CObwBmhC3Nygzc6hNlfKvPNw==
+  dependencies:
+    "@intlify/shared" "9.4.1"
+    source-map-js "^1.0.2"
 
 "@intlify/message-resolver@9.1.6":
   version "9.1.6"
@@ -138,21 +133,27 @@
     "@intlify/message-resolver" "9.1.6"
     "@intlify/shared" "9.1.6"
 
-"@intlify/shared@9.1.6", "@intlify/shared@^9.1.0":
+"@intlify/shared@9.1.6":
   version "9.1.6"
   resolved "https://registry.nlark.com/@intlify/shared/download/@intlify/shared-9.1.6.tgz#d03c9301898d6ddffe2a54c03e7664174fbcdfd9"
   integrity sha1-0DyTAYmNbd/+KlTAPnZkF0+839k=
 
-"@intlify/vite-plugin-vue-i18n@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.nlark.com/@intlify/vite-plugin-vue-i18n/download/@intlify/vite-plugin-vue-i18n-2.1.2.tgz#afc794952d1beb83834ffbf5a1651de019f32aee"
-  integrity sha1-r8eUlS0b64ODT/v1oWUd4BnzKu4=
+"@intlify/shared@9.4.1", "@intlify/shared@next":
+  version "9.4.1"
+  resolved "https://registry.yarnpkg.com/@intlify/shared/-/shared-9.4.1.tgz#bd0d221aaac476b6778a10ddcd0472f812c64e27"
+  integrity sha512-A51elBmZWf1FS80inf/32diO9DeXoqg9GR9aUDHFcfHoNDuT46Q+fpPOdj8jiJnSHSBh8E1E+6qWRhAZXdK3Ng==
+
+"@intlify/vite-plugin-vue-i18n@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@intlify/vite-plugin-vue-i18n/-/vite-plugin-vue-i18n-7.0.0.tgz#9f33b551b7540abae6854e004b532142654a254e"
+  integrity sha512-2TbDOQ8XD+vkc0s5OFmr+IY/k4mYMC7pzvx0xGQn+cU/ev314+yi7Z7N7rWcBgiYk1WOUalbGSo3d4nJDxOOyw==
   dependencies:
-    "@intlify/cli" "^0.4.0"
-    "@intlify/shared" "^9.1.0"
-    "@rollup/pluginutils" "^4.1.0"
-    debug "^4.1.1"
+    "@intlify/bundle-utils" "^3.1.2"
+    "@intlify/shared" next
+    "@rollup/pluginutils" "^4.2.0"
+    debug "^4.3.1"
     fast-glob "^3.2.5"
+    source-map "0.6.1"
 
 "@intlify/vue-devtools@9.1.6":
   version "9.1.6"
@@ -202,10 +203,10 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@rollup/pluginutils@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.npm.taobao.org/@rollup/pluginutils/download/@rollup/pluginutils-4.1.0.tgz"
-  integrity sha1-Dcxhx4DjkldVT+t/dyB9zsoTyDg=
+"@rollup/pluginutils@^4.2.0":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-4.2.1.tgz#e6c6c3aba0744edce3fb2074922d3776c0af2a6d"
+  integrity sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==
   dependencies:
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
@@ -960,15 +961,6 @@ clipboard@^2.0.0:
     select "^1.1.2"
     tiny-emitter "^2.0.0"
 
-cliui@^7.0.2:
-  version "7.0.4"
-  resolved "https://registry.npm.taobao.org/cliui/download/cliui-7.0.4.tgz?cache=0&sync_timestamp=1604881199684&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcliui%2Fdownload%2Fcliui-7.0.4.tgz"
-  integrity sha1-oCZe5lVHb8gHrqnfPfjfd4OAi08=
-  dependencies:
-    string-width "^4.2.0"
-    strip-ansi "^6.0.0"
-    wrap-ansi "^7.0.0"
-
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.npm.taobao.org/co/download/co-4.6.0.tgz"
@@ -1323,14 +1315,7 @@ debug@^3.1.0, debug@^3.2.6, debug@^3.2.7:
   dependencies:
     ms "^2.1.1"
 
-debug@^4.0.1, debug@^4.1.1, debug@^4.3.1:
-  version "4.3.1"
-  resolved "https://registry.npm.taobao.org/debug/download/debug-4.3.1.tgz?cache=0&sync_timestamp=1607566939528&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdebug%2Fdownload%2Fdebug-4.3.1.tgz"
-  integrity sha1-8NIpxQXgxtjEmsVT0bE9wYP2su4=
-  dependencies:
-    ms "2.1.2"
-
-debug@^4.3.2:
+debug@^4.0.1, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2:
   version "4.3.2"
   resolved "https://registry.npm.taobao.org/debug/download/debug-4.3.2.tgz?cache=0&sync_timestamp=1607566939528&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdebug%2Fdownload%2Fdebug-4.3.2.tgz"
   integrity sha1-8KScGKyHeeMdSgxgKd+3aHPHQos=
@@ -1531,11 +1516,6 @@ esbuild@^0.11.20:
   version "0.11.22"
   resolved "https://registry.nlark.com/esbuild/download/esbuild-0.11.22.tgz#239009cc1519179c7a7000bc321482a1e74de999"
   integrity sha1-I5AJzBUZF5x6cAC8MhSCoedN6Zk=
-
-escalade@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.npm.taobao.org/escalade/download/escalade-3.1.1.tgz?cache=0&sync_timestamp=1602567260560&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fescalade%2Fdownload%2Fescalade-3.1.1.tgz"
-  integrity sha1-2M/ccACWXFoBdLSoLqpcBVJ0LkA=
 
 escape-html@^1.0.3:
   version "1.0.3"
@@ -1898,11 +1878,6 @@ generic-names@^2.0.1:
   dependencies:
     loader-utils "^1.1.0"
 
-get-caller-file@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.npm.taobao.org/get-caller-file/download/get-caller-file-2.0.5.tgz"
-  integrity sha1-T5RBKoLbMvNuOwuXQfipf+sDH34=
-
 get-intrinsic@^1.0.2, get-intrinsic@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npm.taobao.org/get-intrinsic/download/get-intrinsic-1.1.1.tgz?cache=0&sync_timestamp=1612364441945&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fget-intrinsic%2Fdownload%2Fget-intrinsic-1.1.1.tgz"
@@ -1984,7 +1959,7 @@ glob-to-regexp@^0.4.1:
   resolved "https://registry.npm.taobao.org/glob-to-regexp/download/glob-to-regexp-0.4.1.tgz"
   integrity sha1-x1KXCHyFG5pXi9IX3VmpL1n+VG4=
 
-glob@7.1.6, glob@^7.0.0, glob@^7.1.3, glob@^7.1.6:
+glob@7.1.6, glob@^7.0.0, glob@^7.1.3:
   version "7.1.6"
   resolved "https://registry.npm.taobao.org/glob/download/glob-7.1.6.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fglob%2Fdownload%2Fglob-7.1.6.tgz"
   integrity sha1-FB8zuBp8JJLhJVlDB0gMRmeSeKY=
@@ -3605,11 +3580,6 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
-require-directory@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.npm.taobao.org/require-directory/download/require-directory-2.1.1.tgz"
-  integrity sha1-jGStX9MNqxyXbiNE/+f3kqam30I=
-
 require-from-string@^2.0.2:
   version "2.0.2"
   resolved "https://registry.npm.taobao.org/require-from-string/download/require-from-string-2.0.2.tgz"
@@ -3811,6 +3781,11 @@ slice-ansi@^4.0.0:
     ansi-styles "^4.0.0"
     astral-regex "^2.0.0"
     is-fullwidth-code-point "^3.0.0"
+
+source-map-js@^1.0.2:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.2.0.tgz#16b809c162517b5b8c3e7dcd315a2a5c2612b2af"
+  integrity sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==
 
 source-map-support@^0.5.17:
   version "0.5.19"
@@ -4435,11 +4410,6 @@ xtend@~4.0.1:
   resolved "https://registry.npm.taobao.org/xtend/download/xtend-4.0.2.tgz"
   integrity sha1-u3J3n1+kZRhrH0OPZ0+jR/2121Q=
 
-y18n@^5.0.5:
-  version "5.0.5"
-  resolved "https://registry.npm.taobao.org/y18n/download/y18n-5.0.5.tgz"
-  integrity sha1-h2nsCNA7HqLfJQCs71YXQ7u5qxg=
-
 yallist@^3.0.2:
   version "3.1.1"
   resolved "https://registry.npm.taobao.org/yallist/download/yallist-3.1.1.tgz"
@@ -4464,23 +4434,10 @@ yaml@^1.10.0:
   resolved "https://registry.npm.taobao.org/yaml/download/yaml-1.10.0.tgz"
   integrity sha1-O1k63ZRIdgd9TWg/7gEIG9n/8x4=
 
-yargs-parser@^20.2.2, yargs-parser@^20.2.3:
+yargs-parser@^20.2.3:
   version "20.2.6"
   resolved "https://registry.npm.taobao.org/yargs-parser/download/yargs-parser-20.2.6.tgz"
   integrity sha1-afkgrd9hqvwLi4kAL11m4o8tiyA=
-
-yargs@^16.2.0:
-  version "16.2.0"
-  resolved "https://registry.npm.taobao.org/yargs/download/yargs-16.2.0.tgz"
-  integrity sha1-HIK/D2tqZur85+8w43b0mhJHf2Y=
-  dependencies:
-    cliui "^7.0.2"
-    escalade "^3.1.1"
-    get-caller-file "^2.0.5"
-    require-directory "^2.1.1"
-    string-width "^4.2.0"
-    y18n "^5.0.5"
-    yargs-parser "^20.2.2"
 
 ylru@^1.2.0:
   version "1.2.1"
