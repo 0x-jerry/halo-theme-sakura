@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@exyz/glib": "^0.4.4",
-    "@intlify/vite-plugin-vue-i18n": "^2.1.2",
+    "@intlify/vite-plugin-vue-i18n": "^7.0.0",
     "@types/debug": "^4.1.5",
     "@types/koa": "^2.13.1",
     "@types/koa-static": "^4.0.1",
